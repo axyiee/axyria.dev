@@ -60,5 +60,16 @@ p, a, h1 {
     align-items: center;
     display: flex;
     gap: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    filter: brightness(120%) saturate(120%);
+    transition: 0.5s;
+}
+
+a, a:hover, a:visited, a:active {
+    color: inherit;
+    text-decoration: none;
 }
 
