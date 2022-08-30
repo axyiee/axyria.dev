@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@800&family=Raleway:wght@600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #010105;
+    --text-primary: #eeeeee;
+    --text-primary-inverted: #111111;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'IBM Plex Mono', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--background);
+    overflow: hidden;
+}
+
+.root {
+    display: inherit;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}   
+
+p, a, h1 {
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.circle {
+    clip-path: circle();
+}
+
+.buttons {
+    display: flex;
+    width: fit-content;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.buttons button { 
+    background-color: var(--text-primary);
+    padding: 15px 30px 15px 30px;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-primary-inverted);
+    border-radius: 10px;
+    align-items: center;
+    display: flex;
+    gap: 5px;
+}
+
