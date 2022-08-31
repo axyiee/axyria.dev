@@ -10,10 +10,10 @@
     --background: #010105;
     --text-primary: #eeeeee;
     --text-primary-inverted: #111111;
+    --text-secondary: #bebebe;
 }
 
 html, body {
-    width: 100%;
     height: 100%;
 }
 
@@ -24,18 +24,19 @@ body {
     align-items: center;
     background: var(--background);
     overflow: hidden;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.root {
-    display: inherit;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}   
+main {
+    max-width: 100%;
+}
 
-p, a, h1 {
+p, a, h1, li {
     color: var(--text-primary);
     text-align: center;
+    max-width: 100%;
+    word-wrap: break-word;
 }
 
 .circle {
@@ -47,10 +48,25 @@ p, a, h1 {
     width: fit-content;
     flex-wrap: wrap;
     gap: 20px;
-    animation: slide-up ease    1.5s;
 }
 
-.buttons button { 
+@media (prefers-reduced-motion: no-preference) {
+    .buttons {
+        animation: slide-up ease 1.5s; 
+    }
+    @keyframes slide-up {
+        0% {
+            transform: translateY(300%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+}
+
+.buttons a { 
     background-color: var(--text-primary);
     padding: 15px 30px 15px 30px;
     border: none;
@@ -64,7 +80,7 @@ p, a, h1 {
     cursor: pointer;
 }
 
-button:hover {
+li, .buttons a:hover {
     filter: brightness(120%) saturate(120%);
     transition: 0.5s;
 }
@@ -74,14 +90,26 @@ a, a:hover, a:visited, a:active {
     text-decoration: none;
 }
 
-@keyframes slide-up {
-    0% {
-        transform: translateY(300%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+nav {
+    position: absolute;
+    top: 15px;
+}
+
+nav ol {
+    list-style-type: none;
+    display: inline-flex;
+    gap: 25px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+nav ol li {
+    cursor: pointer;
+}
+
+.nav-selected {
+    padding: 0 5px 3px 5px;
+    border-bottom: 1px solid var(--text-primary);
 }
 
