@@ -158,16 +158,31 @@ nav ol {
 }
 
 nav ol li {
+    position: relative;
+}
+
+nav ol li a {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     font-family: 'Raleway', sans-serif;
     font-size: 0.8rem;
     gap: 5px;
 }
 
+
 nav .menu {
     display: none;
+}
+
+nav ol li.selected:after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    top: 0;
+    right: -20px;
+    bottom: 0;
+    background-color: var(--text-primary);
 }
 
 @media only screen and (max-device-width: 640px) {
