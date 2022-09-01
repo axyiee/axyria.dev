@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/globals.css" rel="stylesheet">
     <link href="css/home.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <meta name="author" content="FromSyntax">
     <meta name="description" content="Just messing around with computers in my youth.">
     <meta property="og:title" content="fromsyntax.">
@@ -22,29 +23,25 @@
 
 <body>
     <nav>
+        <button class="icon burger menu"></button>
         <ol>
-            <li class="nav-selected"><a href="https://syntax.lol">Home</a></li>
-            <li><a href="https://github.com/Southdust">Southdust</a></li>
+            <li class="selected"><span class="icon home"></span><a href="https://syntax.lol">Home</a></li>
+            <li><span class="icon microscope"></span><a>Profile</a></div>
+            <li><span class="icon southdust"></span><a href="https://github.com/Southdust">Southdust</a></li>
         </ol>
     </nav>
-    <img class="icon circle" src="assets/avatar.webp" alt="">
+    <img class="pfp circle" src="assets/avatar.webp" alt="">
     <main>
         <header class="stack" style="--stacks: 3;">
-            <h1 style="--index: 0;">fromsyntax.</h1>
-            <h1 style="--index: 1;">fromsyntax.</h1>
-            <h1 style="--index: 2;">fromsyntax.</h1>
+            <h1 style="--index: 0;">fromsyntax.<span class="icon location header-icon-settings"></span></h1>
+            <h1 style="--index: 1;">fromsyntax.<span class="icon location header-icon-settings"></span></h1>
+            <h1 style="--index: 2;">fromsyntax.<span class="icon location header-icon-settings"></span></h1>
         </header>
         <p id="description">just an aspie messing around with pointers.</p>
     </main>
     <div class="buttons">
-        <a href="https://code.syntax.lol">
-            <img src="assets/tabler-icon-brand-github.svg" alt="">
-            GitHub
-        </a>
-        <a href="https://discord.hexalite.org">
-            <img src="assets/tabler-icon-brand-discord.svg" alt="">
-            Discord
-        </a>
+        <a href="https://code.syntax.lol"><span class="icon github"></span>GitHub</a>
+        <a href="https://discord.hexalite.org"><span class="icon discord"></span>Discord</a>
     </div>
 </body>
 

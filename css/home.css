@@ -1,4 +1,4 @@
-.icon {
+.pfp {
     width: 12rem;
     height: 12rem;
 }
@@ -11,6 +11,18 @@ main {
 
 main #description {
     color: var(--text-secondary);
+}
+
+.header-icon-settings {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    mask-size: 24px;
+    -webkit-mask-size: 24px;
+    background-color: var(--accent);
+    vertical-align: text-top;
+    position: relative;
+    top: 20px;
 }
 
 @keyframes description {

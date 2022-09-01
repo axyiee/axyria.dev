@@ -11,6 +11,8 @@
     --text-primary: #eeeeee;
     --text-primary-inverted: #111111;
     --text-secondary: #bebebe;
+    --accent: #5863F8;
+    --nav-separator: #161618;
 }
 
 html, body {
@@ -50,6 +52,78 @@ p, a, h1, li {
     gap: 20px;
 }
 
+.buttons a { 
+    background-color: var(--text-primary);
+    padding: 15px 30px 15px 30px;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-primary-inverted);
+    border-radius: 10px;
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.buttons a span {
+    background-color: var(--text-primary-inverted);
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    background-color: var(--text-primary);
+    display: inline-block;
+    mask-size: 24px;
+    -webkit-mask-size: 24px;
+}
+
+.discord {
+    mask: url(../assets/discord.svg) no-repeat-center;
+    -webkit-mask: url(../assets/discord.svg) no-repeat center;
+}
+
+.github {
+    mask: url(../assets/github.svg) no-repeat center;
+    -webkit-mask: url(../assets/github.svg) no-repeat center;
+}
+
+.location {
+    mask: url(../assets/location.svg) no-repeat center;
+    -webkit-mask: url(../assets/location.svg) no-repeat center;
+}
+
+.home {
+    mask: url(../assets/nav/home.svg) no-repeat center;
+    -webkit-mask: url(../assets/nav/home.svg) no-repeat center;
+}
+
+.microscope {
+    mask: url(../assets/nav/microscope.svg) no-repeat center;
+    -webkit-mask: url(../assets/nav/microscope.svg) no-repeat center;
+}
+
+.southdust {
+    mask: url(../assets/nav/southdust.svg) no-repeat center;
+    -webkit-mask: url(../assets/nav/southdust.svg) no-repeat center;
+}
+
+.burger {
+    mask: url(../assets/nav/burger.svg) no-repeat center;
+    -webkit-mask: url(../assets/nav/burger.svg) no-repeat center;
+}
+
+nav ol li:hover, .buttons a:hover {
+    filter: brightness(120%) saturate(120%);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+a, a:hover, a:visited, a:active {
+    text-decoration: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
     .buttons {
         animation: slide-up ease 1.5s; 
@@ -66,50 +140,39 @@ p, a, h1, li {
     }
 }
 
-.buttons a { 
-    background-color: var(--text-primary);
-    padding: 15px 30px 15px 30px;
-    border: none;
-    font-family: 'Raleway', sans-serif;
-    font-size: 0.9rem;
-    color: var(--text-primary-inverted);
-    border-radius: 10px;
-    align-items: center;
-    display: flex;
-    gap: 5px;
-    cursor: pointer;
-}
-
-li, .buttons a:hover {
-    filter: brightness(120%) saturate(120%);
-    transition: 0.5s;
-}
-
-a, a:hover, a:visited, a:active {
-    color: inherit;
-    text-decoration: none;
-}
-
 nav {
     position: absolute;
-    top: 15px;
+    float: left;
+    left: 10px;
+    top: 0;
+    padding: 20px 20px 20px 20px;
+    border-right: solid 1px var(--nav-separator);
+    height: 100%;
 }
 
-nav ol {
+nav ol {    
+    display: flex;
+    flex-direction: column;
     list-style-type: none;
-    display: inline-flex;
     gap: 25px;
-    font-family: 'Raleway', sans-serif;
-    font-size: 0.75rem;
-    text-transform: uppercase;
 }
 
 nav ol li {
-    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.8rem;
+    gap: 5px;
 }
 
-.nav-selected {
-    padding: 0 5px 3px 5px;
-    border-bottom: 1px solid var(--text-primary);
+nav .menu {
+    display: none;
+}
+
+@media only screen and (max-device-width: 640px) {
+    nav {
+        display: none;
+    }
 }
 
