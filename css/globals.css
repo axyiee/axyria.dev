@@ -20,18 +20,18 @@ html, body {
 }
 
 body {
+    background: var(--background);
+    overflow: hidden;
+}
+
+main {
     font-family: 'IBM Plex Mono', monospace;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--background);
-    overflow: hidden;
     flex-direction: column;
+    height: 100%;
     gap: 10px;
-}
-
-main {
-    max-width: 100%;
 }
 
 p, a, h1, li {
@@ -109,6 +109,11 @@ p, a, h1, li {
     -webkit-mask: url(../assets/nav/southdust.svg) no-repeat center;
 }
 
+.hexalite {
+    mask: url(../assets/nav/hexalite.svg) no-repeat center;
+    -webkit-mask: url(../assets/nav/hexalite.svg) no-repeat center;
+}
+
 .burger {
     mask: url(../assets/nav/burger.svg) no-repeat center;
     -webkit-mask: url(../assets/nav/burger.svg) no-repeat center;
@@ -141,11 +146,11 @@ a, a:hover, a:visited, a:active {
 }
 
 nav {
-    position: absolute;
+    display: block;
     float: left;
-    left: 10px;
+    left: 0;
     top: 0;
-    padding: 20px 20px 20px 20px;
+    padding: 30px 30px 30px 30px;
     border-right: solid 1px var(--nav-separator);
     height: 100%;
 }
