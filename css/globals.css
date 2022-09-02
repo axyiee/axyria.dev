@@ -185,7 +185,7 @@ nav ol li.selected:after {
     position: absolute;
     width: 1px;
     top: 0;
-    right: -20px;
+    right: -30px;
     bottom: 0;
     background-color: var(--text-primary);
 }
