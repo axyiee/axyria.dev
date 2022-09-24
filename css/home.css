@@ -58,6 +58,9 @@ main #description {
     main #description {
         animation: description ease 2s;
     }
+    .pfp {
+        animation: slide-down ease 1.25s;
+    }
     .stack h1 {
         --stack-height: calc(100% / var(--stacks) - 1px);
         --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
@@ -71,6 +74,16 @@ main #description {
     }
     .stack h1:nth-child(even) {
         --glitch-translate: -8px;
+    }
+    @keyframes slide-down {
+        from {
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
     @keyframes stack {
         0% {
