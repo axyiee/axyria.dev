@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Mono&family=Raleway:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Raleway:wght@600&display=swap');
 
 * {
     margin: 0;
@@ -10,7 +10,7 @@
     --background: #010105;
     --text-primary: #eeeeee;
     --text-primary-inverted: #111111;
-    --text-secondary: #bebebe;
+    --text-secondary: #999999;
     --accent: #5863F8;
     --nav-separator: #161618;
 }
@@ -25,7 +25,7 @@ body {
 }
 
 main {
-    font-family: 'PT Mono', monospace;
+    font-family: 'Roboto Mono';
     display: flex;
     justify-content: center;
     align-items: center;
