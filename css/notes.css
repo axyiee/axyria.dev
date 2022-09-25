@@ -5,6 +5,10 @@
     --text-primary: #121212;
 }
 
+body {
+    overflow: visible;
+}
+
 main {
     font-family: 'Crimson Text', serif;
     padding: 10px;
