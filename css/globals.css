@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Raleway:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Raleway:wght@500;600&display=swap');
 
 * {
     margin: 0;
@@ -34,7 +34,7 @@ main {
     gap: 10px;
 }
 
-p, a, h1, li {
+p, a, h1, h2, li {
     color: var(--text-primary);
     text-align: center;
     max-width: 100%;
@@ -58,6 +58,7 @@ p, a, h1, li {
     border: none;
     font-family: 'Raleway', sans-serif;
     font-size: 0.9rem;
+    font-weight: 600;
     color: var(--text-primary-inverted);
     border-radius: 10px;
     align-items: center;
@@ -117,6 +118,11 @@ p, a, h1, li {
 .burger {
     mask: url(../assets/nav/burger.svg) no-repeat center;
     -webkit-mask: url(../assets/nav/burger.svg) no-repeat center;
+}
+
+.world {
+    mask: url(../assets/nav/world.svg) no-repeat center;
+    -webkit-mask: url(../assets/nav/world.svg) no-repeat center;
 }
 
 nav ol li:hover, .buttons a:hover {
