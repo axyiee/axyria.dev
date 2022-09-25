@@ -6,19 +6,19 @@
 }
 
 body {
-    overflow: visible;
+    overflow: auto;
 }
 
 main {
     font-family: 'Crimson Text', serif;
-    padding: 10px;
-    min-height: 100vh;
+    justify-content: safe center;
 }
 
 section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 10px;
 }
 
