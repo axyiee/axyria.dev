@@ -1,120 +1,123 @@
 .pfp {
-    width: 12rem;
-    height: 12rem;
+  width: 12rem;
+  height: 12rem;
 }
 
 main .home-text {
-    line-height: 1.5;
-    margin: 50px 0 50px 0;
-    color: var(--text-primary);
+  line-height: 1.5;
+  margin: 50px 0 50px 0;
+  color: var(--text-primary);
 }
 
 main #description {
-    color: var(--text-secondary);
+  color: var(--text-secondary);
 }
 
 .header-icon-settings {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    mask-size: 24px;
-    -webkit-mask-size: 24px;
-    background-color: var(--accent);
-    vertical-align: text-top;
-    position: relative;
-    top: 20px;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  mask-size: 24px;
+  -webkit-mask-size: 24px;
+  background-color: var(--accent);
+  vertical-align: text-top;
+  position: relative;
+  top: 20px;
 }
 
 @keyframes description {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 100%;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
 }
 
 /* https://codepen.io/aldrie/pen/PojGYLo */
 .stack {
-    display: grid;
-    grid-template-columns: 1fr;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 /* pc font-size */
 .stack h1 {
-    font-size: 4rem;
-    grid-row-start: 1;
-    grid-column-start: 1;
+  font-size: 4rem;
+  grid-row-start: 1;
+  grid-column-start: 1;
 }
 
 /* mobile font-size */
 @media screen and (max-width: 600px) {
-    .stack h1 {
-        font-size: 12vw;
-    }
+  .stack h1 {
+    font-size: 12vw;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    main #description {
-        animation: description ease 2s;
+  main #description {
+    animation: description ease 2s;
+  }
+  .pfp {
+    animation: slide-down ease 1.25s;
+  }
+  .stack h1 {
+    --stack-height: calc(100% / var(--stacks) - 1px);
+    --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+    --clip-top: calc(var(--stack-height) * var(--index));
+    --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
+    clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+    animation: stack 340ms cubic-bezier(0.46, 0.29, 0, 1.24) 1 backwards
+        calc(var(--index) * 120ms),
+      glitch 2s ease infinite 2s alternate-reverse;
+  }
+  .stack h1:nth-child(odd) {
+    --glitch-translate: 8px;
+  }
+  .stack h1:nth-child(even) {
+    --glitch-translate: -8px;
+  }
+  @keyframes slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-100%);
     }
-    .pfp {
-        animation: slide-down ease 1.25s;
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
-    .stack h1 {
-        --stack-height: calc(100% / var(--stacks) - 1px);
-        --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
-        --clip-top: calc(var(--stack-height) * var(--index));
-        --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
-        clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
-        animation: stack 340ms cubic-bezier(.46,.29,0,1.24) 1 backwards calc(var(--index) * 120ms), glitch 2s ease infinite 2s alternate-reverse;
+  }
+  @keyframes stack {
+    0% {
+      opacity: 0;
+      transform: translateX(-50%);
+      text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
     }
-    .stack h1:nth-child(odd) {
-        --glitch-translate: 8px;
+    60% {
+      opacity: 0.5;
+      transform: translateX(50%);
     }
-    .stack h1:nth-child(even) {
-        --glitch-translate: -8px;
+    80% {
+      transform: none;
+      opacity: 1;
+      text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
     }
-    @keyframes slide-down {
-        from {
-            opacity: 0;
-            transform: translateY(-100%);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    100% {
+      text-shadow: none;
     }
-    @keyframes stack {
-        0% {
-            opacity: 0;
-            transform: translateX(-50%);
-            text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
-        };
-        60% {
-            opacity: 0.5;
-            transform: translateX(50%);
-        }
-        80% {
-            transform: none;
-            opacity: 1;
-            text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
-        }
-        100% {
-            text-shadow: none;
-        }
+  }
+  @keyframes glitch {
+    0% {
+      text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+      transform: translate(var(--glitch-translate));
     }
-    @keyframes glitch {
-        0% {
-            text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
-            transform: translate(var(--glitch-translate));
-        }
-        2% {
-            text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
-        }
-        4%, 100% { 
-            text-shadow: none;
-            transform: none;
-        }
+    2% {
+      text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
     }
+    4%,
+    100% {
+      text-shadow: none;
+      transform: none;
+    }
+  }
 }
