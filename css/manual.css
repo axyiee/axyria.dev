@@ -2,12 +2,18 @@
     :root {
         --background-color: #000;
         --text-color: #fff;
+        --dotted-color: #808080;
+        --link-color: #ade7f0;
     }
 }
 
-:root {
-    --dotted-color: #808080;
-    --link-color: #ade7f0;
+@media (prefers-color-scheme: light) {
+    :root {
+        --background-color: #eee;
+        --text-color: #222;
+        --dotted-color: #808080;
+        --link-color: #0946ff;
+    }
 }
 
 body {
