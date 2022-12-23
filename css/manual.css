@@ -1,0 +1,85 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #000;
+        --text-color: #fff;
+    }
+}
+
+:root {
+    --dotted-color: #808080;
+    --link-color: #ade7f0;
+}
+
+body {
+    font-family: monospace, serif, sans-serif;
+    font-size: 16px;
+    max-width: 80ch;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 1em auto;
+    line-height: 1.7;
+    text-align: left;
+}
+
+a,
+a:visited {
+    color: var(--link-color);
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+table {
+    font-size: smaller;
+    width: 100%;
+}
+
+table.header {
+    border-bottom: 1px dotted var(--dotted-color);
+}
+
+table.footer {
+    border-top: 1px dotted var(--dotted-color);
+    margin-top: 1.2em;
+}
+
+table tr {
+    display: flex;
+    justify-content: space-between;
+}
+
+p {
+    text-align: justify;
+}
+
+h1 {
+    font-size: 125%;
+}
+
+h1 a {
+    border-bottom: thin dotted var(--dotted-color);
+    text-decoration: none;
+}
+
+section div,
+section {
+    margin-top: 20px;
+}
+
+section div:first-of-type,
+section:first-of-type {
+    margin-top: 0;
+}
+
+section {
+    margin-left: 3em;
+}
+
+section > h1 {
+    margin-left: -3em;
+}
+
+.bold-text {
+    font-weight: bold;
+}
