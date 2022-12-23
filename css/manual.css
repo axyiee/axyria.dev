@@ -3,7 +3,7 @@
         --background-color: #000;
         --text-color: #fff;
         --dotted-color: #808080;
-        --link-color: #ade7f0;
+        --link-color: #dab6ff;
     }
 }
 
@@ -23,6 +23,7 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     margin: 1em auto;
+    padding: 0 2em;
     line-height: 1.7;
     text-align: left;
 }
@@ -78,14 +79,12 @@ section:first-of-type {
     margin-top: 0;
 }
 
-section {
-    margin-left: 3em;
+.section-wrapper {
+    padding-left: 2.4em;
+    max-width: calc(100% - 5.4em);
 }
 
-section > h1 {
-    margin-left: -3em;
-}
-
-.bold-text {
-    font-weight: bold;
+i {
+    font-size: smaller;
+    color: var(--dotted-color);
 }
