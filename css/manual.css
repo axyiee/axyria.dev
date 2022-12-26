@@ -1,27 +1,27 @@
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background-color: #010106;
-        --text-color: #fff;
-        --dotted-color: #808080;
-        --accent-color: #dab6ff;
-        --accent-darker: #b366ff;
-    }
-    span.theme-toggle::before {
-        content: "☾";
-    }
+:root {
+    --background-color: #010106;
+    --text-color: #fff;
+    --dotted-color: #808080;
+    --accent-color: #dab6ff;
+    --accent-darker: #b366ff;
+    --symbol: "☾";
 }
 
-@media (prefers-color-scheme: light) {
-    :root {
-        --background-color: #eee;
-        --text-color: #222;
-        --dotted-color: #595959;
-        --accent-color: #0946ff;
-        --accent-darker: #002699;
-    }
-    span.theme-toggle::before {
-        content: "☼";
-    }
+[data-theme="light"] {
+    --background-color: #eee;
+    --text-color: #222;
+    --dotted-color: #595959;
+    --accent-color: #0946ff;
+    --accent-darker: #002699;
+    --symbol: "☼";
+}
+
+span#theme-selector::before {
+    content: var(--symbol);
+}
+
+span#theme-selector:hover {
+    cursor: pointer;
 }
 
 body {
@@ -98,7 +98,7 @@ ul.addresses li::marker {
 
 li::marker {
     content: "* ";
-    color: var(--accent-color);
+    color: var(--dotted-color);
 }
 
 .section-wrapper {
