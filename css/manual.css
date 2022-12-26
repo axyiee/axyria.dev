@@ -93,8 +93,12 @@ ul.addresses li strong:after {
 }
 
 ul.addresses li::marker {
-    content: "☆ ";
     color: var(--accent-darker);
+}
+
+li::marker {
+    content: "* ";
+    color: var(--accent-color);
 }
 
 .section-wrapper {
