@@ -5,6 +5,7 @@
     --accent-color: #dab6ff;
     --accent-darker: #b366ff;
     --symbol: "☾";
+    --color-transition-duration: 0.5s;
 }
 
 [data-theme="light"] {
@@ -122,4 +123,15 @@ li::before {
 i {
     font-size: smaller;
     color: var(--dotted-color);
+}
+
+body:not(.preload) {
+    transition: background-color var(--color-transition-duration) ease-out,
+        color var(--color-transition-duration) ease-out !important;
+}
+
+body:not(.preload) a,
+body:not(.preload) a:visited,
+body:not(.preload) li::before {
+    transition: color var(--color-transition-duration) ease-out;
 }
