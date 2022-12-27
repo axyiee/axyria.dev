@@ -91,18 +91,28 @@ ul.addresses li strong:after {
     content: ". ";
 }
 
-ul.addresses li::marker {
+li {
+    list-style-type: none;
+}
+
+ul.addresses li::before {
     color: var(--accent-darker);
 }
 
-li::marker {
+li::before {
+    position: relative;
     content: "* ";
-    color: var(--dotted-color);
+    color: var(--accent-color);
+    display: inline-block;
 }
 
 .section-wrapper {
     padding-left: 2.4em;
     max-width: calc(100% - 5.4em);
+}
+
+.section-wrapper ul:only-child {
+    padding-left: 0;
 }
 
 .gray {
