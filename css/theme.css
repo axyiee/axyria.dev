@@ -25,3 +25,11 @@ body {
 .text-secondary {
     color: var(--text-secondary-color);
 }
+
+.theme-selector {
+    transition: transform 0.2s ease-in-out;
+}
+
+.theme-selector:hover {
+    transform: scale(1.25);
+}
