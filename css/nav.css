@@ -28,10 +28,21 @@ h1.navbar-brand:after {
 
 @keyframes slide-from-left {
     0% {
-        transform: translateX(-100%);
+        transform: translateX(-125%);
     }
     100% {
         transform: translateX(0);
+    }
+}
+
+@keyframes slide-from-bottom-opacity {
+    0% {
+        transform: translateY(125%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
 
@@ -104,6 +115,7 @@ div.content-wrapper {
     flex-direction: column;
     margin-left: calc(var(--margin) * -2);
     margin-top: calc(var(--nav-header-size) + 32px);
+    animation: slide-from-bottom-opacity 1s ease-in-out;
     gap: 32px;
 }
 
