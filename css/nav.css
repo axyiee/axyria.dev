@@ -1,0 +1,137 @@
+:root {
+    --nav-header-size: 2rem;
+    --margin: 32px;
+}
+
+body {
+    padding: 0;
+    margin: var(--margin);
+    display: flex;
+    flex-direction: row;
+}
+
+h1.navbar-brand {
+    font-family: var(--font-nav);
+    font-weight: var(--font-navbar-weight);
+    font-size: var(--nav-header-size);
+    white-space: nowrap;
+}
+
+h1.navbar-brand:after {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    background-color: var(--accent-color);
+}
+
+nav ol li {
+    list-style: none;
+}
+
+nav,
+nav ol {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    float: left;
+}
+
+nav {
+    gap: 16px;
+}
+
+nav ol {
+    gap: 16px;
+    border-right: 1px solid var(--separator-color);
+    width: calc(1em + var(--margin));
+    height: calc(calc(100vh - 2 * var(--margin)) - 2 * var(--nav-header-size));
+    padding: 0;
+    margin: 0;
+}
+
+nav ol li:first-child {
+    margin-top: 16px;
+}
+
+nav ol li a svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    stroke: var(--text-color);
+}
+
+nav ol li.selected a svg {
+    stroke: var(--accent-color);
+}
+
+nav ol li.selected:after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 1px;
+    height: 2em;
+    background-color: var(--separator-secondary-color);
+    left: 5em;
+    margin-top: -32px;
+}
+
+div.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-left: calc(var(--margin) * -2);
+    margin-top: calc(var(--nav-header-size) + 32px);
+    gap: 32px;
+}
+
+.with-icon {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 8px;
+}
+
+h1.navbar-brand svg.light {
+    display: none;
+}
+[data-theme="light"] h1.navbar-brand svg.dark {
+    display: none;
+}
+[data-theme="light"] h1.navbar-brand svg.light {
+    display: inline-block;
+}
+h1.navbar-brand svg:hover {
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 700px) {
+    nav ol {
+        flex-direction: row;
+        width: fit-content;
+        border-right: none;
+        height: fit-content;
+        gap: 32px;
+    }
+    nav {
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 16px;
+    }
+    nav,
+    nav ol {
+        float: center;
+    }
+    nav ol li.selected:after {
+        display: none;
+    }
+    nav ol li:first-child {
+        margin-top: 0;
+    }
+    body {
+        flex-direction: column;
+    }
+    div.content-wrapper {
+        margin-left: 0;
+        margin-top: 0;
+    }
+}
