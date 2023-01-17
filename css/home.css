@@ -15,7 +15,18 @@
     font-family: var(--font-heading);
 }
 
-#my-work ol li p {
+#my-work ol li a p {
+    font-family: var(--font-primary);
+    color: var(--text-color);
     font-size: 0.85rem;
     max-width: 24rem;
+}
+
+#my-work ol li {
+    transition: transform 0.2s ease-in-out;
+}
+
+#my-work ol li:hover {
+    cursor: pointer;
+    transform: scale(1.05);
 }

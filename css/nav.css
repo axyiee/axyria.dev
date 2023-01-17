@@ -26,6 +26,28 @@ h1.navbar-brand:after {
     background-color: var(--accent-color);
 }
 
+@keyframes slide-from-left {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes opacity-fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+nav {
+    animation: slide-from-left 0.5s ease-in-out;
+}
+
 nav ol li {
     list-style: none;
 }
@@ -68,10 +90,11 @@ nav ol li.selected a svg {
 nav ol li.selected:after {
     content: "";
     position: absolute;
-    display: inline-block;
+    display: block;
     width: 1px;
     height: 2em;
     background-color: var(--separator-secondary-color);
+    animation: opacity-fade 2s ease-in-out;
     left: 5em;
     margin-top: -32px;
 }
@@ -102,6 +125,48 @@ h1.navbar-brand svg.light {
 }
 h1.navbar-brand svg:hover {
     cursor: pointer;
+}
+
+nav ol li:not(.selected) {
+    transition: transform 0.2s ease-in-out;
+}
+
+nav ol li:not(.selected):hover {
+    cursor: pointer;
+    transform: scale(1.5);
+}
+
+nav ol li .tooltip {
+    display: none;
+}
+
+nav ol li:hover .tooltip {
+    display: block;
+    position: absolute;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-left: 3em;
+    z-index: 1;
+}
+
+nav ol li:not(.selected):hover .tooltip {
+    transform: scale(0.666);
+}
+
+nav ol li:hover .tooltip::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent var(--text-color) transparent transparent;
+    z-index: 1;
 }
 
 @media only screen and (max-width: 700px) {
