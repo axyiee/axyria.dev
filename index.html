@@ -2,200 +2,66 @@
 <html lang="en">
 
 <head>
-    <title>axy's lounge</title>
+    <title>runtime.ee</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description"
-        content="Nice to meet you! I'm Pedro, a software engineer and theorical computer science enthuasist willing to learn even more about the field. This is my personal website inspired by UNIX manual pages." />
-    <meta name="author" content="Pedro Henrique" />
+        content="Nice to meet you! I'm Pedro, a software engineer and theoretical computer science enthuasist willing to learn even more about the field." />
+    <meta name="author" content="Pedro H." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:image" content="https://runtime.ee/assets/blink.gif" />
-    <link href="css/manual.css" rel="stylesheet" />
+    <link href="css/home.css" rel="stylesheet" />
+    <link href="css/include.css" rel="stylesheet" />
+    <link href="css/theme.css" rel="stylesheet" />
+    <link href="css/nav.css" rel="stylesheet" />
+    <link href="css/fonts.css" rel="stylesheet" />
+    <script src="js/preload.js" type="text/javascript"></script>
+    <script src="js/theme.js" type="text/javascript"></script>
+    <script src="js/include.js" type="text/javascript"></script>
 </head>
 
 <body class="preload">
-    <table class="header">
-        <tbody>
-            <td class="uppercase">runtime.ee(7)</td>
-            <td>BSD Miscellaneous Information Manual <span id="theme-selector"></span></td>
-            <td class="uppercase">runtime.ee(7)</td>
-        </tbody>
-    </table>
-    <main class="app-wrapper">
-        <section id="name" class="man-section">
-            <h1><a class="uppercase section-header" href="#name">Name</a></h1>
-            <div class="section-wrapper">
-                <strong>runtime —</strong>
-                <br />
-                <span>Pedro H. <span class="gray">(2007)</span></span>
-            </div>
-        </section>
-        <section id="synopsis" class="man-section">
-            <h1><a class="uppercase section-header" href="#synopsis">Synopsis</a></h1>
-            <div class="section-wrapper">
-                <ul class="addresses">
-                    <li>
-                        <strong>email address</strong>
-                        <a href="mailto:you@runtime.ee">you@runtime.ee</a>
-                    </li>
-                    <li>
-                        <strong>software hosting service</strong>
-                        <a href="https://code.runtime.ee">code.runtime.ee</a>
-                    </li>
-                    <li>
-                        <strong>twitter account</strong>
-                        <a href="https://twitter.com/ioruntime">@IORuntime</a>
-                    </li>
-                    <li>
-                        <strong>discord identity</strong>
-                        <a href="https://discord.com/users/273562710745284628">@runtime#1337</a>
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <section id="description" class="man-section">
-            <h1><a class="uppercase section-header" href="#description">Description</a></h1>
-            <div class="section-wrapper">
-                <p>
-                    Nice to meet you! I'm an autistic software engineer and theorical computer science enthuasist
-                    willing to learn even more about the field.
-                </p>
-                <p>
-                    I am currently passionate about compilers, operating system kernels, lexical analyzers, and
-                    functional programming. I also have a strong interest in philosophy and linguistics, and I am
-                    currently studying it. I don't have a lot of notable projects at the moment, but that's subject
-                    to change of course!
-                </p>
-                <i>*please help me, i'm trapped in a purgatory called south america*</i>
-            </div>
-        </section>
-        <section id="see-also" class="man-section">
-            <h1><a class="uppercase section-header" href="#see-also">See also</a></h1>
-            <div class="section-wrapper">
-                <ul>
-                    <li>
-                        <strong><a href="https://code.runtime.ee/goldvoxels">goldvoxels</a> — </strong>
-                        Voxel game built on top of modern technologies, inspired by the good old times of Beta Minecraft.
-                    </li>
-                    <li>
-                        <strong><a href="https://code.runtime.ee/voxu">voxu</a> — </strong>
-                        A strongly and statically typed, memory-efficient functional programming language.
-                    </li>
-                    <li>
-                        <strong><a href="https://code.runtime.ee/sw">sw</a> —</strong>
-                        Automatic window hiding daemon/supervisor for X11.
-                    </li>
-                    <li>
-                        <strong><a href="https://code.runtime.ee/atsu">(y)atsu</a> —</strong>
-                        Simple shell script for watching anime and YouTube from the command line.
-                    </li>
-                    <li>
-                        <strong><a href="#">[WIP] Linguistics</a> —</strong>
-                        My overall learning experience and tips on linguistics, specifically Spanish and German.
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <section id="books-and-materials" class="man-section">
-            <h1><a class="uppercase section-header" href="#books-and-materials">Books and Materials</a></h1>
-            <div class="section-wrapper">
-                <p>
-                    There's a lot of great books about computer science and linguistics that are worth reading. I'm
-                    going to list some important for me here or those I plan to read in the future. I also feel like
-                    reviewing them when I'm done, so I'll probably add a link to the reviews down here in the
-                    future.
-                </p>
-                <ul>
-                    <li>
-                        <strong><a href="https://craftinginterpreters.com/">Crafting Interpreters (2015-2021), Robert
-                                Nystrom</a>
-                            —</strong>
-                        A didactic book about writing interpreters, lexers, and parsers. You build a programming
-                        language that features rich syntax, dynamic typing, garbage collection, lexical scope,
-                        first-class functions, closures, and inheritance in a series of chapters, while still
-                        maintaing a simple, clean and consistent code design.
-                    </li>
-                    <li>
-                        <strong><a
-                                href="https://books.google.com.br/books/about/Modern_Compiler_Implementation_in_ML.html?id=VVGbAAAAQBAJ">Modern
-                                Compiler Implementation in ML (1997), Andrew W. Appel</a>
-                            —</strong>
-                        A expanded textbook describing all phases of a modern compiler: lexical analysis, abstract
-                        syntax, semantic actions, intermediate representations, instruction selection via tree
-                        matching, dataflow analysis, graph-coloring register allocation, and runtime systems. It
-                        includes good coverage of current techniques in code generation and register allocation, as
-                        well as functional and object-oriented languages, that are missing from most books. In
-                        addition, more advanced chapters are now included so that it can be used as the basis for
-                        two-semester or graduate course.
-                    </li>
-                    <li>
-                        <strong><a
-                                href="https://www.muriloleal.com.br/visao/repositorio/unijua/lfa//Livro%20-%20Linguagens%20Formais%20e%20Aut%C3%B4matos.pdf">[Portuguese]
-                                Linguagens Formais e Autômatos (2000), Paulo Fernando Blauth</a>
-                            —</strong>
-                        A book about formal languages and automata theory.
-                    </li>
-                    <li>
-                        <strong><a href="https://books.google.com.br/books/about/The_Stranger.html?id=iVV7bKVUNBAC">The
-                                Stranger (1942), Albert Camus</a>
-                            —</strong>
-                        A philosophical novel about the absurdity of life. Camus argues that the only certain thing
-                        in life is the inevitability of death.
-                    </li>
-                    <li>
-                        <strong><a
-                                href="https://books.google.com.br/books/about/Existentialism_is_a_Humanism.html?id=IfNqvQXbuk8C">Existentialism
-                                is a Humanism (2007), Jean-Paul Sartre</a>
-                            —</strong>
-                        A philosophical essay by Jean-Paul Sartre, in which the author discusses the philosophy of
-                        existentialism and its relationship with humanism.
-                    </li>
-                    <li>
-                        <strong><a
-                                href="https://books.google.com.br/books/about/Being_and_Time.html?id=3ZQ9DwAAQBAJ">Being
-                                and Time (1927), Martin Heidegger</a>
-                            —</strong>
-                        A book by Martin Heidegger, in which the author attempts to develop a philosophy of being
-                        that is free of the metaphysical presuppositions of traditional Western philosophy.
-                    </li>
-                </ul>
-                <p>There's a lot of great learning material on the internet as well, which are essential knowledge for
-                    anyone interested in computer science, such as:</p>
-                <ul>
-                    <li>
-                        <strong><a
-                                href="https://www.youtube.com/watch?v=QlFws27woHc&list=PLpGHF_AAwOMFV1abVZqLyuDUiZmwcg5eZ">[Portuguese]
-                                Lógica proposicional</a>
-                            —</strong> A playlist of videos teaching propositional logic.
-                    </li>
-                    <li>
-                        <strong><a href="https://www.youtube.com/watch?v=UjklRuyFaIA">An Introduction to Naive Set
-                                Theory, Cantor's Theorem, Russell's Paradox & the History of Set Theory, Amour
-                                Learning</a>
-                            —</strong> An introduction to naive set theory
-                    </li>
-                    <li>
-                        <strong><a href="https://www.youtube.com/watch?v=fjOdtSu4Lm4&list=PLImQaTpSAdsArRFFj8bIfqMk2X7Vlf3XF">Math for Game Devs [2022], Freya Holmér</a>
-                            —</strong> A playlist of videos teaching essential mathematics and physics for game developers.
-                    </li>
-            </div>
-        </section>
-        <section id="history" class="man-section">
-            <h1><a class="uppercase section-header" href="#history">History</a></h1>
-            <div class="section-wrapper">This page was created on 2022-12-23, last updated at
-                2023-01-08.</div>
-        </section>
-    </main>
-    <table class="footer">
-        <tbody>
-            <td class="uppercase">runtime.ee(7)</td>
-            <td>BSD Miscellaneous Information Manual</td>
-            <td class="uppercase">runtime.ee(7)</td>
-        </tbody>
-    </table>
+    <iframe src="html/nav.html"></iframe>
+    <div class="content-wrapper">
+        <p class="text-secondary width-limited">
+            Hi there! My name is Pedro and I am a 15-year-old autistic software engineer and theoretical computer
+            science enthusiast based in Brazil. I am passionate about compilers, kernels, and lexical analyzers, but my
+            interests don't stop there. I also love to delve into other subjects such as functional programming,
+            philosophy, linguistics, and physics. Despite being on the autism spectrum, I am determined to make a
+            significant impact in my field and inspire others to do the same.
+        </p>
+        <section id="my-work">
+            <h2 class="dotted with-icon">
+                My Work
+                <a href="#my-work">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24"
+                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+                        <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+                    </svg>
+                </a>
+            </h2>
+            <ol>
+                <li>
+                    <a href="https://code.runtime.ee/voxu">IORuntime<strong>/voxu</strong></a>
+                    <p>A strongly and statically typed, memory-efficient functional programming language.</p>
+                </li>
+                <li>
+                    <a href="https://code.runtime.ee/sw">IORuntime<strong>/sw</strong></a>
+                    <p>Automatic window hiding daemon/supervisor for X11.</p>
+                </li>
+                <li>
+                    <a href="https://git.hexalite.org/java-edition">playhexalite<strong>/java-edition</strong></a>
+                    <p>An open-source, modenr, and modular network of Minecraft: Java Edition servers.</p>
+                </li>
+                <li>
+                    <a href="https://github.com/hearkus/hearkus">hearkus<strong>/hearkus</strong></a>
+                    <p>An innovative platform for music lovers to explore and share their passions.</p>
+                </li>
+            </ol>
+    </div>
 </body>
-
-<script src="js/preload.js" type="text/javascript"></script>
-<script src="js/home.js" type="text/javascript"></script>
 
 </html>

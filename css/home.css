@@ -1,0 +1,21 @@
+#my-work ol li {
+    list-style: none;
+}
+
+#my-work ol {
+    display: grid;
+    margin-top: 24px;
+    padding: 0;
+    grid-template: "a a" "b b";
+    gap: 24px;
+}
+
+#my-work ol li a {
+    color: var(--accent-color);
+    font-family: var(--font-heading);
+}
+
+#my-work ol li p {
+    font-size: 0.85rem;
+    max-width: 24rem;
+}
