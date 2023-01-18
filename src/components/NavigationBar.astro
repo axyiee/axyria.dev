@@ -113,10 +113,10 @@ const { selected } = Astro.props;
     h1.navbar-brand svg.light {
         display: none;
     }
-    [data-theme="light"] h1.navbar-brand svg.dark {
+    :global(html[data-theme="light"]) h1.navbar-brand svg.dark {
         display: none;
     }
-    [data-theme="light"] h1.navbar-brand svg.light {
+    :global([data-theme="light"]) h1.navbar-brand svg.light {
         display: inline-block;
     }
     h1.navbar-brand svg:hover {
