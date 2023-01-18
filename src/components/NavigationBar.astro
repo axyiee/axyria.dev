@@ -1,0 +1,223 @@
+---
+export interface Props {
+    selected?: string;
+}
+
+interface Item {
+    id: string;
+    name: string;
+    uri: string;
+    icon: string;
+}
+
+const items: Item[] = [
+    {
+        id: "home",
+        name: "Home",
+        uri: "/", 
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" style="--darkreader-inline-stroke: currentColor;" data-darkreader-inline-stroke=""> <path stroke="none" d="M0 0h24v24H0z" fill="none" style="--darkreader-inline-stroke: none;" data-darkreader-inline-stroke=""></path> <path d="M5 11a2 2 0 0 1 2 2v2h10v-2a2 2 0 1 1 4 0v4a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-4a2 2 0 0 1 2 -2z"></path> <path d="M5 11v-5a3 3 0 0 1 3 -3h8a3 3 0 0 1 3 3v5"></path> <path d="M6 19v2"></path> <path d="M18 19v2"></path> </svg>'
+    },
+    {
+        id: "git",
+        name: "Git Hosting Service",
+        uri: "https://code.runtime.ee/",
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"/> <circle cx="16" cy="12" r="1"/> <circle cx="12" cy="8" r="1"/> <circle cx="12" cy="16" r="1"/> <path d="M12 15v-6"/> <path d="M15 11l-2 -2"/> <path d="M11 7l-1.9 -1.9"/> <path d="M10.5 20.4l-6.9 -6.9c-.781 -.781 -.781 -2.219 0 -3l6.9 -6.9c.781 -.781 2.219 -.781 3 0l6.9 6.9c.781 .781 .781 2.219 0 3l-6.9 6.9c-.781 .781 -2.219 .781 -3 0z"/> </svg>',
+    },
+    {
+        id: "contact",
+        name: "Contact",
+        uri: "/contact",
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"/> <circle cx="12" cy="12" r="9"/> <line x1="12" y1="17" x2="12" y2="17.01"/> <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4"/> </svg>',
+    },
+    {
+        id: "thanks",
+        name: "Thanks",
+        uri: "/thanks",
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"/> <path d="M12 6l-3.293 3.293a1 1 0 0 0 0 1.414l.543 .543c.69 .69 1.81 .69 2.5 0l1 -1a3.182 3.182 0 0 1 4.5 0l2.25 2.25"/> <path d="M12.5 15.5l2 2"/> <path d="M15 13l2 2"/> </svg>'
+    }
+];
+
+const { selected } = Astro.props;
+---
+
+<style>
+    :root {
+        --nav-header-size: 2rem;
+    }
+    h1.navbar-brand {
+        font-family: var(--font-nav);
+        font-weight: var(--font-navbar-weight);
+        font-size: var(--nav-header-size);
+        white-space: nowrap;
+    }
+    h1.navbar-brand:after {
+        content: "";
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        border-radius: 2px;
+        background-color: var(--accent-color);
+    }
+    nav {
+        animation: slide-from-left 0.5s ease-in-out;
+    }
+    nav ol li {
+        list-style: none;
+    }
+    nav,
+    nav ol {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        float: left;
+    }
+    nav {
+        gap: 16px;
+    }
+    nav ol {
+        gap: 16px;
+        border-right: 1px solid var(--separator-color);
+        width: calc(1em + var(--margin));
+        height: calc(calc(100vh - 2 * var(--margin)) - 2 * var(--nav-header-size));
+        padding: 0;
+        margin: 0;
+    }
+    nav ol li:first-child {
+        margin-top: 16px;
+    }
+    nav ol li a :global(svg) {
+        width: 1.5rem;
+        height: 1.5rem;
+        stroke: var(--text-color);
+    }
+    nav ol li.selected a :global(svg) {
+        stroke: var(--accent-color);
+    }
+    nav ol li.selected:after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 1px;
+        height: 2em;
+        background-color: var(--separator-secondary-color);
+        animation: opacity-fade 2s ease-in-out;
+        left: 5em;
+        margin-top: -32px;
+    }
+    .with-icon {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 8px;
+    }
+    h1.navbar-brand svg.light {
+        display: none;
+    }
+    [data-theme="light"] h1.navbar-brand svg.dark {
+        display: none;
+    }
+    [data-theme="light"] h1.navbar-brand svg.light {
+        display: inline-block;
+    }
+    h1.navbar-brand svg:hover {
+        cursor: pointer;
+    }
+    nav ol li:not(.selected) {
+        transition: transform 0.2s ease-in-out;
+    }
+    nav ol li:not(.selected):hover {
+        cursor: pointer;
+        transform: scale(1.5);
+    }
+    nav ol li .item-tooltip {
+        display: none;
+    }
+    nav ol li:hover .item-tooltip {
+        display: block;
+        position: absolute;
+        background-color: var(--text-color);
+        color: var(--background-color);
+        padding: 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin-left: 3em;
+        z-index: 1;
+    }
+    nav ol li:not(.selected):hover .item-tooltip {
+        transform: scale(0.666);
+    }
+    nav ol li:hover .item-tooltip::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        margin-top: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent var(--text-color) transparent transparent;
+        z-index: 1;
+    }
+    @media only screen and (max-width: 700px) {
+        nav ol {
+            flex-direction: row;
+            width: fit-content;
+            border-right: none;
+            height: fit-content;
+            gap: 32px;
+        }
+        nav {
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 16px;
+        }
+        nav,
+        nav ol {
+            float: center;
+        }
+        nav ol li.selected:after {
+            display: none;
+        }
+        nav ol li:first-child {
+            margin-top: 0;
+        }
+        div.content-wrapper {
+            margin-left: 0;
+            margin-top: 0;
+        }
+    }
+</style>
+
+<nav aria-hidden="true">
+    <h1 class="navbar-brand">
+        <svg class="dark theme-selector" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon"
+            width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+        </svg>
+        <svg class="light theme-selector" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-beach"
+            width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M17.553 16.75a7.5 7.5 0 0 0 -10.606 0"></path>
+            <path d="M18 3.804a6 6 0 0 0 -8.196 2.196l10.392 6a6 6 0 0 0 -2.196 -8.196z"></path>
+            <path d="M16.732 10c1.658 -2.87 2.225 -5.644 1.268 -6.196c-.957 -.552 -3.075 1.326 -4.732 4.196"></path>
+            <path d="M15 9l-3 5.196"></path>
+            <path
+                d="M3 19.25a2.4 2.4 0 0 1 1 -.25a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 1 .25">
+            </path>
+        </svg>
+        runtime
+    </h1>
+    <ol>
+        {items.map(item => (
+            <li data-path={item.id} class:list={[{ selected: item.id === selected }]}>
+                <a href={item.uri}>
+                    <span class="item-tooltip">{item.name}</span>
+                    <Fragment set:html={item.icon} />
+                </a>
+            </li>
+        ))}
+    </ol>
+</nav>

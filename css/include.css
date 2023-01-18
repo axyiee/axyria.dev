@@ -1,4 +1,0 @@
-iframe[src$=".html"] {
-    overflow: hidden;
-    border: none;
-}
