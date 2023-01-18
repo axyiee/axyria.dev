@@ -1,7 +1,6 @@
 ---
 import NavigationBar from "../components/NavigationBar.astro";
-import PreviewLayout from "../layouts/PreviewLayout.astro";
-import "../components/Theme.astro";
+import ThemedLayout from "../layouts/ThemedLayout.astro";
 import '../styles/fonts.css';
 ---
 
@@ -47,7 +46,7 @@ import '../styles/fonts.css';
     }
 </style>
 
-<PreviewLayout description="Amazing people I'd like to thank!">
+<ThemedLayout description="Amazing people I'd like to thank!">
     <NavigationBar selected="thanks" />
     <div class="content-wrapper">
         <h1>Thank you so much<span class="accent">!</span></h1>
@@ -74,4 +73,4 @@ import '../styles/fonts.css';
             </li>
         </ul>
     </div>
-</PreviewLayout>
+</ThemedLayout>
