@@ -1,6 +1,6 @@
 ---
 import NavigationBar from "../components/NavigationBar.astro";
-import PreviewLayout from "../layouts/PreviewLayout.astro";
+import ThemedLayout from "../layouts/ThemedLayout.astro";
 import "../components/Theme.astro";
 import '../styles/fonts.css';
 
@@ -67,7 +67,7 @@ const work: Work[] = [
     }
 </style>
 
-<PreviewLayout description="Nice to meet you! I'm Pedro, a software engineer and theoretical computer science enthuasist willing to learn even more about the field.">
+<ThemedLayout description="Nice to meet you! I'm Pedro, a software engineer and theoretical computer science enthuasist willing to learn even more about the field.">
     <NavigationBar selected="home" />
     <div class="content-wrapper">
         <p class="text-secondary width-limited">
@@ -101,4 +101,4 @@ const work: Work[] = [
             </ol>
         </section>
     </div>
-</PreviewLayout>
+</ThemedLayout>

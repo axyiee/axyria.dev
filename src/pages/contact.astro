@@ -1,6 +1,6 @@
 ---
 import NavigationBar from "../components/NavigationBar.astro";
-import PreviewLayout from "../layouts/PreviewLayout.astro";
+import ThemedLayout from "../layouts/ThemedLayout.astro";
 import "../components/Theme.astro";
 import '../styles/fonts.css';
 ---
@@ -52,7 +52,7 @@ import '../styles/fonts.css';
     }
 </style>
 
-<PreviewLayout description="guh we need to talk i guess">
+<ThemedLayout description="guh we need to talk i guess">
     <NavigationBar selected="contact" />
     <div class="content-wrapper">
         <h1>Contact<span class="accent">:</span></h1>
@@ -98,4 +98,4 @@ import '../styles/fonts.css';
             </li>
         </ul>
     </div>
-</PreviewLayout>
+</ThemedLayout>
