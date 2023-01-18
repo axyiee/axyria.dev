@@ -1,0 +1,104 @@
+---
+import NavigationBar from "../components/NavigationBar.astro";
+import PreviewLayout from "../layouts/PreviewLayout.astro";
+import "../components/Theme.astro";
+import '../styles/fonts.css';
+
+interface Work {
+    holder: string;
+    name: string;
+    description: string;
+    uri: string;
+}
+
+const me: string = 'IORuntime';
+
+const work: Work[] = [
+    {
+        holder: me, name: 'voxu',
+        description: 'A strongly and statically typed, memory-efficient functional programming language.',
+        uri: 'https://code.runtime.ee/voxu'
+    },
+    {
+        holder: me, name: 'sw',
+        description: 'Automatic window hiding daemon/supervisor for X11.',
+        uri: 'https://code.runtime.ee/sw'
+    },
+    {
+        holder: 'playhexalite', name: 'java-edition',
+        description: 'An open-source, modern, and modular network of Minecraft: Java Edition servers.',
+        uri: 'https://git.hexalite.org/java-edition'
+    },
+    {
+        holder: 'hearkus', name: 'hearkus',
+        description: 'An innovative platform for music lovers to explore and share their passions.',
+        uri: 'https://github.com/hearkus/hearkus'
+    }
+];
+---
+
+<style>
+    #my-work ol li {
+        list-style: none;
+    }
+    #my-work ol {
+        display: grid;
+        margin-top: 24px;
+        padding: 0;
+        grid-template: "a a" "b b";
+        gap: 24px;
+    }
+    #my-work ol li a {
+        color: var(--accent-color);
+        font-family: var(--font-heading);
+    }
+    #my-work ol li a p {
+        font-family: var(--font-primary);
+        color: var(--text-color);
+        font-size: 0.85rem;
+        max-width: 24rem;
+    }
+    #my-work ol li {
+        transition: transform 0.2s ease-in-out;
+    }
+    #my-work ol li:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+</style>
+
+<PreviewLayout description="Nice to meet you! I'm Pedro, a software engineer and theoretical computer science enthuasist willing to learn even more about the field.">
+    <NavigationBar selected="home" />
+    <div class="content-wrapper">
+        <p class="text-secondary width-limited">
+            Hi there! My name is Pedro and I am a 15-year-old autistic software engineer and theoretical computer
+            science enthusiast based in Brazil. I am passionate about compilers, kernels, and lexical analyzers, but my
+            interests don't stop there. I also love to delve into other subjects such as functional programming,
+            philosophy, linguistics, and physics. Despite being on the autism spectrum, I am determined to make a
+            significant impact in my field and inspire others to do the same.
+        </p>
+        <section id="my-work">
+            <h2 class="dotted with-icon">
+                My Work
+                <a href="#my-work">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24"
+                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+                        <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+                    </svg>
+                </a>
+            </h2>
+            <ol>
+                {work.map(item => (
+                    <li>
+                        <a href={item.uri}>{item.holder}<strong>/{item.name}</strong><br>
+                            <p>{item.description}</p>    
+                        </a>
+                    </li>
+                ))}
+            </ol>
+        </section>
+    </div>
+</PreviewLayout>

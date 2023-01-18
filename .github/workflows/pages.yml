@@ -1,15 +1,16 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Deploy to GitHub Pages
 
 on:
-    # Runs on pushes targeting the default branch
+    # Trigger the workflow every time you push to the `main` branch
+    # Using a different branch name? Replace `main` with your branch’s name
     push:
         branches: ["rewrite"]
 
     # Allows you to run this workflow manually from the Actions tab
     workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# Allow this job to clone the repo and create a page deployment
 permissions:
     contents: read
     pages: write
@@ -21,22 +22,23 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    # Single deploy job since we're just deploying
+    build:
+        - name: Checkout your repository using git
+          uses: actions/checkout@v3
+        - name: Install, build, and upload your site
+          uses: withastro/action@v0
+          # with:
+              # path: . # The root location of your Astro project inside the repository. (optional)
+              # node-version: 16 # The specific version of Node that should be used to build your site. Defaults to 16. (optional)
+              # package-manager: yarn # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
     deploy:
+        needs: build
+        runs-on: ubuntu-latest
         environment:
             name: github-pages
             url: ${{ steps.deployment.outputs.page_url }}
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout
-              uses: actions/checkout@v3
-            - name: Setup Pages
-              uses: actions/configure-pages@v2
-            - name: Upload artifact
-              uses: actions/upload-pages-artifact@v1
-              with:
-                  # Upload entire repository
-                  path: "."
             - name: Deploy to GitHub Pages
               id: deployment
               uses: actions/deploy-pages@v1

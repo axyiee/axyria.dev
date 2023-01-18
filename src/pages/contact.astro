@@ -1,0 +1,101 @@
+---
+import NavigationBar from "../components/NavigationBar.astro";
+import PreviewLayout from "../layouts/PreviewLayout.astro";
+import "../components/Theme.astro";
+import '../styles/fonts.css';
+---
+
+<style>
+    .accent {
+        color: var(--accent-color);
+    }
+    div.content-wrapper {
+        margin: 0 !important;
+        align-items: center;
+        justify-content: center;
+        gap: 64px !important;
+        flex: 0.9;
+    }
+    h1 {
+        text-align: center;
+    }
+    ul#contact-list {
+        display: flex;
+        flex-direction: row;
+        gap: 128px;
+        margin: 0;
+        padding: 0;
+    }
+    ul#contact-list li {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 200px;
+        gap: 8px;
+    }
+    ul#contact-list li svg {
+        width: 32px;
+        height: 32px;
+    }
+    a,
+    a:visited,
+    a:hover,
+    a:active {
+        color: var(--text-color) !important;
+    }
+    @media only screen and (max-width: 700px) {
+        ul#contact-list {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<PreviewLayout description="guh we need to talk i guess">
+    <NavigationBar selected="contact" />
+    <div class="content-wrapper">
+        <h1>Contact<span class="accent">:</span></h1>
+        <ul id="contact-list">
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-discord" width="24"
+                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <circle cx="9" cy="12" r="1"></circle>
+                    <circle cx="15" cy="12" r="1"></circle>
+                    <path d="M7.5 7.5c3.5 -1 5.5 -1 9 0"></path>
+                    <path d="M7 16.5c3.5 1 6.5 1 10 0"></path>
+                    <path
+                        d="M15.5 17c0 1 1.5 3 2 3c1.5 0 2.833 -1.667 3.5 -3c.667 -1.667 .5 -5.833 -1.5 -11.5c-1.457 -1.015 -3 -1.34 -4.5 -1.5l-1 2.5">
+                    </path>
+                    <path
+                        d="M8.5 17c0 1 -1.356 3 -1.832 3c-1.429 0 -2.698 -1.667 -3.333 -3c-.635 -1.667 -.476 -5.833 1.428 -11.5c1.388 -1.015 2.782 -1.34 4.237 -1.5l1 2.5">
+                    </path>
+                </svg>
+                <a href="https://discord.com/users/273562710745284628">runtime<strong class="accent">#1337</strong></a>
+            </li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24"
+                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                        d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z">
+                    </path>
+                </svg>
+                <a href="https://twitter.com/IORuntime"><strong class="accent">@</strong>IORuntime</a>
+            </li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-at" width="24" height="24"
+                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28"></path>
+                </svg>
+                <a href="mailto:you@runtime.ee">you<strong class="accent">@runtime.ee</strong></a>
+            </li>
+        </ul>
+    </div>
+</PreviewLayout>
