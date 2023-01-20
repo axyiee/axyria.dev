@@ -1,50 +1,51 @@
 ---
-import NavigationBar from '../components/NavigationBar.astro';
-import ThemedLayout from '../layouts/ThemedLayout.astro';
-import '../components/Theme.astro';
-import '../styles/fonts.css';
+import NavigationBar from "../components/NavigationBar.astro";
+import ThemedLayout from "../layouts/ThemedLayout.astro";
+import "../components/Theme.astro";
+import "../styles/fonts.css";
+import Cursor from "../components/Cursor.astro";
 ---
 
 <style>
-    span.accent {
-        color: var(--accent-color);
-    }
-    div.content-wrapper {
-        margin: 0 !important;
-        align-items: center;
-        justify-content: center;
-        gap: 64px !important;
-        flex: 0.9;
-    }
-    h1 {
-        text-align: center;
-    }
+  span.accent {
+    color: var(--accent-color);
+  }
+  div.content-wrapper {
+    margin: 0 !important;
+    align-items: center;
+    justify-content: center;
+    gap: 64px !important;
+    flex: 0.9;
+  }
+  h1 {
+    text-align: center;
+  }
+  ul#amazing-people {
+    display: flex;
+    flex-direction: row;
+    gap: 128px;
+    margin: 0;
+    padding: 0;
+  }
+  ul#amazing-people li {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 200px;
+    gap: 8px;
+  }
+  ul#amazing-people li img {
+    border-radius: 50%;
+    width: 128px;
+    height: 128px;
+  }
+  @media only screen and (max-width: 700px) {
     ul#amazing-people {
-        display: flex;
-        flex-direction: row;
-        gap: 128px;
-        margin: 0;
-        padding: 0;
+      flex-direction: column;
     }
-    ul#amazing-people li {
-        list-style-type: none;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        width: 200px;
-        gap: 8px;
-    }
-    ul#amazing-people li img {
-        border-radius: 50%;
-        width: 128px;
-        height: 128px;
-    }
-    @media only screen and (max-width: 700px) {
-        ul#amazing-people {
-            flex-direction: column;
-        }
-    }
+  }
 </style>
 
 <ThemedLayout description="Amazing people I'd like to thank!">
@@ -53,7 +54,7 @@ import '../styles/fonts.css';
     <h1>Thank you so much<span class="accent">!</span></h1>
     <ul id="amazing-people">
       <li>
-        <img src="https://avatars.githubusercontent.com/u/54632522?s=128&v=4" /> 
+        <img src="https://avatars.githubusercontent.com/u/54632522?s=128&v=4" />
         <p>- domain <span class="accent">&lt;3</span></p>
         <p>- homepage work section inspiration</p>
         <p>- really cute</p>
@@ -74,4 +75,5 @@ import '../styles/fonts.css';
       </li>
     </ul>
   </div>
+  <Cursor overlayIndex={2} size="20px" count={20} />
 </ThemedLayout>
