@@ -1,0 +1,129 @@
+---
+export interface Props {
+  overlayIndex: number;
+  size: string;
+  count: number;
+}
+
+const { overlayIndex, size, count }: Props = Astro.props;
+---
+
+<style define:vars={{ overlayIndex, cursorSize: size }}>
+  #c-cursor {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    animation: opacity-fade 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+    mix-blend-mode: difference;
+  }
+  #c-cursor div {
+    height: var(--cursorSize);
+    width: var(--cursorSize);
+    border-radius: var(--cursorSize);
+    z-index: var(--overlayIndex);
+    background-color: var(--accent-color);
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  :global(a):hover {
+    cursor: none;
+  }
+</style>
+
+<script>
+  type HTMLPosition = { x: number; y: number };
+  type CirclePosition = { html: HTMLDivElement; pos: HTMLPosition };
+  function removeBuiltInCursor() {
+    document.head.insertAdjacentHTML(
+      "beforeend",
+      '<style type="text/css">html { cursor: none }</style>'
+    );
+  }
+  function display() {
+    const element = document.getElementById("c-cursor");
+    element.style.display = "block";
+    element.style.opacity = "1";
+  }
+  function listen() {
+    const elements = Array.from(
+      document.getElementsByClassName("c-cursor-circle")
+    );
+    const circles: CirclePosition[] = elements.map((html) => ({
+      html: html as HTMLDivElement,
+      pos: {
+        x: 0,
+        y: 0,
+      },
+    }));
+    const move = (
+      circle: CirclePosition,
+      offset: number,
+      scale: number,
+      pos: HTMLPosition
+    ) => {
+      circle.html.style.left = pos.x - offset + "px";
+      circle.html.style.top = pos.y - offset + "px";
+      circle.html.style.scale = `${scale}`;
+      circle.pos.x = pos.x;
+      circle.pos.y = pos.y;
+    };
+    const animate = (
+      circles: CirclePosition[],
+      offset: number,
+      cursor: () => HTMLPosition
+    ) => {
+      let x = cursor().x,
+        y = cursor().y;
+      for (let i = 0; i < circles.length; i++) {
+        move(circles[i], offset, (circles.length - i) / circles.length, {
+          x,
+          y,
+        });
+        const nextCircle = circles[i + 1] || circles[0];
+        x += (nextCircle.pos.x - x) * 0.3;
+        y += (nextCircle.pos.y - y) * 0.3;
+      }
+      requestAnimationFrame(() => animate(circles, offset, cursor));
+    };
+    const cursor: HTMLPosition = { x: 0, y: 0 };
+    let first = true;
+    window.addEventListener("mousemove", (e) => {
+      cursor.x = e.clientX;
+      cursor.y = e.clientY;
+      if (first) {
+        setTimeout(display, 80);
+        first = false;
+      }
+    });
+    window.addEventListener("touchmove", (e) => {
+      cursor.x = e.touches[0].clientX;
+      cursor.y = e.touches[0].clientY;
+      if (first) {
+        setTimeout(display, 80);
+        first = false;
+      }
+    });
+    window.addEventListener("mouseout", (e) => {
+      if (e.relatedTarget === null) {
+        document.getElementById("c-cursor").style.opacity = "0";
+        first = true;
+      }
+    });
+    animate(circles, 0, () => cursor);
+  }
+  removeBuiltInCursor();
+  listen();
+</script>
+
+<>
+  <div id="c-cursor">
+    {
+      Array.from({ length: count }, (_, i) => i).map((_) => (
+        <div class="c-cursor-circle" />
+      ))
+    }
+  </div>
+</>
