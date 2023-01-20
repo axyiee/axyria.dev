@@ -7,15 +7,15 @@ const { description }: Props = Astro.props;
 ---
 
 <html lang="en">
-    <head>
-        <title>runtime.ee</title>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content={description} />
-        <meta name="author" content="Pedro H." />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta property="og:image" content="/blink.gif" />
-        <style is:inline>
+  <head>
+    <title>runtime.ee</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Pedro H." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:image" content="/blink.gif" />
+    <style is:inline>
             :root {
                 --margin: 32px;
             }
@@ -68,9 +68,9 @@ const { description }: Props = Astro.props;
                     margin-top: 0;
                 }
             }
-        </style>
-    </head>
-    <body>
-        <slot />
-    </body>
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>

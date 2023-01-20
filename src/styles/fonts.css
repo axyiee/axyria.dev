@@ -3,60 +3,60 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
 
 :root {
-    --font-heading: Inter, sans-serif;
-    --font-primary: "Space Mono", monospace;
-    --font-nav: Poppins, sans-serif;
-    --font-heading-weight: 700;
-    --font-primary-weight: 400;
-    --font-navbar-weight: 900;
+  --font-heading: Inter, sans-serif;
+  --font-primary: "Space Mono", monospace;
+  --font-nav: Poppins, sans-serif;
+  --font-heading-weight: 700;
+  --font-primary-weight: 400;
+  --font-navbar-weight: 900;
 }
 
 body {
-    font-family: var(--font-primary);
-    font-weight: var(--font-primary-weight);
-    font-variant-ligatures: none;
+  font-family: var(--font-primary);
+  font-weight: var(--font-primary-weight);
+  font-variant-ligatures: none;
 }
 
 h1,
 h2 {
-    font-family: var(--font-heading);
-    font-weight: var(--font-heading-weight);
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
 }
 
 p {
-    font-size: 1rem;
-    line-height: 2;
+  font-size: 1rem;
+  line-height: 2;
 }
 
 h2 {
-    text-transform: lowercase;
-    font-size: 2rem;
+  text-transform: lowercase;
+  font-size: 2rem;
 }
 
 .dotted {
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-decoration-color: var(--accent-color);
-    text-decoration-thickness: 3px;
-    text-underline-offset: 10px;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--accent-color);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 10px;
 }
 
 a,
 a:hover,
 a:visited,
 a:active {
-    text-decoration: none;
-    color: var(--text-secondary-color);
+  text-decoration: none;
+  color: var(--text-secondary-color);
 }
 
 .width-limited {
-    max-width: 46rem;
-    text-align: justify;
+  max-width: 46rem;
+  text-align: justify;
 }
 
 h1,
 h2,
 p,
 a {
-    margin: 0;
+  margin: 0;
 }
