@@ -1,0 +1,131 @@
+---
+import DefaultLayout from "../../../layouts/DefaultLayout.astro";
+import Post from "../../../entities/Post";
+
+export async function getStaticPaths() {
+  const content = await Astro.glob("../../../content/blog/*.md");
+  const sorted = content.sort(
+    (a, b) =>
+      new Date(b.frontmatter.date).valueOf() -
+      new Date(a.frontmatter.date).valueOf()
+  );
+  return sorted.map((page) => ({
+    params: {
+      slug: page.frontmatter.slug,
+    },
+    props: {
+      ...page,
+    },
+  }));
+}
+
+const { Content, frontmatter } = Astro.props;
+const { title, description, tags, image }: Post = frontmatter;
+const date = new Date(frontmatter.date).toLocaleDateString();
+---
+
+<style>
+  :root {
+    --lighter-color: rgba(255, 255, 255, 0.015);
+  }
+  :global([data-theme="light"]) {
+    --lighter-color: rgba(0, 0, 0, 0.05);
+  }
+  :global(main) {
+    padding: 25px;
+    gap: 5em;
+  }
+  .blog-post-metadata {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .blog-post-metadata div {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    gap: 16px;
+  }
+  .blog-post-metadata .blog-post-image {
+    padding: 1rem;
+    background-color: var(--lighter-color);
+    border-radius: 10%;
+    align-self: flex-end;
+    text-align: center;
+    width: 10rem;
+    height: 10em;
+  }
+  .blog-post-metadata .blog-post-header {
+    font-size: 2.4rem;
+    color: var(--accent-color);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .blog-post-metadata .blog-post-date {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: var(--text-secondary-color);
+    font-family: var(--font-nav);
+    font-weight: 600;
+  }
+  .blog-post-metadata .blog-post-date::before {
+    content: "• Published on ";
+  }
+  .blog-post-metadata .blog-post-desc {
+    font-size: 1rem;
+    width: 90%;
+  }
+  .blog-post-metadata .blog-post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+  }
+  .blog-post-metadata .blog-post-tags li {
+    list-style: none;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--lighter-color);
+  }
+  .blog-post-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .blog-post-content :global(h1 a),
+  .blog-post-content :global(h1 a):visited,
+  .blog-post-content :global(h1 a):hover,
+  .blog-post-content :global(h1 a):active {
+    color: var(--text-color) !important;
+  }
+  .blog-post-content {
+    max-width: 80%;
+  }
+</style>
+
+<DefaultLayout current="blog" description={description}>
+  <section class="blog-post-metadata">
+    <div>
+      <h1 class="blog-post-header">
+        {title}
+        <span class="blog-post-date">{date}</span>
+      </h1>
+      <p class="blog-post-desc">{description}</p>
+      <ul class="blog-post-tags">
+        {
+          tags.map((tag) => (
+            <li>
+              <a href={`/blog/tags/${tag}`}>{tag}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <img class="blog-post-image" src={image} alt="[Image]" />
+  </section>
+  <div class="blog-post-content">
+    <Content />
+  </div>
+</DefaultLayout>

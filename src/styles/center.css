@@ -1,0 +1,32 @@
+.content-list {
+  display: flex;
+  flex-direction: row;
+  gap: 128px;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.content-list li {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-grow: 1;
+  width: 200px;
+  gap: 8px;
+}
+
+main {
+  margin-left: 0;
+  margin-right: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 64px !important;
+  flex: 0.9;
+}
+
+h1 {
+  text-align: center;
+}

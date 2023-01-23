@@ -1,0 +1,22 @@
+---
+import Cursor from "../components/Cursor.astro";
+import NavigationBar from "../components/NavigationBar.astro";
+import ThemedLayout from "./ThemedLayout.astro";
+import "../components/Theme.astro";
+import "../styles/fonts.css";
+
+export interface Props {
+  description: string;
+  current: string;
+}
+
+const { description, current }: Props = Astro.props;
+---
+
+<ThemedLayout description={description}>
+  <NavigationBar selected={current} />
+  <main>
+    <slot />
+  </main>
+  <Cursor overlayIndex={2} size="20px" count={50} />
+</ThemedLayout>
