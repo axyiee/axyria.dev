@@ -1,0 +1,42 @@
+---
+import DefaultLayout from "../layouts/DefaultLayout.astro";
+import "../styles/center.css";
+---
+
+<style>
+  h1 {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 2.4rem;
+  }
+  p {
+    font-size: 1rem;
+    text-align: center;
+    width: 80%;
+  }
+  img {
+    width: 300px;
+  }
+  #app-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  :global(main) {
+    margin-top: 0;
+    gap: 32px;
+  }
+</style>
+
+<DefaultLayout description="Oops! This page doesn't seem to exist!" current="">
+  <img src="/undraw-page-not-found.svg" />
+  <section id="app-wrapper">
+    <h1>404</h1>
+    <p>
+      Oops! This page doesn't seem to exist. You can return to the <a href="/"
+        >homepage</a
+      > or <a href="/contact">contact me</a> if you think this is a mistake.
+    </p>
+  </section>
+</DefaultLayout>
