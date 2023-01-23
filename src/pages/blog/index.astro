@@ -5,15 +5,6 @@ import "../../styles/center.css";
 
 async function getBlogPosts(): Promise<Post[]> {
   const content = await Astro.glob("../../content/blog/*.md");
-  // if (content.length === 1) {
-  //   const el = content[0].frontmatter as Post;
-  //   return Array(16)
-  //     .fill(el)
-  //     .map((post) => {
-  //       post.date = new Date().toISOString();
-  //       return post;
-  //     });
-  // }
   const sorted = content.sort(
     (a, b) =>
       new Date(b.frontmatter.date).valueOf() -
