@@ -26,7 +26,11 @@ const posts: Post[] = await getBlogPosts();
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: transform 0.2s ease-in-out;
     gap: 8px;
+  }
+  .blog-post-home-entry:hover {
+    transform: scale(1.05);
   }
   .blog-post-home-entry {
     width: 14rem;
