@@ -26,6 +26,7 @@ const { overlayIndex, size, count }: Props = Astro.props;
     border-radius: var(--cursorSize);
     z-index: var(--overlayIndex);
     background-color: var(--cursor-color);
+    transition: background-color 0.5s ease-in-out;
     pointer-events: none;
     position: fixed;
     top: 0;
