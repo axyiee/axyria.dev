@@ -9,6 +9,9 @@ const { overlayIndex, size, count }: Props = Astro.props;
 ---
 
 <style define:vars={{ overlayIndex, cursorSize: size }}>
+  :root {
+    --cursor-color: var(--accent-color);
+  }
   #c-cursor {
     display: none;
     position: absolute;
@@ -22,7 +25,7 @@ const { overlayIndex, size, count }: Props = Astro.props;
     width: var(--cursorSize);
     border-radius: var(--cursorSize);
     z-index: var(--overlayIndex);
-    background-color: var(--accent-color);
+    background-color: var(--cursor-color);
     pointer-events: none;
     position: fixed;
     top: 0;
@@ -46,8 +49,10 @@ const { overlayIndex, size, count }: Props = Astro.props;
   }
   function display() {
     const element = document.getElementById("c-cursor");
-    element.style.display = "block";
-    element.style.opacity = "1";
+    if (element) {
+      element.style.display = "block";
+      element.style.opacity = "1";
+    }
   }
   function listen() {
     const elements = Array.from(
@@ -110,11 +115,26 @@ const { overlayIndex, size, count }: Props = Astro.props;
     });
     window.addEventListener("mouseout", (e) => {
       if (e.relatedTarget === null) {
-        document.getElementById("c-cursor").style.opacity = "0";
+        const element = document.getElementById("c-cursor");
+        if (element) {
+          element.style.opacity = "0";
+        }
         first = true;
       }
     });
-    animate(circles, 0, () => cursor);
+    const links = document.getElementsByTagName("a");
+    for (let i = 0; i < links.length; i++) {
+      links[i].addEventListener("mouseover", () => {
+        document.documentElement.style.setProperty("--cursor-color", "white");
+      });
+      links[i].addEventListener("mouseout", () => {
+        document.documentElement.style.setProperty(
+          "--cursor-color",
+          "var(--accent-color)"
+        );
+      });
+    }
+    animate(circles, 12, () => cursor);
   }
   if (window.innerWidth > 700) {
     removeBuiltInCursor();
