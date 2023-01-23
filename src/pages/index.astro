@@ -1,9 +1,5 @@
 ---
-import NavigationBar from "../components/NavigationBar.astro";
-import ThemedLayout from "../layouts/ThemedLayout.astro";
-import "../components/Theme.astro";
-import "../styles/fonts.css";
-import Cursor from "../components/Cursor.astro";
+import DefaultLayout from "../layouts/DefaultLayout.astro";
 
 interface Work {
   holder: string;
@@ -79,60 +75,55 @@ const work: Work[] = [
   }
 </style>
 
-<ThemedLayout
+<DefaultLayout
+  current="home"
   description="Nice to meet you! I'm Pedro, a software engineer and theoretical computer science enthuasist willing to learn even more about the field."
 >
-  <NavigationBar selected="home" />
-  <div class="content-wrapper">
-    <p class="text-secondary width-limited">
-      Hi there! My name is Pedro and I am a 15-year-old autistic software
-      engineer and theoretical computer science enthusiast based in Brazil. I am
-      passionate about compilers, kernels, and lexical analyzers, but my
-      interests don't stop there. I also love to delve into other subjects such
-      as functional programming, philosophy, linguistics, and physics. Despite
-      being on the autism spectrum, I am determined to make a significant impact
-      in my field and inspire others to do the same.
-    </p>
-    <section id="my-work">
-      <h2 class="dotted with-icon">
-        My Work
-        <a href="#my-work">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-link"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="currentColor"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"
-            ></path>
-            <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"
-            ></path>
-          </svg>
-        </a>
-      </h2>
-      <ol>
-        {
-          work.map((item) => (
-            <li>
-              <a href={item.uri}>
-                <span
-                  set:html={`${item.holder}<strong>/${item.name}</strong>`}
-                />
-                <br />
-                <p>{item.description}</p>
-              </a>
-            </li>
-          ))
-        }
-      </ol>
-    </section>
-  </div>
-  <Cursor overlayIndex={2} size="20px" count={50} />
-</ThemedLayout>
+  <p class="text-secondary width-limited">
+    Hi there! My name is Pedro and I am a 15-year-old autistic software engineer
+    and theoretical computer science enthusiast based in Brazil. I am passionate
+    about compilers, kernels, and lexical analyzers, but my interests don't stop
+    there. I also love to delve into other subjects such as functional
+    programming, philosophy, linguistics, and physics. Despite being on the
+    autism spectrum, I am determined to make a significant impact in my field
+    and inspire others to do the same.
+  </p>
+  <section id="my-work">
+    <h2 class="dotted with-icon">
+      My Work
+      <a href="#my-work">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-link"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"
+          ></path>
+          <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"
+          ></path>
+        </svg>
+      </a>
+    </h2>
+    <ol>
+      {
+        work.map((item) => (
+          <li>
+            <a href={item.uri}>
+              <span set:html={`${item.holder}<strong>/${item.name}</strong>`} />
+              <br />
+              <p>{item.description}</p>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</DefaultLayout>

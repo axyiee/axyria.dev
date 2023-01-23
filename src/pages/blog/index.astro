@@ -1,0 +1,104 @@
+---
+import Post, { formatDateTime } from "../../entities/Post";
+import DefaultLayout from "../../layouts/DefaultLayout.astro";
+import "../../styles/center.css";
+
+async function getBlogPosts(): Promise<Post[]> {
+  const content = await Astro.glob("../../content/blog/*.md");
+  // if (content.length === 1) {
+  //   const el = content[0].frontmatter as Post;
+  //   return Array(16)
+  //     .fill(el)
+  //     .map((post) => {
+  //       post.date = new Date().toISOString();
+  //       return post;
+  //     });
+  // }
+  const sorted = content.sort(
+    (a, b) =>
+      new Date(b.frontmatter.date).valueOf() -
+      new Date(a.frontmatter.date).valueOf()
+  );
+  return sorted.map((post) => post.frontmatter as Post);
+}
+
+const posts: Post[] = await getBlogPosts();
+---
+
+<style>
+  :root {
+    --lighter-color: rgba(255, 255, 255, 0.01);
+    --lighter-color-alt: rgba(255, 255, 255, 0.02);
+  }
+  .blog-post-home-entry {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .blog-post-home-entry {
+    width: 14rem;
+    height: 21rem;
+    background-color: var(--lighter-color);
+    padding: 25px;
+    border-radius: 5%;
+    font-family: var(--font-heading);
+  }
+  .blog-post-home-entry-desc {
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    text-align: justify;
+    text-justify: space-between;
+    text-align-last: center;
+    display: -webkit-box;
+    overflow: hidden;
+    word-break: break-word;
+    pointer-events: none;
+  }
+  .blog-post-home-entry-image {
+    width: 6rem;
+    height: 6rem;
+    padding: 1rem;
+    background-color: var(--lighter-color-alt);
+    border-radius: 10%;
+  }
+  .blog-post-home-entry-title {
+    font-family: var(--font-nav);
+    color: var(--accent-color);
+  }
+  .blog-post-home-entry-date {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+  }
+</style>
+
+<DefaultLayout
+  current="blog"
+  description="All posts describing my journey as a software engineer and my point of view about this world."
+>
+  <h1>Blog Posts<span class="text-accent">:</span></h1>
+  <ol class="content-list">
+    {
+      posts.map((post) => {
+        const { title, description, slug, image } = post;
+        const date = new Date(post.date).toLocaleDateString();
+        return (
+          <li>
+            <a class="blog-post-home-entry" href={`/blog/posts/${slug}`}>
+              <img
+                class="blog-post-home-entry-image"
+                src={image}
+                alt="[Image]"
+              />
+              <span class="blog-post-home-entry-title">{title}</span>
+              <span class="blog-post-home-entry-date">{date}</span>
+              <p class="blog-post-home-entry-desc">{description}</p>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ol>
+</DefaultLayout>

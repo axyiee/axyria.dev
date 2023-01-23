@@ -1,50 +1,46 @@
 {
-    "root": true,
-    "parser": "@typescript-eslint/parser",
-    "ignorePatterns": [
-      "node_modules",
-      "dist",
-      "prettier.config.js"
-    ],
-    "plugins": [
-      "@typescript-eslint",
-      "prettier",
-      "simple-import-sort",
-      "unused-imports"
-    ],
-    "overrides": [
-      {      
-        "files": ["*.astro"],
-        "parser": "astro-eslint-parser",
-        "parserOptions": {
-          "parser": "@typescript-eslint/parser",
-          "extraFileExtensions": [".astro"]
-        }
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "ignorePatterns": ["node_modules", "dist", "prettier.config.js"],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "simple-import-sort",
+    "unused-imports"
+  ],
+  "overrides": [
+    {
+      "files": ["*.astro"],
+      "parser": "astro-eslint-parser",
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "extraFileExtensions": [".astro"]
       }
-    ],
-    "env": {
-      "node": true,
-      "commonjs": true,
-      "es2021": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:prettier/recommended",
-      "prettier",
-      "plugin:astro/recommended"
-    ],
-    "rules": {
-      "semi": ["error", "always"],
-      "quotes": ["error", "single", { "avoidEscape": true }],
-      "jsx-quotes": ["error", "prefer-double"],
-      "no-mixed-spaces-and-tabs": "error",
-      "indent": ["error", 2, { "SwitchCase": 1 }],
-      "arrow-parens": ["error", "as-needed"],
-      "prettier/prettier": "error",
-      "no-empty-pattern": "off",
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-empty-interface": "off",
-      "@typescript-eslint/no-empty-function": "off"
     }
+  ],
+  "env": {
+    "node": true,
+    "commonjs": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "prettier",
+    "plugin:astro/recommended"
+  ],
+  "rules": {
+    "semi": ["error", "always"],
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "jsx-quotes": ["error", "prefer-double"],
+    "no-mixed-spaces-and-tabs": "error",
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "arrow-parens": ["error", "as-needed"],
+    "prettier/prettier": "error",
+    "no-empty-pattern": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-empty-function": "off"
   }
+}
