@@ -38,22 +38,19 @@ const date = new Date(frontmatter.date).toLocaleDateString();
   .blog-post-metadata {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
   }
   .blog-post-metadata div {
     display: flex;
     flex-direction: column;
-    align-self: flex-start;
     gap: 16px;
   }
   .blog-post-metadata .blog-post-image {
     padding: 1rem;
     background-color: var(--lighter-color);
     border-radius: 10%;
-    align-self: flex-end;
     text-align: center;
-    width: 10rem;
-    height: 10em;
+    width: 12rem;
+    height: 12rem;
   }
   .blog-post-metadata .blog-post-header {
     font-size: 2.4rem;
@@ -74,7 +71,6 @@ const date = new Date(frontmatter.date).toLocaleDateString();
   }
   .blog-post-metadata .blog-post-desc {
     font-size: 1rem;
-    width: 90%;
   }
   .blog-post-metadata .blog-post-tags {
     display: flex;
@@ -100,8 +96,32 @@ const date = new Date(frontmatter.date).toLocaleDateString();
   .blog-post-content :global(h1 a):active {
     color: var(--text-color) !important;
   }
+  .blog-post-metadata .blog-post-desc {
+    text-align: justify;
+    text-justify: space-between;
+  }
   .blog-post-content {
-    max-width: 80%;
+    text-align: justify;
+    text-justify: space-between;
+  }
+  @media only screen and (min-width: 701px) {
+    .blog-post-metadata .blog-post-desc,
+    .blog-post-content {
+      width: 80%;
+    }
+    .blog-post-metadata {
+      justify-content: space-between;
+    }
+  }
+  @media only screen and (max-width: 700px) {
+    .blog-post-metadata {
+      flex-direction: column;
+      gap: 16px;
+    }
+    .blog-post-metadata,
+    .blog-post-metadata div {
+      align-items: center;
+    }
   }
 </style>
 
