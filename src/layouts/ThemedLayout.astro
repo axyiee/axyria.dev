@@ -55,10 +55,14 @@ const { description }: Props = Astro.props;
         display: flex;
         flex-direction: column;
         margin-left: calc(var(--margin) * -2);
-        margin-right: calc(var(--margin) * 2);
         margin-top: calc(var(--nav-header-size) + 32px);
         animation: slide-from-bottom-opacity 1s ease-in-out;
         gap: 32px;
+      }
+      @media only screen and (min-width: 701px) {
+        main {
+          margin-right: calc(var(--margin) * 2);
+        }
       }
       @media only screen and (max-width: 700px) {
         body {
