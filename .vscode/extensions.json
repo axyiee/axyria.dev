@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "formulahendry.auto-complete-tag",
+        "astro-build.astro-vscode",
+        "rvest.vs-code-prettier-eslint",
+        
+    ]
+}
