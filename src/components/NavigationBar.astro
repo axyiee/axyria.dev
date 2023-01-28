@@ -1,4 +1,6 @@
 ---
+import ThemeSwitcher from "../components/Theme.astro";
+
 export interface Props {
   selected?: string;
 }
@@ -118,15 +120,6 @@ const { selected } = Astro.props;
     flex-direction: row;
     gap: 8px;
   }
-  h1.navbar-brand svg.light {
-    display: none;
-  }
-  :global(html[data-theme="light"]) h1.navbar-brand svg.dark {
-    display: none;
-  }
-  :global([data-theme="light"]) h1.navbar-brand svg.light {
-    display: inline-block;
-  }
   nav ol li {
     transition: transform 0.2s ease-in-out;
     display: flex;
@@ -185,51 +178,7 @@ const { selected } = Astro.props;
 
 <nav aria-hidden="true">
   <h1 class="navbar-brand">
-    <svg
-      class="dark theme-selector"
-      xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-moon"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path
-        d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"
-      ></path>
-    </svg>
-    <svg
-      class="light theme-selector"
-      xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-beach"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M17.553 16.75a7.5 7.5 0 0 0 -10.606 0"></path>
-      <path
-        d="M18 3.804a6 6 0 0 0 -8.196 2.196l10.392 6a6 6 0 0 0 -2.196 -8.196z"
-      ></path>
-      <path
-        d="M16.732 10c1.658 -2.87 2.225 -5.644 1.268 -6.196c-.957 -.552 -3.075 1.326 -4.732 4.196"
-      ></path>
-      <path d="M15 9l-3 5.196"></path>
-      <path
-        d="M3 19.25a2.4 2.4 0 0 1 1 -.25a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 1 .25"
-      >
-      </path>
-    </svg>
+    <ThemeSwitcher />
     runtime
   </h1>
   <ol>
