@@ -1,0 +1,28 @@
+---
+import ThemeSwitcher from "../ThemeSwitcher/_index.astro";
+---
+
+<style>
+  h1.navbar-title {
+    font-family: var(--font-nav);
+    font-weight: var(--font-navbar-weight);
+    font-size: var(--nav-header-size);
+    overflow: hidden;
+    white-space: nowrap;
+    gap: 8px;
+  }
+  h1.navbar-title:after {
+    content: "";
+    display: inline-block;
+    position: relative;
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    background-color: var(--accent-color);
+  }
+</style>
+
+<h1 class="navbar-title">
+  <ThemeSwitcher />
+  runtime
+</h1>

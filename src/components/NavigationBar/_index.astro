@@ -1,15 +1,9 @@
 ---
-import ThemeSwitcher from "../components/ThemeSwitcher.astro";
+import Items, { Item } from "./Items.astro";
+import Title from "./Title.astro";
 
 export interface Props {
   selected?: string;
-}
-
-interface Item {
-  id: string;
-  name: string;
-  uri: string;
-  icon: string;
 }
 
 const items: Item[] = [
@@ -45,38 +39,14 @@ const items: Item[] = [
   },
 ];
 
-const { selected } = Astro.props;
+const { selected }: Props = Astro.props;
 ---
 
 <style>
-  :root {
-    --nav-header-size: 2rem;
-  }
-  h1.navbar-title {
-    font-family: var(--font-nav);
-    font-weight: var(--font-navbar-weight);
-    font-size: var(--nav-header-size);
-    overflow: hidden;
-    white-space: nowrap;
-    gap: 8px;
-  }
-  h1.navbar-title:after {
-    content: "";
-    display: inline-block;
-    position: relative;
-    width: 7px;
-    height: 7px;
-    border-radius: 2px;
-    background-color: var(--accent-color);
-  }
   nav {
     animation: slide-from-left 0.5s ease-in-out;
   }
-  nav ol li {
-    list-style: none;
-  }
-  nav,
-  nav ol {
+  nav {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -85,92 +55,11 @@ const { selected } = Astro.props;
   nav {
     gap: 16px;
   }
-  nav ol {
-    gap: 16px;
-    border-right: 1px solid var(--separator-color);
-    width: calc(1em + var(--margin));
-    height: calc(calc(100vh - 2 * var(--margin)) - 2 * var(--nav-header-size));
-    padding: 0;
-    margin: 0;
-  }
-  nav ol li:first-child {
-    margin-top: 16px;
-  }
-  nav ol li a :global(svg) {
-    width: 1.5rem;
-    height: 1.5rem;
-    stroke: var(--text-color);
-  }
-  nav ol li.selected a :global(svg) {
-    stroke: var(--accent-color);
-  }
-  nav ol li.selected:after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 1px;
-    height: 2em;
-    background-color: var(--separator-secondary-color);
-    animation: opacity-fade 2s ease-in-out;
-    left: 5em;
-  }
-  nav ol li.selected:hover:after {
-    display: none;
-  }
-  .with-icon {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    gap: 8px;
-  }
-  nav ol li {
-    transition: transform 0.2s ease-in-out;
-    display: flex;
-  }
-  nav ol li:hover {
-    transform: scale(1.5);
-  }
-  nav ol li .item-tooltip {
-    display: none;
-  }
-  nav ol li:hover .item-tooltip {
-    display: block;
-    position: absolute;
-    background-color: var(--text-color);
-    color: var(--background-color);
-    padding: 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    top: -5px;
-    left: 105%;
-    z-index: 1;
-  }
-  nav ol li:hover .item-tooltip {
-    transform: scale(0.666);
-  }
   @media only screen and (max-width: 700px) {
-    nav ol {
-      flex-direction: row;
-      width: fit-content;
-      border-right: none;
-      height: fit-content;
-      gap: 32px;
-    }
     nav {
       align-items: center;
       gap: 5px;
       margin-bottom: 16px;
-    }
-    nav,
-    nav ol {
-      float: center;
-    }
-    nav ol li.selected:after {
-      display: none;
-    }
-    nav ol li:first-child {
-      margin-top: 0;
     }
     main {
       margin-left: 0;
@@ -180,23 +69,6 @@ const { selected } = Astro.props;
 </style>
 
 <nav aria-hidden="true">
-  <h1 class="navbar-title">
-    <ThemeSwitcher />
-    runtime
-  </h1>
-  <ol>
-    {
-      items.map((item) => (
-        <li
-          data-path={item.id}
-          class:list={[{ selected: item.id === selected }]}
-        >
-          <a href={item.uri}>
-            <Fragment set:html={item.icon} />
-            <span class="item-tooltip">{item.name}</span>
-          </a>
-        </li>
-      ))
-    }
-  </ol>
+  <Title />
+  <Items items={items} selected={selected} />
 </nav>

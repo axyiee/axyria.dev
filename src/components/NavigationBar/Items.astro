@@ -1,0 +1,113 @@
+---
+export interface Props {
+  selected?: string;
+  items: Item[];
+}
+
+export interface Item {
+  id: string;
+  name: string;
+  uri: string;
+  icon: string;
+}
+
+const { selected, items }: Props = Astro.props;
+---
+
+<style>
+  ol {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    float: left;
+  }
+  ol li {
+    list-style: none;
+  }
+  ol {
+    gap: 16px;
+    border-right: 1px solid var(--separator-color);
+    width: calc(1em + var(--margin));
+    height: calc(calc(100vh - 2 * var(--margin)) - 2 * var(--nav-header-size));
+    padding: 0;
+    margin: 0;
+  }
+  ol li:first-child {
+    margin-top: 16px;
+  }
+  ol li a :global(svg) {
+    width: 1.5rem;
+    height: 1.5rem;
+    stroke: var(--text-color);
+  }
+  ol li.selected a :global(svg) {
+    stroke: var(--accent-color);
+  }
+  ol li.selected:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 1px;
+    height: 2em;
+    background-color: var(--separator-secondary-color);
+    animation: opacity-fade 2s ease-in-out;
+    left: 5em;
+  }
+  ol li.selected:hover:after {
+    display: none;
+  }
+  ol li {
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+  }
+  ol li:hover {
+    transform: scale(1.5);
+  }
+  ol li .item-tooltip {
+    display: none;
+  }
+  ol li:hover .item-tooltip {
+    display: block;
+    position: absolute;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    top: -5px;
+    left: 105%;
+    z-index: 1;
+  }
+  ol li:hover .item-tooltip {
+    transform: scale(0.666);
+  }
+  @media only screen and (max-width: 700px) {
+    ol {
+      flex-direction: row;
+      width: fit-content;
+      border-right: none;
+      height: fit-content;
+      gap: 32px;
+    }
+    ol li.selected:after {
+      display: none;
+    }
+    ol li:first-child {
+      margin-top: 0;
+    }
+  }
+</style>
+
+<ol>
+  {
+    items.map((item) => (
+      <li data-path={item.id} class:list={[{ selected: item.id === selected }]}>
+        <a href={item.uri}>
+          <Fragment set:html={item.icon} />
+          <span class="item-tooltip">{item.name}</span>
+        </a>
+      </li>
+    ))
+  }
+</ol>

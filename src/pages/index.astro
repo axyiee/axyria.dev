@@ -1,50 +1,31 @@
 ---
+import GitHubRepository from "../components/GitHubRepository.astro";
+import IdLink from "../components/IdLink.astro";
 import DefaultLayout from "../layouts/DefaultLayout.astro";
-
-interface Work {
-  holder: string;
-  name: string;
-  description: string;
-  uri: string;
-}
 
 const me = "IORuntime";
 
-const work: Work[] = [
+const work = [
   {
     holder: me,
     name: "voxu",
-    description:
-      "A strongly and statically typed, memory-efficient functional programming language.",
-    uri: "https://code.runtime.ee/voxu",
   },
   {
     holder: me,
     name: "sw",
-    description: "Automatic window hiding daemon/supervisor for X11.",
-    uri: "https://code.runtime.ee/sw",
   },
   {
     holder: "playhexalite",
     name: "java-edition",
-    description:
-      "An open-source, modern, and modular network of Minecraft: Java Edition servers.",
-    uri: "https://git.hexalite.org/java-edition",
   },
   {
     holder: "hearkus",
     name: "hearkus",
-    description:
-      "An innovative platform for music lovers to explore and share their passions.",
-    uri: "https://github.com/hearkus/hearkus",
   },
 ];
 ---
 
 <style>
-  #my-work ol li {
-    list-style: none;
-  }
   #my-work ol {
     display: grid;
     margin-top: 32px;
@@ -52,21 +33,11 @@ const work: Work[] = [
     grid-template: "a a" "b b";
     gap: 32px;
   }
-  #my-work ol li a {
-    color: var(--accent-color);
-    font-family: var(--font-heading);
-  }
-  #my-work ol li a p {
-    font-family: var(--font-primary);
-    color: var(--text-color);
-    font-size: 0.85rem;
-    max-width: 23rem;
-  }
-  #my-work ol li {
-    transition: transform 0.2s ease-in-out;
-  }
-  #my-work ol li:hover {
-    transform: scale(1.05);
+  .with-icon {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 8px;
   }
   @media only screen and (max-width: 700px) {
     #my-work ol {
@@ -91,37 +62,12 @@ const work: Work[] = [
   <section id="my-work">
     <h2 class="dotted with-icon">
       My Work
-      <a href="#my-work">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-link"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-          <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"
-          ></path>
-          <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"
-          ></path>
-        </svg>
-      </a>
+      <IdLink href="#my-work" />
     </h2>
     <ol>
       {
         work.map((item) => (
-          <li>
-            <a href={item.uri}>
-              <span set:html={`${item.holder}<strong>/${item.name}</strong>`} />
-              <br />
-              <p>{item.description}</p>
-            </a>
-          </li>
+          <GitHubRepository holder={item.holder} repository={item.name} />
         ))
       }
     </ol>
