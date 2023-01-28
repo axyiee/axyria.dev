@@ -63,7 +63,10 @@
     document.documentElement.setAttribute("data-theme", theme);
   }
   function listen() {
-    const elements = document.querySelectorAll(".theme-selector");
+    const elements = document.querySelectorAll("svg.theme-selector");
+    console.info(
+      `> Found a total of ${elements.length} theme selector entries.`
+    );
     elements.forEach((element) => {
       element.addEventListener("click", () => {
         localStorage.setItem(
@@ -75,6 +78,7 @@
     });
   }
   apply();
+
   listen();
 </script>
 
