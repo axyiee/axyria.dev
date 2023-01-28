@@ -1,5 +1,5 @@
 ---
-import ThemeSwitcher from "../components/Theme.astro";
+import ThemeSwitcher from "../components/ThemeSwitcher.astro";
 
 export interface Props {
   selected?: string;
@@ -52,15 +52,18 @@ const { selected } = Astro.props;
   :root {
     --nav-header-size: 2rem;
   }
-  h1.navbar-brand {
+  h1.navbar-title {
     font-family: var(--font-nav);
     font-weight: var(--font-navbar-weight);
     font-size: var(--nav-header-size);
+    overflow: hidden;
     white-space: nowrap;
+    gap: 8px;
   }
-  h1.navbar-brand:after {
+  h1.navbar-title:after {
     content: "";
     display: inline-block;
+    position: relative;
     width: 7px;
     height: 7px;
     border-radius: 2px;
@@ -177,7 +180,7 @@ const { selected } = Astro.props;
 </style>
 
 <nav aria-hidden="true">
-  <h1 class="navbar-brand">
+  <h1 class="navbar-title">
     <ThemeSwitcher />
     runtime
   </h1>

@@ -19,6 +19,7 @@ const { overlayIndex, size, count }: Props = Astro.props;
     animation: opacity-fade 1s ease-in-out;
     transition: opacity 1s ease-in-out;
     mix-blend-mode: difference;
+    pointer-events: none;
   }
   #c-cursor div {
     height: var(--cursorSize);
@@ -106,14 +107,6 @@ const { overlayIndex, size, count }: Props = Astro.props;
         first = false;
       }
     });
-    window.addEventListener("touchmove", (e) => {
-      cursor.x = e.touches[0].clientX;
-      cursor.y = e.touches[0].clientY;
-      if (first) {
-        setTimeout(display, 80);
-        first = false;
-      }
-    });
     window.addEventListener("mouseout", (e) => {
       if (e.relatedTarget === null) {
         const element = document.getElementById("c-cursor");
@@ -123,7 +116,7 @@ const { overlayIndex, size, count }: Props = Astro.props;
         first = true;
       }
     });
-    const links = document.getElementsByTagName("a");
+    const links = document.querySelectorAll("a, .theme-switcher");
     for (let i = 0; i < links.length; i++) {
       links[i].addEventListener("mouseover", () => {
         document.documentElement.style.setProperty("--cursor-color", "white");

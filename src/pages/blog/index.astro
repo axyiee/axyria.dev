@@ -19,7 +19,9 @@ const posts: Post[] = await getBlogPosts();
 <style>
   :root {
     --lighter-color: rgba(255, 255, 255, 0.01);
-    --lighter-color-alt: rgba(255, 255, 255, 0.02);
+  }
+  :global([data-theme="light"]) {
+    --lighter-color: rgba(0, 0, 0, 0.02);
   }
   .blog-post-home-entry {
     display: flex;
@@ -56,7 +58,7 @@ const posts: Post[] = await getBlogPosts();
     width: 6rem;
     height: 6rem;
     padding: 1rem;
-    background-color: var(--lighter-color-alt);
+    background-color: var(--lighter-color);
     border-radius: 10%;
   }
   .blog-post-home-entry-title {

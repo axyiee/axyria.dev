@@ -1,0 +1,55 @@
+<style is:global>
+  :root {
+    --background-color: #101010;
+    --accent-color: #c7ffc6;
+    --text-color: #f9f9f9;
+    --separator-color: #1e1e1e;
+    --separator-secondary-color: #2f2f2f;
+    --text-secondary-color: #a4a4a4;
+  }
+  [data-theme="light"] {
+    --background-color: #f9f9f9;
+    --accent-color: #2f394d;
+    --text-color: #101010;
+    --separator-color: #e0e0e0;
+    --separator-secondary-color: #cacaca;
+    --text-secondary-color: #3c3c3c;
+  }
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    accent-color: var(--accent-color);
+  }
+  ::selection {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+  }
+  .text-secondary {
+    color: var(--text-secondary-color);
+  }
+  .text-accent {
+    color: var(--accent-color);
+  }
+</style>
+
+<style>
+  .theme-selector {
+    transition: transform 0.2s ease-in-out;
+  }
+  .theme-selector:hover {
+    transform: scale(1.25);
+  }
+</style>
+
+<script>
+  const local = localStorage.getItem("theme");
+  const theme =
+    local ||
+    (window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+  if (!local) {
+    localStorage.setItem("theme", theme);
+  }
+  document.documentElement.setAttribute("data-theme", theme);
+</script>
