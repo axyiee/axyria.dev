@@ -6,12 +6,10 @@
 @keyframes slide-from-left {
     0% {
         opacity: 0;
-        position: absolute;
         transform: translateX(-125%);
     }
     100% {
         opacity: 1;
-        position: static;
         transform: translateX(0);
     }
 }

@@ -77,7 +77,7 @@ const { selected }: Props = Astro.props;
     entry.addEventListener("click", async (event) => {
       event.preventDefault();
       audio.play();
-      const href = (entry as any).ref;
+      const href = (entry as any).href;
       if (href) {
         setTimeout(() => (window.location = (entry as any).href), 250);
       }
