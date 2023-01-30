@@ -68,6 +68,18 @@ const { selected }: Props = Astro.props;
   }
 </style>
 
+<script>
+  const audio = new Audio("/sound/ui_unlock.ogg");
+  const entries = document.querySelectorAll("li.navigation-entry a");
+  entries.forEach((entry) =>
+    entry.addEventListener("click", async (event) => {
+      event.preventDefault();
+      await audio.play();
+      setTimeout(() => (window.location = (entry as any).href), 100);
+    })
+  );
+</script>
+
 <nav aria-hidden="true">
   <ItemsWrapper>
     {

@@ -1,0 +1,29 @@
+---
+export interface Props {
+  query: string;
+}
+
+const { query }: Props = Astro.props;
+---
+
+<script define:vars={{ query }}>
+  const over = new Audio("/sound/navigation_forward.ogg");
+  const out = new Audio("/sound/navigation_backward.ogg");
+  const repositories = document.querySelectorAll(query);
+  let left = true;
+  async function logic(sound, event) {
+    console.log(event.target);
+    over.pause();
+    out.pause();
+    left = !left;
+    await sound.play();
+  }
+  repositories.forEach((repository) => {
+    repository.addEventListener("mouseover", async (event) =>
+      left ? logic(over, event) : true
+    );
+    repository.addEventListener("mouseleave", async (event) =>
+      !left ? logic(out, event) : true
+    );
+  });
+</script>
