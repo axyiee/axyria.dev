@@ -70,12 +70,17 @@ const { selected }: Props = Astro.props;
 
 <script>
   const audio = new Audio("/sound/ui_unlock.ogg");
-  const entries = document.querySelectorAll("li.navigation-entry a");
+  const entries = document.querySelectorAll(
+    "li.navigation-entry a, .theme-switcher"
+  );
   entries.forEach((entry) =>
     entry.addEventListener("click", async (event) => {
       event.preventDefault();
       audio.play();
-      setTimeout(() => (window.location = (entry as any).href), 250);
+      const href = (entry as any).ref;
+      if (href) {
+        setTimeout(() => (window.location = (entry as any).href), 250);
+      }
     })
   );
 </script>
