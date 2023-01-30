@@ -20,12 +20,12 @@ const { overlayIndex, size, count }: Props = Astro.props;
     transition: opacity 1s ease-in-out;
     mix-blend-mode: difference;
     pointer-events: none;
+    z-index: var(--overlayIndex);
   }
   #c-cursor div {
     height: var(--cursorSize);
     width: var(--cursorSize);
     border-radius: var(--cursorSize);
-    z-index: var(--overlayIndex);
     background-color: var(--cursor-color);
     transition: background-color 0.5s ease-in-out;
     pointer-events: none;

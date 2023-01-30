@@ -1,36 +1,50 @@
 ---
-import GitHubRepository from "../components/GitHubRepository.astro";
 import IdLink from "../components/IdLink.astro";
+import Repository, { RepositoryData } from "../components/Repository.astro";
 import DefaultLayout from "../layouts/DefaultLayout.astro";
 
-const me = "IORuntime";
+const me = { holder: "IORuntime", domain: "code.runtime.ee" };
 
-const work = [
+const work: RepositoryData[] = [
   {
-    holder: me,
     name: "voxu",
+    description:
+      "A strongly and statically typed, memory-efficient functional programming language.",
+    ...me,
   },
   {
-    holder: me,
     name: "sw",
+    description: "Automatic window hiding daemon/supervisor for X11.",
+    ...me,
   },
   {
     holder: "playhexalite",
     name: "java-edition",
+    domain: "git.hexalite.org",
+    description:
+      "An open-source, modern, and modular network of Minecraft: Java Edition servers.",
   },
   {
     holder: "hearkus",
     name: "hearkus",
+    domain: "github.com/hearkus",
+    description:
+      "An innovative platform for music lovers to explore and share their passions.",
   },
 ];
 ---
 
 <style>
+  #my-work {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
   #my-work ol {
     display: grid;
-    margin-top: 32px;
     padding: 0;
     grid-template: "a a" "b b";
+    text-align: left;
     gap: 32px;
   }
   .with-icon {
@@ -40,8 +54,13 @@ const work = [
     gap: 8px;
   }
   @media only screen and (max-width: 700px) {
+    #my-work {
+      align-items: center;
+      justify-content: center;
+    }
     #my-work ol {
       grid-template: "a" "b";
+      text-align: center;
     }
   }
 </style>
@@ -65,11 +84,7 @@ const work = [
       <IdLink href="#my-work" />
     </h2>
     <ol>
-      {
-        work.map((item) => (
-          <GitHubRepository holder={item.holder} repository={item.name} />
-        ))
-      }
+      {work.map((item) => <Repository data={item} />)}
     </ol>
   </section>
 </DefaultLayout>

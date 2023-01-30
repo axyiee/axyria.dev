@@ -2,25 +2,37 @@
 import DefaultLayout from "../../../layouts/DefaultLayout.astro";
 import Post from "../../../entities/Post";
 
-export async function getStaticPaths() {
+interface PageResult {
+  params: {
+    slug: string;
+  };
+  props: {
+    frontmatter: Post;
+    Content: any;
+  };
+}
+
+export async function findAllPages(): Promise<PageResult[]> {
   const content = await Astro.glob("../../../content/blog/*.md");
-  const sorted = content.sort(
-    (a, b) =>
-      new Date(b.frontmatter.date).valueOf() -
-      new Date(a.frontmatter.date).valueOf()
-  );
-  return sorted.map((page) => ({
+  return content.map((page) => ({
     params: {
       slug: page.frontmatter.slug,
     },
     props: {
-      ...page,
+      frontmatter: page.frontmatter as Post,
+      Content: page.Content,
     },
   }));
 }
 
-const { Content, frontmatter } = Astro.props;
-const { title, description, tags, image }: Post = frontmatter;
+const page = (await findAllPages()).find(
+  (path) => path.params.slug === Astro.params.slug
+);
+if (!page) {
+  return Astro.redirect("/404");
+}
+const { Content, frontmatter } = page.props;
+const { title, description, tags, image } = frontmatter as Post;
 const date = new Date(frontmatter.date).toLocaleDateString();
 ---
 
@@ -33,6 +45,7 @@ const date = new Date(frontmatter.date).toLocaleDateString();
   }
   :global(main) {
     padding: 25px;
+    padding-top: 0;
     gap: 5em;
   }
   .blog-post-metadata {

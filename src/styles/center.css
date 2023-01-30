@@ -1,10 +1,14 @@
+:root {
+  --grid-gap: 64px;
+}
+
 .content-list {
-  display: flex;
-  flex-direction: row;
-  gap: 128px;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
+  gap: calc(var(--margin) * 4);
 }
 
 .content-list li {
@@ -18,13 +22,24 @@
   gap: 8px;
 }
 
-main {
-  margin-left: 0;
-  margin-right: 0;
-  align-items: center;
+.content-list.grid-wrap {
   justify-content: center;
-  gap: 64px;
-  flex: 0.9;
+  column-gap: normal;
+  row-gap: calc(var(--margin) * 2);
+}
+
+.content-list.grid-wrap li {
+  flex-basis: calc(100% / 3);
+}
+
+main {
+  gap: calc(var(--margin) * 2);
+  align-items: center;
+  width: 100%;
+}
+
+nav, .navigation-top {
+  z-index: 1;
 }
 
 h1 {

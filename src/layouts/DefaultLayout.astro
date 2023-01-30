@@ -2,8 +2,10 @@
 import Cursor from "../components/Cursor.astro";
 import NavigationBar from "../components/NavigationBar/_index.astro";
 import ThemedLayout from "./ThemedLayout.astro";
+import Title from "../components/Title.astro";
 import "../global/Theme.astro";
 import "../styles/fonts.css";
+import "../styles/page-layout.css";
 
 export interface Props {
   description: string;
@@ -14,9 +16,12 @@ const { description, current }: Props = Astro.props;
 ---
 
 <ThemedLayout description={description}>
-  <NavigationBar selected={current} />
-  <main>
-    <slot />
-  </main>
+  <Title />
+  <div class="horizontal-wrapper">
+    <NavigationBar selected={current} />
+    <main>
+      <slot />
+    </main>
+  </div>
   <Cursor overlayIndex={2} size="20px" count={50} />
 </ThemedLayout>

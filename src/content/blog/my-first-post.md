@@ -4,7 +4,7 @@ slug: 'my-first-post'
 date: 2023-01-23
 description: "Let's talk about what is going on here. This is what you should expect from me in the future."
 tags: ['blog', 'first-post']
-image: /get-real.gif
+image: /meme/get-real.gif
 ---
 
 # [Hello World](#hello-world)

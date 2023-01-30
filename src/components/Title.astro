@@ -1,9 +1,16 @@
 ---
-import ThemeSwitcher from "../ThemeSwitcher/_index.astro";
+import ThemeSwitcher from "./ThemeSwitcher/_index.astro";
 ---
 
 <style>
-  h1.navbar-title {
+  div.navigation-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+  }
+  h1.navigation-title {
     font-family: var(--font-nav);
     font-weight: var(--font-navbar-weight);
     font-size: var(--nav-header-size);
@@ -11,7 +18,7 @@ import ThemeSwitcher from "../ThemeSwitcher/_index.astro";
     white-space: nowrap;
     gap: 8px;
   }
-  h1.navbar-title:after {
+  h1.navigation-title:after {
     content: "";
     display: inline-block;
     position: relative;
@@ -19,10 +26,11 @@ import ThemeSwitcher from "../ThemeSwitcher/_index.astro";
     height: 7px;
     border-radius: 2px;
     background-color: var(--accent-color);
+    margin-left: 5px;
   }
 </style>
 
-<h1 class="navbar-title">
+<div class="navigation-top">
   <ThemeSwitcher />
-  runtime
-</h1>
+  <h1 class="navigation-title">runtime</h1>
+</div>

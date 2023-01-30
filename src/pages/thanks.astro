@@ -4,23 +4,20 @@ import "../styles/center.css";
 ---
 
 <style>
-  :global(main) {
-    margin-top: 0;
-  }
-  ul.content-list {
-    flex-direction: row;
-  }
   ul.content-list li img {
     border-radius: 50%;
     width: 128px;
     height: 128px;
+  }
+  ul.content-list.grid-wrap {
+    gap: calc(var(--margin) * 4);
   }
 </style>
 
 <DefaultLayout current="thanks" description="Amazing people I'd like to thank!">
   <main>
     <h1>Thank you so much<span class="text-accent">!</span></h1>
-    <ul class="content-list">
+    <ul class="content-list grid-wrap">
       <li>
         <img src="https://avatars.githubusercontent.com/u/54632522?s=128&v=4" />
         <p>- domain <span class="text-accent">&lt;3</span></p>

@@ -1,0 +1,90 @@
+---
+export interface Props {
+  data: ItemData;
+}
+
+export interface ItemData {
+  id: string;
+  name: string;
+  uri: string;
+  icon: string;
+  selected?: boolean;
+}
+
+const { data: item }: Props = Astro.props;
+---
+
+<style>
+  li.navigation-entry {
+    list-style: none;
+  }
+  li.navigation-entry:first-child {
+    margin-top: 16px;
+  }
+  li.navigation-entry a :global(svg) {
+    width: 1.5rem;
+    height: 1.5rem;
+    stroke: var(--text-color);
+  }
+  li.navigation-entry.selected a :global(svg) {
+    stroke: var(--accent-color);
+  }
+  li.navigation-entry.selected:after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 1px;
+    height: 2em;
+    background-color: var(--separator-secondary-color);
+    animation: opacity-fade 2s ease-in-out;
+    left: 5em;
+    margin-top: -5px;
+  }
+  li.navigation-entry.selected:hover:after {
+    display: none;
+  }
+  li.navigation-entry {
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+  }
+  li.navigation-entry:hover {
+    transform: scale(1.5);
+  }
+  li.navigation-entry .item-tooltip {
+    display: none;
+  }
+  li.navigation-entry:hover .item-tooltip {
+    display: block;
+    position: absolute;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    top: -5px;
+    left: 105%;
+    z-index: 1;
+  }
+  li.navigation-entry:hover .item-tooltip {
+    transform: scale(0.666);
+  }
+  @media only screen and (max-width: 700px) {
+    li.navigation-entry.selected:after {
+      display: none;
+    }
+    li.navigation-entry:first-child {
+      margin-top: 0;
+    }
+  }
+</style>
+
+<li
+  data-path={item.id}
+  class:list={[{ "navigation-entry": true, selected: item.selected === true }]}
+>
+  <a href={item.uri}>
+    <Fragment set:html={item.icon} />
+    <span class="item-tooltip">{item.name}</span>
+  </a>
+</li>

@@ -1,0 +1,44 @@
+---
+export interface Props {
+  data: RepositoryData;
+}
+
+export interface RepositoryData {
+  holder: string;
+  name: string;
+  domain: string;
+  description: string;
+}
+
+const { data }: Props = Astro.props;
+---
+
+<style>
+  li.repository-metadata {
+    list-style-type: none;
+  }
+  li.repository-metadata a {
+    color: var(--accent-color);
+    font-family: var(--font-heading);
+  }
+  li.repository-metadata a p {
+    font-family: var(--font-primary);
+    color: var(--text-color);
+    font-size: 0.85rem;
+    max-width: 23rem;
+  }
+  li.repository-metadata {
+    transition: transform 0.2s ease-in-out;
+  }
+  li.repository-metadata:hover {
+    transform: scale(1.05);
+  }
+</style>
+
+<li class="repository-metadata" data-identifier={`${data.holder}/${data.name}`}>
+  <a href={`https://${data.domain}/${data.name}`}>
+    <span set:html={`${data.holder}<strong>/${data.name}</strong>`} />
+    <br />
+    <p>{data.description}</p>
+  </a>
+</li>

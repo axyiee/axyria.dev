@@ -1,12 +1,12 @@
 ---
-import Items, { Item } from "./Items.astro";
-import Title from "./Title.astro";
+import Item, { ItemData } from "./Item.astro";
+import ItemsWrapper from "./ItemsWrapper.astro";
 
 export interface Props {
   selected?: string;
 }
 
-const items: Item[] = [
+const items: ItemData[] = [
   {
     id: "home",
     name: "Home",
@@ -44,7 +44,7 @@ const { selected }: Props = Astro.props;
 
 <style>
   nav {
-    animation: slide-from-left 0.5s ease-in-out;
+    animation: slide-from-left 0.75s ease-in-out;
   }
   nav {
     display: flex;
@@ -69,6 +69,11 @@ const { selected }: Props = Astro.props;
 </style>
 
 <nav aria-hidden="true">
-  <Title />
-  <Items items={items} selected={selected} />
+  <ItemsWrapper>
+    {
+      items.map((item) => (
+        <Item data={{ ...item, selected: selected === item.id }} />
+      ))
+    }
+  </ItemsWrapper>
 </nav>

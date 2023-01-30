@@ -14,67 +14,7 @@ const { description }: Props = Astro.props;
     <meta name="description" content={description} />
     <meta name="author" content="Pedro H." />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta property="og:image" content="/blink.gif" />
-    <style is:inline>
-      :root {
-        --margin: 32px;
-        --nav-header-size: 2rem;
-      }
-      @keyframes slide-from-left {
-        0% {
-          transform: translateX(-125%);
-        }
-        100% {
-          transform: translateX(0);
-        }
-      }
-      @keyframes slide-from-bottom-opacity {
-        0% {
-          transform: translateY(125%);
-          opacity: 0;
-        }
-        100% {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-      @keyframes opacity-fade {
-        0% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-      body {
-        padding: 0;
-        margin: var(--margin);
-        display: flex;
-        flex-direction: row;
-      }
-      main {
-        display: flex;
-        flex-direction: column;
-        margin-left: calc(var(--margin) * -2);
-        margin-top: calc(var(--nav-header-size) + 32px);
-        animation: slide-from-bottom-opacity 1s ease-in-out;
-        gap: 32px;
-      }
-      @media only screen and (min-width: 701px) {
-        main {
-          margin-right: calc(var(--margin) * 2);
-        }
-      }
-      @media only screen and (max-width: 700px) {
-        body {
-          flex-direction: column;
-        }
-        main {
-          margin-left: 0;
-          margin-top: 0;
-        }
-      }
-    </style>
+    <meta property="og:image" content="/meme/blink.gif" />
   </head>
   <body>
     <slot />
