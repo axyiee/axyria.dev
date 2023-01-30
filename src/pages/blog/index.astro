@@ -27,6 +27,9 @@ const posts: Post[] = await getBlogPosts();
   :global([data-theme="light"]) {
     --lighter-color: rgba(0, 0, 0, 0.02);
   }
+  .content-list :global(li:hover) {
+    padding: unset;
+  }
 </style>
 
 <DefaultLayout

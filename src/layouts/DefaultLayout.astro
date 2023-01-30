@@ -6,7 +6,7 @@ import Title from "../components/Title.astro";
 import "../global/Theme.astro";
 import "../styles/fonts.css";
 import "../styles/page-layout.css";
-import NavigationSounds from "../components/Sound/NavigationSounds.astro";
+import NavigationSounds from "../components/NavigationSounds.astro";
 
 export interface Props {
   description: string;
@@ -25,5 +25,7 @@ const { description, current }: Props = Astro.props;
     </main>
   </div>
   <Cursor overlayIndex={2} size="20px" count={50} />
-  <NavigationSounds query="li.repository-metadata, li.navigation-entry" />
+  <NavigationSounds
+    query="li.navigation-entry, section.app-settings-controller > *, a.id-link"
+  />
 </ThemedLayout>

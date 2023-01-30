@@ -11,18 +11,14 @@ const { query }: Props = Astro.props;
   const out = new Audio("/sound/navigation_backward.ogg");
   const repositories = document.querySelectorAll(query);
   let left = true;
-  async function logic(sound, event) {
-    over.pause();
-    out.pause();
+  async function logic(sound) {
     left = !left;
-    await sound.play();
+    sound.cloneNode().play();
   }
   repositories.forEach((repository) => {
-    repository.addEventListener("mouseover", async (event) =>
-      left ? logic(over, event) : true
-    );
-    repository.addEventListener("mouseleave", async (event) =>
-      !left ? logic(out, event) : true
+    repository.addEventListener("mouseover", () => (left ? logic(over) : true));
+    repository.addEventListener("mouseleave", () =>
+      !left ? logic(out) : true
     );
   });
 </script>

@@ -10,6 +10,12 @@ const { href }: Props = Astro.props;
   .id-link svg {
     color: var(--text-secondary-color);
   }
+  .id-link {
+    transition: transform 0.2s ease-in-out;
+  }
+  .id-link:hover {
+    transform: scale(1.25);
+  }
 </style>
 
 <a class="id-link" href={href}>

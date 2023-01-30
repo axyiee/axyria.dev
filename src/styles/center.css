@@ -21,6 +21,16 @@
   width: 200px;
   gap: 8px;
 }
+.content-list li {
+  transition: transform 0.2s ease-in-out, padding 0.2s ease-in-out;
+}
+
+.content-list li:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 11px rgba(0,0,0,.2);
+  padding: 10px;
+  border-radius: 10px;
+}
 
 .content-list.grid-wrap {
   justify-content: center;

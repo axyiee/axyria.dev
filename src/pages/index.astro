@@ -1,5 +1,6 @@
 ---
 import IdLink from "../components/IdLink.astro";
+import NavigationSounds from "../components/NavigationSounds.astro";
 import Repository, { RepositoryData } from "../components/Repository.astro";
 import DefaultLayout from "../layouts/DefaultLayout.astro";
 
@@ -87,4 +88,5 @@ const work: RepositoryData[] = [
       {work.map((item) => <Repository data={item} />)}
     </ol>
   </section>
+  <NavigationSounds query="li.repository-metadata" />
 </DefaultLayout>

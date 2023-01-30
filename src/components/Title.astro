@@ -28,9 +28,17 @@ import ThemeSwitcher from "./ThemeSwitcher/_index.astro";
     background-color: var(--accent-color);
     margin-left: 5px;
   }
+  div.navigation-top section.app-settings-controller :global(> *) {
+    transition: transform 0.2s ease-in-out;
+  }
+  div.navigation-top section.app-settings-controller :global(> *):hover {
+    transform: scale(1.25);
+  }
 </style>
 
 <div class="navigation-top">
-  <ThemeSwitcher />
+  <section class="app-settings-controller">
+    <ThemeSwitcher />
+  </section>
   <h1 class="navigation-title">runtime</h1>
 </div>

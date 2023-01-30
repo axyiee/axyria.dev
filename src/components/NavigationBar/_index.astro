@@ -74,8 +74,8 @@ const { selected }: Props = Astro.props;
   entries.forEach((entry) =>
     entry.addEventListener("click", async (event) => {
       event.preventDefault();
-      await audio.play();
-      setTimeout(() => (window.location = (entry as any).href), 100);
+      audio.play();
+      setTimeout(() => (window.location = (entry as any).href), 250);
     })
   );
 </script>

@@ -28,10 +28,13 @@ const { data }: Props = Astro.props;
     max-width: 23rem;
   }
   li.repository-metadata {
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, padding 0.2s ease-in-out;
   }
   li.repository-metadata:hover {
     transform: scale(1.05);
+    box-shadow: 0 0 11px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 10px;
   }
 </style>
 
