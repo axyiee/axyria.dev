@@ -12,7 +12,6 @@ const { query }: Props = Astro.props;
   const repositories = document.querySelectorAll(query);
   let left = true;
   async function logic(sound, event) {
-    console.log(event.target);
     over.pause();
     out.pause();
     left = !left;
