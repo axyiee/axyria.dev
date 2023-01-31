@@ -27,6 +27,7 @@ const { title, uri, uriShort, description, buttons }: Props = Astro.props;
     border: 1px solid var(--separator-color);
     font-family: var(--font-heading);
     height: 220px;
+    transition: border 0.2s ease-in-out;
   }
   div.link-list-item-modal,
   div.link-list-item-modal div.item-modal-header {
@@ -43,6 +44,7 @@ const { title, uri, uriShort, description, buttons }: Props = Astro.props;
   div.link-list-item-modal div.item-modal-header a.item-modal-uri > *,
   div.link-list-item-modal p.item-modal-description {
     color: var(--text-secondary-color);
+    transition: color 0.2s ease-in-out;
   }
   div.link-list-item-modal div.item-modal-header a.item-modal-uri {
     display: flex;
@@ -69,6 +71,7 @@ const { title, uri, uriShort, description, buttons }: Props = Astro.props;
     width: calc(100% + var(--modal-padding) * 2);
     height: 1px;
     background-color: var(--separator-color);
+    transition: background-color 0.2s ease-in-out;
   }
   div.link-list-item-modal section.item-modal-buttons-wrapper {
     display: flex;
@@ -87,6 +90,7 @@ const { title, uri, uriShort, description, buttons }: Props = Astro.props;
     flex-direction: row;
     align-items: center;
     gap: 8px;
+    transition: background-color 0.2s ease-in-out;
   }
   div.link-list-item-modal
     section.item-modal-buttons-wrapper
