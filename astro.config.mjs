@@ -4,14 +4,13 @@ import { defineConfig } from "astro/config";
 import robotsTxt from "astro-robots-txt";
 
 // https://astro.build/config
-import cloudflare from "@astrojs/cloudflare";
+import svelte from "@astrojs/svelte";
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
-import svelte from "@astrojs/svelte";
-
 export default defineConfig({
   site: "https://runtimee.ee",
   integrations: [robotsTxt(), svelte()],
   output: "server",
-  adapter: cloudflare(),
+  adapter: vercel()
 });
