@@ -9,7 +9,6 @@
       "@components/*": ["src/components/*"],
       "@content/*": ["src/content/*"],
       "@entities/*": ["src/entities/*"],
-      "@global/*": ["src/global/*"],
       "@layouts/*": ["src/layouts/*"],
       "@pages/*": ["src/pages/*"],
       "@styles/*": ["src/styles/*"],

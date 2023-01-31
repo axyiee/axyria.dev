@@ -1,4 +1,6 @@
 ---
+import Preload from "@components/UX/Preload.astro";
+
 export interface Props {
   description: string;
 }
@@ -16,7 +18,8 @@ const { description }: Props = Astro.props;
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:image" content="/meme/blink.gif" />
   </head>
-  <body>
+  <Preload>
     <slot />
-  </body>
+  </Preload>
+
 </html>

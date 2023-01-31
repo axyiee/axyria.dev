@@ -50,12 +50,9 @@
   .text-accent {
     color: var(--accent-color);
   }
-  body {
+  :global(body):not(:global(.preload)) {
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   }
-</style>
-
-<style>
   .theme-selector {
     transition: transform 0.2s ease-in-out;
   }
@@ -64,15 +61,17 @@
   }
 </style>
 
-<script>
-  const local = localStorage.getItem("theme");
-  const theme =
-    local ||
-    (window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light");
-  if (!local) {
-    localStorage.setItem("theme", theme);
-  }
-  document.documentElement.setAttribute("data-theme", theme);
-</script>
+<head>
+  <script>
+    const local = localStorage.getItem("theme");
+    const theme =
+      local ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light");
+    if (!local) {
+      localStorage.setItem("theme", theme);
+    }
+    document.documentElement.setAttribute("data-theme", theme);
+  </script>
+</head>
