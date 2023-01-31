@@ -111,7 +111,7 @@
         {#each result as { title, slug, description, date, image }}
         <a href={`/blog/posts/${slug}`}>
           <li class="search-result-entry">
-              <img class="search-result-entry-image" src={image} />
+              <img alt="[Image]" class="search-result-entry-image" src={image} />
               <section class="search-result-entry-metadata">
                 <span class="search-result-entry-title">{title} • {new Date(date).toLocaleDateString()}</span>
                 <p class="search-result-entry-description">{description}</p>
