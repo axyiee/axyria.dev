@@ -1,8 +1,8 @@
 ---
-import BlogEntry from "../../components/Blog/BlogEntry.astro";
-import Post from "../../entities/Post";
-import DefaultLayout from "../../layouts/DefaultLayout.astro";
-import "../../styles/center.css";
+import BlogEntry from "@components/Blog/BlogEntry.astro";
+import type Post from "@entities/Post";
+import DefaultLayout from "@layouts/DefaultLayout.astro";
+import "@styles/center.css";
 
 async function getBlogPosts(): Promise<Post[]> {
   const content = await Astro.glob<Post>("../../content/blog/*.md");

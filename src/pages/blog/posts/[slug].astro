@@ -1,6 +1,6 @@
 ---
-import DefaultLayout from "../../../layouts/DefaultLayout.astro";
-import Post, { PageResult } from "../../../entities/Post";
+import DefaultLayout from "@layouts/DefaultLayout.astro";
+import type Post, { PageResult } from "@entities/Post";
 
 export async function findAllPages(): Promise<PageResult[]> {
   const content = await Astro.glob<Post>("../../../content/blog/*.md");
@@ -9,7 +9,7 @@ export async function findAllPages(): Promise<PageResult[]> {
       slug: page.frontmatter.slug,
     },
     props: {
-      ...page
+      ...page,
     },
   }));
 }

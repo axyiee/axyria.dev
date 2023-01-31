@@ -9,6 +9,7 @@
     width: 18.75em;
     height: 16px;
     border-radius: 10px;
+    position: relative;
   }
   input[type="text"] {
     color: var(--separator-secondary-color);
@@ -30,13 +31,13 @@
   #search-results-container {
     filter: invert(1);
     padding: 10px;
-    width: 35%;
+    width: 100%;
     background: var(--background-color);
     font-family: var(--font-heading);
     border-radius: 20px;
     position: absolute;
-    top: 6.75em;
-    left: 6.75em;
+    top: 4em;
+    left: -0.5em;
     animation: opacity-fade 0.2s ease-in-out;
   }
   #search-results-list .search-result-entry {
@@ -69,23 +70,18 @@
     #search-results-container {
       width: 90%;
     }
-    #search-results-container {
-      left: 0;
-      top: 11.75em;
-      display: flex;
-      justify-content: center;
-      width: 94.4%;
-    }
   }
 </style>
 
-<script>
-  export let data;
-  let current = "";
-  $: result = current ? data.filter((element) =>
-        element.title.toLowerCase().includes(current) ||
-        element.slug.toLowerCase().includes(current) ||
-        element.description.toLowerCase().includes(current)) : [];
+<script lang="ts">
+  import type Post from "@entities/Post";
+
+  export let data: Post[];
+  let term = "";
+  $: results = term ? data.filter((element) =>
+        element.title.toLowerCase().includes(term.toLowerCase()) ||
+        element.slug.toLowerCase().includes(term.toLowerCase()) ||
+        element.description.toLowerCase().includes(term.toLowerCase())) : [];
 </script>
 
 <div id="search-area">
@@ -104,14 +100,14 @@
     <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
     <path d="M21 21l-6 -6"></path>
   </svg>
-  <input type="text" placeholder="Search for content..." bind:value={current} />
-  {#if result.length > 0}
+  <input type="text" placeholder="Search for content..." bind:value={term} />
+  {#if results.length > 0}
     <div id="search-results-container">
       <ol id="search-results-list">
-        {#each result as { title, slug, description, date, image }}
+        {#each results as { title, slug, description, date, image }}
         <a href={`/blog/posts/${slug}`}>
           <li class="search-result-entry">
-              <img alt="[Image]" class="search-result-entry-image" src={image} />
+              <img alt="[...]" class="search-result-entry-image" src={image} />
               <section class="search-result-entry-metadata">
                 <span class="search-result-entry-title">{title} • {new Date(date).toLocaleDateString()}</span>
                 <p class="search-result-entry-description">{description}</p>
