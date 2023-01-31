@@ -14,7 +14,7 @@
     "format": "eslint --fix **/*.{astro,ts,tsx}"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^6.1.0",
+    "@astrojs/cloudflare": "^6.1.1",
     "@astrojs/svelte": "^2.0.1",
     "astro": "^2.0.4",
     "astro-robots-txt": "^0.3.11",
@@ -22,9 +22,9 @@
     "vite": "^4.0.4"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.49.0",
-    "@typescript-eslint/parser": "^5.49.0",
-    "eslint": "^8.32.0",
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
+    "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-astro": "^0.23.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -33,6 +33,6 @@
     "prettier": "^2.8.3",
     "prettier-eslint": "^15.0.1",
     "prettier-plugin-astro": "^0.7.2",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.5"
   }
 }
