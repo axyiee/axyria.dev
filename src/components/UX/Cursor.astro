@@ -34,7 +34,7 @@ const { overlayIndex, size, count }: Props = Astro.props;
     left: 0;
   }
   @media only screen and (min-width: 701px) {
-    :global(a) {
+    :global(a), :global(input) {
       cursor: none;
     }
   }
@@ -116,7 +116,7 @@ const { overlayIndex, size, count }: Props = Astro.props;
         first = true;
       }
     });
-    const links = document.querySelectorAll("a, .theme-switcher");
+    const links = document.querySelectorAll("a, input, .theme-switcher");
     for (let i = 0; i < links.length; i++) {
       links[i].addEventListener("mouseover", () => {
         document.documentElement.style.setProperty("--cursor-color", "white");

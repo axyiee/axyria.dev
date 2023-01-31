@@ -7,4 +7,14 @@ interface Post {
   image: string;
 }
 
+export interface PageResult {
+  params: {
+    slug: string;
+  };
+  props: {
+    frontmatter: Post;
+    Content: any;
+  };
+}
+
 export default Post;

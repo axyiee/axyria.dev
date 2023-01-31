@@ -5,6 +5,7 @@
   "author": "Pedro <you@runtime.ee>",
   "license": "MIT",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -16,10 +17,10 @@
     "@astrojs/cloudflare": "^6.1.0",
     "@astrojs/rss": "2.0.0",
     "@astrojs/sitemap": "^1.0.0",
-    "@astrojs/svelte": "^2.0.0",
-    "astro": "^2.0.2",
+    "@astrojs/svelte": "^2.0.1",
+    "astro": "^2.0.4",
     "astro-robots-txt": "^0.3.11",
-    "svelte": "^3.54.0",
+    "svelte": "^3.55.1",
     "vite": "^4.0.4"
   },
   "devDependencies": {

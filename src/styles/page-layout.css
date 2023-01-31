@@ -1,6 +1,6 @@
 :root {
     --margin: 32px;
-    --nav-header-size: 2rem;
+    --nav-header-size: 1.75rem;
 }
 
 @keyframes slide-from-left {
@@ -38,21 +38,25 @@ body {
     padding: 0;
     margin: var(--margin);
     display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-div.horizontal-wrapper {
-    display: flex;
     flex-direction: row;
     gap: calc(var(--margin) * 1.25);
 }
 
-main {
+main, .app-wrapper {
     display: flex;
     flex-direction: column;
     animation: slide-from-bottom-opacity 1s ease-in-out;
-    gap: 32px;
+    gap: var(--margin);
+}
+
+.hover-shadow {
+    transition: transform 0.2s ease-in-out;
+}
+
+.hover-shadow:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 11px var(--box-shadow-color);
+    border-radius: 10px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -60,11 +64,8 @@ main {
         align-items: center;
         justify-content: center;
     }
-    div.horizontal-wrapper {
+    body {
         gap: 16px;
         flex-direction: column;
-    }
-    body {
-        gap: 25px;
     }
 }

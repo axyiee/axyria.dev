@@ -1,26 +1,15 @@
 ---
 import DefaultLayout from "../../../layouts/DefaultLayout.astro";
-import Post from "../../../entities/Post";
-
-interface PageResult {
-  params: {
-    slug: string;
-  };
-  props: {
-    frontmatter: Post;
-    Content: any;
-  };
-}
+import Post, { PageResult } from "../../../entities/Post";
 
 export async function findAllPages(): Promise<PageResult[]> {
-  const content = await Astro.glob("../../../content/blog/*.md");
+  const content = await Astro.glob<Post>("../../../content/blog/*.md");
   return content.map((page) => ({
     params: {
       slug: page.frontmatter.slug,
     },
     props: {
-      frontmatter: page.frontmatter as Post,
-      Content: page.Content,
+      ...page
     },
   }));
 }

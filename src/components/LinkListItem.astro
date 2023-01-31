@@ -1,0 +1,141 @@
+---
+export interface Props {
+  title: string;
+  uri: string;
+  uriShort: string;
+  description: string;
+  buttons: ItemButton[];
+}
+
+export interface ItemButton {
+  name: string;
+  icon: string;
+  uri: string;
+}
+
+const { title, uri, uriShort, description, buttons }: Props = Astro.props;
+---
+
+<style>
+  :root {
+    --modal-padding: 20px;
+    --modal-width: 500px;
+  }
+  div.link-list-item-modal {
+    padding: var(--modal-padding);
+    border-radius: 10px;
+    border: 1px solid var(--separator-color);
+    font-family: var(--font-heading);
+    height: 220px;
+  }
+  div.link-list-item-modal,
+  div.link-list-item-modal div.item-modal-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  div.link-list-item-modal {
+    gap: 16px;
+  }
+  div.link-list-item-modal div.item-modal-header span.item-modal-title {
+    font-weight: var(--font-heading-weight);
+  }
+  div.link-list-item-modal div.item-modal-header a.item-modal-uri > *,
+  div.link-list-item-modal p.item-modal-description {
+    color: var(--text-secondary-color);
+  }
+  div.link-list-item-modal div.item-modal-header a.item-modal-uri {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+  div.link-list-item-modal div.item-modal-header a.item-modal-uri svg {
+    width: 16px;
+    height: 16px;
+  }
+  div.link-list-item-modal p.item-modal-description {
+    width: var(--modal-width);
+    height: 60px;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    word-break: break-word;
+  }
+  div.link-list-item-modal div.item-modal-section-separator {
+    margin-left: calc(var(--modal-padding) * -1);
+    width: calc(100% + var(--modal-padding) * 2);
+    height: 1px;
+    background-color: var(--separator-color);
+  }
+  div.link-list-item-modal section.item-modal-buttons-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-top: 10px;
+    align-items: center;
+  }
+  div.link-list-item-modal
+    section.item-modal-buttons-wrapper
+    a.item-modal-button {
+    background-color: var(--modal-background-color);
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+  div.link-list-item-modal
+    section.item-modal-buttons-wrapper
+    a.item-modal-button
+    :global(svg) {
+    width: 16px;
+    height: 16px;
+  }
+  @media only screen and (max-width: 700px) {
+    :root {
+      --modal-width: 90%;
+    }
+  }
+</style>
+
+<div class="link-list-item-modal ui-sound-listener hover-shadow">
+  <div class="item-modal-header">
+    <span class="item-modal-title">{title}</span>
+    <a class="item-modal-uri ux-click-effect" href={uri}>
+      {uriShort}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5"
+        ></path>
+        <path d="M10 14l10 -10"></path>
+        <path d="M15 4l5 0l0 5"></path>
+      </svg>
+    </a>
+  </div>
+  <p class="item-modal-description">{description}</p>
+  <div class="item-modal-section-separator"></div>
+  <section class="item-modal-buttons-wrapper">
+    {
+      buttons.map((button) => (
+        <a class="item-modal-button ux-click-effect" href={button.uri}>
+          <Fragment set:html={button.icon} />
+          <span>{button.name}</span>
+        </a>
+      ))
+    }
+  </section>
+</div>

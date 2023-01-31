@@ -23,6 +23,10 @@ h2 {
   font-weight: var(--font-heading-weight);
 }
 
+input {
+  font-family: var(--font-heading);
+}
+
 p {
   font-size: 1rem;
   line-height: 2;
@@ -50,7 +54,7 @@ a:active {
 }
 
 .width-limited {
-  max-width: 46rem;
+  max-width: 80rem;
   text-align: justify;
 }
 

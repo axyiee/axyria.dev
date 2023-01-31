@@ -1,0 +1,35 @@
+---
+import LinkListItem from "./LinkListItem.astro";
+
+export interface Props {
+  icon: string;
+  description: string;
+  name: string;
+  uri: string;
+  domain: string;
+}
+
+const { icon, description, name, uri, domain }: Props = Astro.props;
+---
+
+<style>
+  li.contact-metadata {
+    list-style-type: none;
+  }
+</style>
+
+<li class="contact-metadata no-ux-click">
+  <LinkListItem
+    title={name}
+    uriShort={domain}
+    uri={uri}
+    description={description}
+    buttons={[
+      {
+        name: "Navigate",
+        icon,
+        uri,
+      },
+    ]}
+  />
+</li>

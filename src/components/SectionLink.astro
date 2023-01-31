@@ -7,21 +7,20 @@ const { href }: Props = Astro.props;
 ---
 
 <style>
-  .id-link svg {
+  .section-link svg {
     color: var(--text-secondary-color);
   }
-  .id-link {
+  .section-link {
     transition: transform 0.2s ease-in-out;
   }
-  .id-link:hover {
+  .section-link:hover {
     transform: scale(1.25);
   }
 </style>
 
-<a class="id-link" href={href}>
+<a class="section-link ui-sound-listener ux-click-effect" href={href}>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    class="icon icon-tabler icon-tabler-link"
     width="24"
     height="24"
     viewBox="0 0 24 24"

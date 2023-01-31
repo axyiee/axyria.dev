@@ -20,16 +20,12 @@
   flex-grow: 1;
   width: 200px;
   gap: 8px;
-}
-.content-list li {
   transition: transform 0.2s ease-in-out, padding 0.2s ease-in-out;
 }
 
-.content-list li:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 11px var(--box-shadow-color);
-  padding: 10px;
-  border-radius: 10px;
+div.link-list-item-modal {
+  align-items: flex-start;
+  text-align: left;
 }
 
 .content-list.grid-wrap {
@@ -45,7 +41,9 @@
 main {
   gap: calc(var(--margin) * 2);
   align-items: center;
+  justify-content: center;
   width: 100%;
+  height: 100%;
 }
 
 nav, .navigation-top {

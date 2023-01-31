@@ -1,0 +1,19 @@
+<style>
+  :root {
+    --blob-size: 200px;
+  }
+  div.top-left-blob {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--blob-size);
+    height: var(--blob-size);
+    border-radius: var(--blob-size);
+    background: var(--background-color);
+    background: var(--background-gradient-color);
+    z-index: -1;
+    filter: blur(100px) opacity(20%);
+  }
+</style>
+
+<div class="top-left-blob"></div>

@@ -18,30 +18,16 @@ const { data: item }: Props = Astro.props;
   li.navigation-entry {
     list-style: none;
   }
-  li.navigation-entry:first-child {
-    margin-top: 16px;
-  }
   li.navigation-entry a :global(svg) {
     width: 1.5rem;
     height: 1.5rem;
-    stroke: var(--text-color);
+    stroke: var(--text-secondary-color);
+    padding: 10px;
+    border-radius: 10px;
   }
   li.navigation-entry.selected a :global(svg) {
-    stroke: var(--accent-color);
-  }
-  li.navigation-entry.selected:after {
-    content: "";
-    position: absolute;
-    display: inline-block;
-    width: 1px;
-    height: 2em;
-    background-color: var(--separator-secondary-color);
-    animation: opacity-fade 2s ease-in-out;
-    left: 5em;
-    margin-top: -5px;
-  }
-  li.navigation-entry.selected:hover:after {
-    display: none;
+    stroke: var(--text-color);
+    background-color: var(--separator-color);
   }
   li.navigation-entry {
     transition: transform 0.2s ease-in-out;
@@ -62,12 +48,15 @@ const { data: item }: Props = Astro.props;
     border-radius: 4px;
     font-size: 0.8rem;
     font-weight: 500;
-    top: -5px;
-    left: 105%;
+    top: 0.5em;
+    left: 90%;
     z-index: 1;
   }
   li.navigation-entry:hover .item-tooltip {
     transform: scale(0.666);
+  }
+  li.navigation-entry.click-animation {
+    transform: scale(0.8) rotate(45deg) !important;
   }
   @media only screen and (max-width: 700px) {
     li.navigation-entry.selected:after {
@@ -81,7 +70,13 @@ const { data: item }: Props = Astro.props;
 
 <li
   data-path={item.id}
-  class:list={[{ "navigation-entry": true, selected: item.selected === true }]}
+  class:list={[
+    {
+      "navigation-entry": true,
+      "ux-click-effect": true,
+      selected: item.selected === true,
+    },
+  ]}
 >
   <a href={item.uri}>
     <Fragment set:html={item.icon} />

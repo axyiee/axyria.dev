@@ -1,0 +1,10 @@
+---
+import Post from "../../entities/Post";
+import SearchBarInternal from "./SearchBarInternal.svelte";
+
+const posts: Post[] = (await Astro.glob<Post>("../../content/blog/*.md")).map(
+  (data) => data.frontmatter
+);
+---
+
+<SearchBarInternal client:only="svelte" data={posts} />

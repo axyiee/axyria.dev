@@ -5,16 +5,16 @@ import DefaultLayout from "../../layouts/DefaultLayout.astro";
 import "../../styles/center.css";
 
 async function getBlogPosts(): Promise<Post[]> {
-  const content = await Astro.glob("../../content/blog/*.md");
+  const content = await Astro.glob<Post>("../../content/blog/*.md");
   const sorted = content.sort(
     (a, b) =>
       new Date(b.frontmatter.date).valueOf() -
       new Date(a.frontmatter.date).valueOf()
   );
   if (sorted.length === 1 && process.env.NODE_ENV === "development") {
-    return Array(16).fill(sorted[0].frontmatter as Post);
+    return Array(16).fill(sorted[0].frontmatter);
   }
-  return sorted.map((post) => post.frontmatter as Post);
+  return sorted.map((post) => post.frontmatter);
 }
 
 const posts: Post[] = await getBlogPosts();
@@ -27,7 +27,7 @@ const posts: Post[] = await getBlogPosts();
   :global([data-theme="light"]) {
     --lighter-color: rgba(0, 0, 0, 0.02);
   }
-  .content-list :global(li:hover) {
+  ol.content-list :global(li:hover) {
     padding: unset;
   }
 </style>

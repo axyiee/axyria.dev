@@ -1,6 +1,5 @@
 ---
-import IdLink from "../components/IdLink.astro";
-import NavigationSounds from "../components/NavigationSounds.astro";
+import SectionLink from "../components/SectionLink.astro";
 import Repository, { RepositoryData } from "../components/Repository.astro";
 import DefaultLayout from "../layouts/DefaultLayout.astro";
 
@@ -48,20 +47,22 @@ const work: RepositoryData[] = [
     text-align: left;
     gap: 32px;
   }
-  .with-icon {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
+  .header-rt {
+    font-family: var(--font-nav);
+    font-weight: var(--font-navbar-weight);
+    color: var(--text-color);
+    overflow: hidden;
+    white-space: nowrap;
     gap: 8px;
   }
+  .header-rt:after {
+    content: "!";
+    display: inline-block;
+    color: var(--accent-color);
+  }
   @media only screen and (max-width: 700px) {
-    #my-work {
-      align-items: center;
-      justify-content: center;
-    }
     #my-work ol {
       grid-template: "a" "b";
-      text-align: center;
     }
   }
 </style>
@@ -71,22 +72,23 @@ const work: RepositoryData[] = [
   description="Nice to meet you! I'm Pedro, a software engineer and theoretical computer science enthuasist willing to learn even more about the field."
 >
   <p class="text-secondary width-limited">
-    Hi there! My name is Pedro and I am a 15-year-old autistic software engineer
-    and theoretical computer science enthusiast based in Brazil. I am passionate
-    about compilers, kernels, and lexical analyzers, but my interests don't stop
-    there. I also love to delve into other subjects such as functional
-    programming, philosophy, linguistics, and physics. Despite being on the
-    autism spectrum, I am determined to make a significant impact in my field
-    and inspire others to do the same.
+    Greetings! I am Pedro, but you can also call me <span class="header-rt"
+      >runtime</span
+    > I am a dedicated and driven software engineer and theoretical computer science
+    enthusiast on the autism spectrum based in Brazil. My passion for technology
+    is evident in my interests, which include compilers, kernels, and lexical analyzers.
+    However, I also have a broad range of interests that extend beyond the realm
+    of computer science, including functional programming, philosophy, linguistics,
+    and physics. I am eager to share my experiences, insights, and perspectives,
+    and I look forward to the impact I can make in the world of technology and beyond.
   </p>
   <section id="my-work">
-    <h2 class="dotted with-icon">
+    <h2 class="dotted">
       My Work
-      <IdLink href="#my-work" />
+      <SectionLink href="#my-work" />
     </h2>
     <ol>
       {work.map((item) => <Repository data={item} />)}
     </ol>
   </section>
-  <NavigationSounds query="li.repository-metadata" />
 </DefaultLayout>

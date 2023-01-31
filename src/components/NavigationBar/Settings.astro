@@ -1,0 +1,102 @@
+---
+import ThemeSwitcher from "../ThemeSwitcher/_index.astro";
+---
+
+<style>
+  li.navigation-top {
+    display: flex;
+    list-style: none;
+    padding: 10px;
+    border-radius: 10px;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  li.navigation-top svg#settings-controller-icon {
+    transition: transform 0.2s ease-in-out;
+    stroke: var(--accent-color);
+  }
+  li.navigation-top svg#settings-controller-icon:hover {
+    transform: scale(1.5);
+  }
+  li.navigation-top section#app-settings-controller {
+    display: flex;
+    opacity: 0;
+    z-index: -1;
+  }
+  li.navigation-top section#app-settings-controller {
+    position: absolute;
+    filter: invert(1);
+    left: 7em;
+    top: 2em;
+    width: fit-content;
+    height: fit-content;
+    padding: 20px 35px 20px 35px;
+    background-color: var(--background-color);
+    transition: opacity 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    border-radius: 10px;
+  }
+  li.navigation-top section#app-settings-controller {
+    flex-direction: column;
+    font-family: var(--font-heading);
+  }
+  li.navigation-top section#app-settings-controller p {
+    color: var(--text-secondary-color);
+  }
+  li.navigation-top section#app-settings-controller.show-it {
+    opacity: 1;
+    z-index: unset;
+  }
+  @media only screen and (max-width: 700px) {
+    li.navigation-top section#app-settings-controller {
+      left: 0;
+      top: 5em;
+    }
+  }
+</style>
+
+<script>
+  const controllerIcon = document.querySelector("svg#settings-controller-icon");
+  const controllerMenu = document.querySelector("#app-settings-controller");
+  document.addEventListener("click", (event) => {
+    if (
+      event.target &&
+      !controllerMenu?.contains(event.target as Node) === true
+    ) {
+      controllerMenu!!.classList.remove("show-it");
+    }
+  });
+  controllerIcon!!.addEventListener("click", () => {
+    const has = controllerMenu!!.classList.contains("show-it");
+    setTimeout(
+      () => (!has ? controllerMenu!!.classList.add("show-it") : true),
+      50
+    );
+  });
+</script>
+
+<li class="navigation-top">
+  <svg
+    id="settings-controller-icon"
+    class="ui-sound-listener ux-click-effect"
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    stroke-width="2"
+    stroke="currentColor"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path
+      d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"
+    ></path>
+    <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+  </svg>
+  <section id="app-settings-controller">
+    <h1>Theme</h1>
+    <p>You can choose between two themes available in this website.</p>
+    <ThemeSwitcher />
+  </section>
+</li>

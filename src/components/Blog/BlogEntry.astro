@@ -60,7 +60,10 @@ const date = new Date(data.date).toLocaleDateString();
 </style>
 
 <li>
-  <a class="blog-post-home-entry" href={`/blog/posts/${slug}`}>
+  <a
+    class="blog-post-home-entry hover-shadow ui-sound-listener ux-click-effect"
+    href={`/blog/posts/${slug}`}
+  >
     <img class="blog-post-home-entry-image" src={image} alt="[Image]" />
     <span class="blog-post-home-entry-title">{title}</span>
     <span class="blog-post-home-entry-date">{date}</span>

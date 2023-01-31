@@ -1,12 +1,13 @@
 ---
-import Cursor from "../components/Cursor.astro";
+import Cursor from "../components/UX/Cursor.astro";
 import NavigationBar from "../components/NavigationBar/_index.astro";
 import ThemedLayout from "./ThemedLayout.astro";
-import Title from "../components/Title.astro";
 import "../global/Theme.astro";
 import "../styles/fonts.css";
 import "../styles/page-layout.css";
-import NavigationSounds from "../components/NavigationSounds.astro";
+import UXEffects from "../components/UX/UXEffects.astro";
+import SearchBar from "../components/Search/SearchBar.astro";
+import TopLeftBlob from "../components/UX/TopLeftBlob.astro";
 
 export interface Props {
   description: string;
@@ -17,15 +18,16 @@ const { description, current }: Props = Astro.props;
 ---
 
 <ThemedLayout description={description}>
-  <Title />
-  <div class="horizontal-wrapper">
-    <NavigationBar selected={current} />
-    <main>
+  <TopLeftBlob />
+  <NavigationBar selected={current} />
+  <main>
+    <SearchBar />
+    <div class="app-wrapper">
       <slot />
-    </main>
-  </div>
+    </div>
+  </main>
   <Cursor overlayIndex={2} size="20px" count={50} />
-  <NavigationSounds
-    query="li.navigation-entry, section.app-settings-controller > *, a.id-link"
+  <UXEffects
+    query="li.navigation-entry, .ui-sound-listener, .ux-click-effect, a.id-link"
   />
 </ThemedLayout>

@@ -4,10 +4,10 @@ specifiers:
   '@astrojs/cloudflare': ^6.1.0
   '@astrojs/rss': 2.0.0
   '@astrojs/sitemap': ^1.0.0
-  '@astrojs/svelte': ^2.0.0
+  '@astrojs/svelte': ^2.0.1
   '@typescript-eslint/eslint-plugin': ^5.49.0
   '@typescript-eslint/parser': ^5.49.0
-  astro: ^2.0.2
+  astro: ^2.0.4
   astro-robots-txt: ^0.3.11
   eslint: ^8.32.0
   eslint-config-prettier: ^8.6.0
@@ -18,16 +18,16 @@ specifiers:
   prettier: ^2.8.3
   prettier-eslint: ^15.0.1
   prettier-plugin-astro: ^0.7.2
-  svelte: ^3.54.0
+  svelte: ^3.55.1
   typescript: ^4.9.4
   vite: ^4.0.4
 
 dependencies:
-  '@astrojs/cloudflare': 6.1.0_astro@2.0.2
+  '@astrojs/cloudflare': 6.1.0_astro@2.0.4
   '@astrojs/rss': 2.0.0
   '@astrojs/sitemap': 1.0.0
-  '@astrojs/svelte': 2.0.0_cqcw23fxxwjerzxzncaq3vrsrm
-  astro: 2.0.2
+  '@astrojs/svelte': 2.0.1_b2hmcpbdtjiwya2fiiaewafy2q
+  astro: 2.0.4
   astro-robots-txt: 0.3.11
   svelte: 3.55.1
   vite: 4.0.4
@@ -56,12 +56,12 @@ packages:
       '@jridgewell/trace-mapping': 0.3.17
     dev: false
 
-  /@astrojs/cloudflare/6.1.0_astro@2.0.2:
+  /@astrojs/cloudflare/6.1.0_astro@2.0.4:
     resolution: {integrity: sha512-eVtjZjSe6SPq5O5KXbFMPpRid/k3b8DtPM4g2oSJ0njAY++9kVLRmWc3kRcJ6gYKBRs/bjSZpUNyMhuvZgyctQ==}
     peerDependencies:
       astro: ^2.0.2
     dependencies:
-      astro: 2.0.2
+      astro: 2.0.4
       esbuild: 0.15.18
       tiny-glob: 0.2.9
     dev: false
@@ -90,13 +90,13 @@ packages:
       vscode-uri: 3.0.7
     dev: false
 
-  /@astrojs/markdown-remark/2.0.1_astro@2.0.2:
+  /@astrojs/markdown-remark/2.0.1_astro@2.0.4:
     resolution: {integrity: sha512-xQF1rXGJN18m+zZucwRRtmNehuhPMMhZhi6HWKrtpEAKnHSPk8lqf1GXgKH7/Sypglu8ivdECZ+EGs6kOYVasQ==}
     peerDependencies:
       astro: ^2.0.2
     dependencies:
       '@astrojs/prism': 2.0.0
-      astro: 2.0.2
+      astro: 2.0.4
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.1
       rehype-raw: 6.1.1
@@ -133,15 +133,15 @@ packages:
       zod: 3.20.2
     dev: false
 
-  /@astrojs/svelte/2.0.0_cqcw23fxxwjerzxzncaq3vrsrm:
-    resolution: {integrity: sha512-UPD/Z+N5DhaE8FykvOr9JU0rJnGYlvNOR4MjezvUSniztEXPsm881xPbWVshvAlhPcRPLV7GUkacDRfnGqfQ9g==}
+  /@astrojs/svelte/2.0.1_b2hmcpbdtjiwya2fiiaewafy2q:
+    resolution: {integrity: sha512-CEr6tVtyEq10oIiEZ4l4/RxpN6lMjJ3I5B92rhPy5BANiszlFWMajtBmvz6sEdU5TzELGgLJfZtqm3Gl6tpMSQ==}
     engines: {node: '>=16.12.0'}
     peerDependencies:
-      astro: ^2.0.0
+      astro: ^2.0.4
       svelte: ^3.54.0
     dependencies:
       '@sveltejs/vite-plugin-svelte': 2.0.2_svelte@3.55.1+vite@4.0.4
-      astro: 2.0.2
+      astro: 2.0.4
       svelte: 3.55.1
       svelte2tsx: 0.5.23_atrrhq7vg4ekua4nnyrpuardle
     transitivePeerDependencies:
@@ -1127,14 +1127,14 @@ packages:
       zod: 3.20.2
     dev: false
 
-  /astro/2.0.2:
-    resolution: {integrity: sha512-47N1jLWNxSri7kWfIfgcEnQJZWTvd0gXhNC3P2ZHiiurl4nOxFC5ULsW5MDDTjTzQ1S7y1RoaL9XxYm+Rury7w==}
+  /astro/2.0.4:
+    resolution: {integrity: sha512-VSxFONW4hazODUIzjpoPdSZ4eRMz86pQn375277GhJDDRq/kfA5tSfvDFtySlAeEWrsE9W8tC2Jj3HuYcRYRig==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
       '@astrojs/compiler': 1.0.1
       '@astrojs/language-server': 0.28.3
-      '@astrojs/markdown-remark': 2.0.1_astro@2.0.2
+      '@astrojs/markdown-remark': 2.0.1_astro@2.0.4
       '@astrojs/telemetry': 2.0.0
       '@astrojs/webapi': 2.0.0
       '@babel/core': 7.20.12
