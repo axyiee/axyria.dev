@@ -1,4 +1,6 @@
 ---
+import ExternalLinkIcon from "./Icons/ExternalLinkIcon.svelte";
+
 export interface Props {
   title: string;
   uri: string;
@@ -111,30 +113,14 @@ const { title, uri, uriShort, description, buttons }: Props = Astro.props;
     <span class="item-modal-title">{title}</span>
     <a class="item-modal-uri ux-click-effect" href={uri}>
       {uriShort}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        stroke-width="2"
-        stroke="currentColor"
-        fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-        <path d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5"
-        ></path>
-        <path d="M10 14l10 -10"></path>
-        <path d="M15 4l5 0l0 5"></path>
-      </svg>
+      <ExternalLinkIcon />
     </a>
   </div>
   <p class="item-modal-description">{description}</p>
   <div class="item-modal-section-separator"></div>
   <section class="item-modal-buttons-wrapper">
     {
-      buttons.map((button) => (
+      buttons.map(button => (
         <a class="item-modal-button ux-click-effect" href={button.uri}>
           <Fragment set:html={button.icon} />
           <span>{button.name}</span>

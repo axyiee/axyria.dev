@@ -1,3 +1,46 @@
+<script lang="ts">
+  import { isClickOutside } from "@dom/ClickOutsideListener";
+  import ThemeSwitcher from "@components/Theme/ThemeSwitcher.svelte";
+  import { fade } from "svelte/transition";
+  import GearIcon from "@components/Icons/GearIcon.svelte";
+
+  let shown: boolean = false;
+  function handleIconClick() {
+    shown = !shown;
+  }
+  function handleIconWithKeyboard(event: KeyboardEvent) {
+    event.shiftKey && event.key.toLowerCase() == "s" && (shown = !shown);
+  }
+  function handleOutsideClick(event) {
+    shown && (shown = false);
+  }
+</script>
+
+<li class="navigation-top">
+  <GearIcon
+    class="ui-sound-listener ux-click-effect settings-controller-icon"
+    on:click={handleIconClick}
+    on:keydown={handleIconWithKeyboard}
+  />
+  {#if shown}
+    <div
+      id="app-settings-controller"
+      use:isClickOutside={["svg.settings-controller-icon"]}
+      on:click_outside={handleOutsideClick}
+      in:fade={{ duration: 200 }}
+      out:fade={{ duration: 200 }}
+    >
+      <section class="app-settings-controller-section">
+        <header>
+          <h1>Theme</h1>
+          <p>You can choose between two themes available in this website.</p>
+        </header>
+        <ThemeSwitcher />
+      </section>
+    </div>
+  {/if}
+</li>
+
 <style>
   li.navigation-top {
     display: flex;
@@ -8,11 +51,11 @@
     height: 1.5rem;
     position: relative;
   }
-  li.navigation-top svg#settings-controller-icon {
+  li.navigation-top :global(svg.settings-controller-icon) {
     transition: transform 0.2s ease-in-out;
     stroke: var(--accent-color);
   }
-  li.navigation-top svg#settings-controller-icon:hover {
+  li.navigation-top :global(svg.settings-controller-icon):hover {
     transform: scale(1.5);
   }
   li.navigation-top div#app-settings-controller {
@@ -42,7 +85,7 @@
     line-height: 1.5;
   }
   li.navigation-top
-  div#app-settings-controller
+    div#app-settings-controller
     .app-settings-controller-section
     header {
     display: flex;
@@ -64,55 +107,3 @@
     }
   }
 </style>
-
-<script lang="ts">
-  import { isClickOutside } from "@dom/ClickOutsideListener";
-  import ThemeSwitcher from "@components/Theme/ThemeSwitcher.svelte";
-  import { fade } from "svelte/transition";
-
-  let shown: boolean = false;
-  function handleIconClick() {
-    shown = !shown;
-  }
-  function handleIconWithKeyboard(event: KeyboardEvent) {
-    event.shiftKey && event.key.toLowerCase() == 's' && (shown = !shown);
-  }
-  function handleOutsideClick(event) {
-    shown && (shown = false);
-  }
-</script>
-
-<li class="navigation-top">
-  <svg
-    id="settings-controller-icon"
-    class="ui-sound-listener ux-click-effect"
-    on:click={handleIconClick}
-    on:keydown={handleIconWithKeyboard}
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    stroke-width="2"
-    stroke="currentColor"
-    fill="none"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  >
-    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-    <path
-      d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"
-    ></path>
-    <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-  </svg>
-  {#if shown}
-  <div id="app-settings-controller" use:isClickOutside={['#settings-controller-icon']} on:click_outside={handleOutsideClick}  in:fade="{{ duration: 200 }}" out:fade="{{ duration: 200 }}">
-    <section class="app-settings-controller-section">
-      <header>
-        <h1>Theme</h1>
-        <p>You can choose between two themes available in this website.</p>
-      </header>
-      <ThemeSwitcher />
-    </section>
-  </div>
-  {/if}
-</li>

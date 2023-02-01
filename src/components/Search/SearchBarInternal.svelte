@@ -1,3 +1,49 @@
+<script lang="ts">
+  import MagnifierIcon from "@components/Icons/MagnifierIcon.svelte";
+  import type Post from "@entities/Post";
+  import { fade } from "svelte/transition";
+
+  export let data: Post[];
+  let term = "";
+  $: term_ = term.toLowerCase();
+  $: results = term
+    ? data.filter(
+        element =>
+          element.title.toLowerCase().includes(term_) ||
+          element.slug.toLowerCase().includes(term_) ||
+          element.description.toLowerCase().includes(term_)
+      )
+    : [];
+</script>
+
+<div id="search-area">
+  <MagnifierIcon />
+  <input type="text" placeholder="Search for content..." bind:value={term} />
+  {#if results.length > 0}
+    <div
+      id="search-results-container"
+      in:fade={{ duration: 200 }}
+      out:fade={{ duration: 200 }}
+    >
+      <ol id="search-results-list">
+        {#each results as { title, slug, description, date, tags, image }}
+          <a href={`/blog/posts/${slug}`}>
+            <li class="search-result-entry">
+              <img class="search-result-entry-image" alt="" src={image} />
+              <section class="search-result-entry-metadata">
+                <span class="search-result-entry-title"
+                  >{title} • {new Date(date).toLocaleDateString()}</span
+                >
+                <p class="search-result-entry-description">{description}</p>
+              </section>
+            </li>
+          </a>
+        {/each}
+      </ol>
+    </div>
+  {/if}
+</div>
+
 <style>
   #search-area {
     display: flex;
@@ -23,10 +69,10 @@
   input[type="text"]:focus {
     outline: none;
   }
-  #search-area svg {
+  #search-area :global(svg) {
     color: var(--separator-secondary-color);
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
   }
   #search-results-container {
     filter: invert(1);
@@ -54,11 +100,15 @@
     justify-content: center;
     gap: 16px;
   }
-  #search-results-list .search-result-entry-metadata .search-result-entry-title {
+  #search-results-list
+    .search-result-entry-metadata
+    .search-result-entry-title {
     font-weight: var(--font-heading-weight);
     color: var(--text-color);
   }
-  #search-results-list .search-result-entry-metadata .search-result-entry-description {
+  #search-results-list
+    .search-result-entry-metadata
+    .search-result-entry-description {
     font-size: 0.9em;
     width: 80%;
     color: var(--text-secondary-color);
@@ -66,58 +116,9 @@
     justify-content: space-between;
   }
   @media only screen and (max-width: 700px) {
-    #search-area, 
+    #search-area,
     #search-results-container {
       width: 90%;
     }
   }
 </style>
-
-<script lang="ts">
-  import type Post from "@entities/Post";
-  import { fade } from "svelte/transition";
-
-  export let data: Post[];
-  let term = "";
-  $: term_ = term.toLowerCase();
-  $: results = term ? data.filter((element) =>
-        element.title.toLowerCase().includes(term_) ||
-        element.slug.toLowerCase().includes(term_) ||
-        element.description.toLowerCase().includes(term_)) : [];
-</script>
-
-<div id="search-area">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    stroke-width="2"
-    stroke="currentColor"
-    fill="none"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  >
-    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
-    <path d="M21 21l-6 -6"></path>
-  </svg>
-  <input type="text" placeholder="Search for content..." bind:value={term} />
-  {#if results.length > 0}
-    <div id="search-results-container" in:fade="{{ duration: 200 }}" out:fade="{{ duration: 200 }}">
-      <ol id="search-results-list">
-        {#each results as { title, slug, description, date, tags, image }}
-        <a href={`/blog/posts/${slug}`}>
-          <li class="search-result-entry">
-              <img class="search-result-entry-image" alt="" src={image} />
-              <section class="search-result-entry-metadata">
-                <span class="search-result-entry-title">{title} • {new Date(date).toLocaleDateString()}</span>
-                <p class="search-result-entry-description">{description}</p>
-              </section>
-            </li>
-          </a>
-        {/each}
-      </ol>
-    </div>
-  {/if}
-</div>
