@@ -22,7 +22,7 @@
     root.setAttribute("data-theme", "light");
   }
   function withKeyboard(event: KeyboardEvent) {
-    if (event.shiftKey && event.key == 'l') {
+    if (event.shiftKey && event.key.toLowerCase() == 'l') {
       apply();
     }
   }

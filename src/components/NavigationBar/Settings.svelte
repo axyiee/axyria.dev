@@ -15,12 +15,11 @@
   li.navigation-top svg#settings-controller-icon:hover {
     transform: scale(1.5);
   }
-  li.navigation-top section#app-settings-controller {
+  li.navigation-top div#app-settings-controller {
     display: flex;
-    pointer-events: none;
-    z-index: 2;
+    z-index: 1;
   }
-  li.navigation-top section#app-settings-controller {
+  li.navigation-top div#app-settings-controller {
     position: absolute;
     filter: invert(1);
     float: left;
@@ -33,17 +32,17 @@
     transition: background-color 0.2s ease-in-out;
     border-radius: 10px;
   }
-  li.navigation-top section#app-settings-controller {
+  li.navigation-top div#app-settings-controller {
     flex-direction: column;
     font-family: var(--font-heading);
     gap: 16px;
   }
-  li.navigation-top section#app-settings-controller p {
+  li.navigation-top div#app-settings-controller p {
     color: var(--text-secondary-color);
     line-height: 1.5;
   }
   li.navigation-top
-    section#app-settings-controller
+  div#app-settings-controller
     .app-settings-controller-section
     header {
     display: flex;
@@ -51,14 +50,14 @@
     gap: 5px;
   }
   li.navigation-top
-    section#app-settings-controller
+    div#app-settings-controller
     .app-settings-controller-section {
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
   @media only screen and (max-width: 700px) {
-    li.navigation-top section#app-settings-controller {
+    li.navigation-top div#app-settings-controller {
       left: 0;
       top: 4em;
       width: 250px;
@@ -73,10 +72,10 @@
 
   let shown: boolean = false;
   function handleIconClick() {
-    !shown && setTimeout(() => shown = true, 50);
+    shown = !shown;
   }
   function handleIconWithKeyboard(event: KeyboardEvent) {
-    event.shiftKey && event.key == 's' && (shown = !shown);
+    event.shiftKey && event.key.toLowerCase() == 's' && (shown = !shown);
   }
   function handleOutsideClick(event) {
     shown && (shown = false);
@@ -106,7 +105,7 @@
     <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
   </svg>
   {#if shown}
-  <section id="app-settings-controller" use:isClickOutside on:click_outside={handleOutsideClick} in:fade="{{ duration: 200 }}" out:fade="{{ duration: 200 }}">
+  <div id="app-settings-controller" use:isClickOutside={['#settings-controller-icon']} on:click_outside={handleOutsideClick}  in:fade="{{ duration: 200 }}" out:fade="{{ duration: 200 }}">
     <section class="app-settings-controller-section">
       <header>
         <h1>Theme</h1>
@@ -114,6 +113,6 @@
       </header>
       <ThemeSwitcher />
     </section>
-  </section>
+  </div>
   {/if}
 </li>

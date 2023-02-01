@@ -22,7 +22,7 @@
     root.setAttribute("data-theme", "dark");
   }
   function withKeyboard(event: KeyboardEvent) {
-    if (event.shiftKey && event.key == 'd') {
+    if (event.shiftKey && event.key.toLowerCase() == 'd') {
       apply();
     }
   }
