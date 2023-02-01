@@ -75,6 +75,7 @@
 
 <script lang="ts">
   import type Post from "@entities/Post";
+  import { fade } from "svelte/transition";
 
   export let data: Post[];
   let term = "";
@@ -102,7 +103,7 @@
   </svg>
   <input type="text" placeholder="Search for content..." bind:value={term} />
   {#if results.length > 0}
-    <div id="search-results-container">
+    <div id="search-results-container" in:fade="{{ duration: 200 }}" out:fade="{{ duration: 200 }}">
       <ol id="search-results-list">
         {#each results as { title, slug, description, date, image }}
         <a href={`/blog/posts/${slug}`}>

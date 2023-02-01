@@ -1,6 +1,5 @@
 ---
 import Preload from "@components/UX/Preload.astro";
-import { Spa } from "astro-spa";
 
 export interface Props {
   description: string;
@@ -21,7 +20,6 @@ const { description }: Props = Astro.props;
   </head>
   <Preload>
     <slot />
-    <Spa progressBar={false} />
   </Preload>
 
 

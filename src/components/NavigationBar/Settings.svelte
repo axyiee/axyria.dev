@@ -30,7 +30,7 @@
     height: fit-content;
     padding: 20px 35px 20px 35px;
     background-color: var(--background-color);
-    transition: opacity 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
     border-radius: 10px;
   }
   li.navigation-top section#app-settings-controller {
@@ -69,6 +69,7 @@
 <script lang="ts">
   import { isClickOutside } from "@dom/ClickOutsideListener";
   import ThemeSwitcher from "@components/Theme/ThemeSwitcher.svelte";
+  import { fade } from "svelte/transition";
 
   let shown: boolean = false;
   function handleIconClick() {
@@ -105,7 +106,7 @@
     <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
   </svg>
   {#if shown}
-  <section id="app-settings-controller" use:isClickOutside on:click_outside={handleOutsideClick}>
+  <section id="app-settings-controller" use:isClickOutside on:click_outside={handleOutsideClick} in:fade="{{ duration: 200 }}" out:fade="{{ duration: 200 }}">
     <section class="app-settings-controller-section">
       <header>
         <h1>Theme</h1>

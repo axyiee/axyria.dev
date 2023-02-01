@@ -52,9 +52,9 @@ const { query }: Props = Astro.props;
         }
         ux.classList.add("click-animation");
         setTimeout(() => ux.classList.remove("click-animation"), 500);
-        // if (href) {
-        //   setTimeout(() => (window.location = href), 450);
-        // }
+        if (href) {
+          setTimeout(() => (window.location = href), 450);
+        }
       });
   });
 </script>
