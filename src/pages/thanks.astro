@@ -1,14 +1,13 @@
 ---
 import UXEffects from "@components/UX/UXEffects.astro";
 import DefaultLayout from "@layouts/DefaultLayout.astro";
+import { Image } from "@astrojs/image/components";
 import "@styles/center.css";
 ---
 
 <style>
   ul.content-list li img {
     border-radius: 50%;
-    width: 128px;
-    height: 128px;
   }
   ul.content-list.grid-wrap {
     gap: calc(var(--margin) * 4);
@@ -24,9 +23,11 @@ import "@styles/center.css";
     <h1>Thank you so much<span class="text-accent">!</span></h1>
     <ul class="content-list grid-wrap">
       <li class="hover-shadow ui-sound-listener ux-click-effect">
-        <img
+        <Image
           alt="[PFP]"
           src="https://avatars.githubusercontent.com/u/54632522?s=128&v=4"
+          width={128}
+          height={128}
         />
         <p>- domain <span class="text-accent">&lt;3</span></p>
         <p>- homepage work section inspiration</p>
@@ -36,9 +37,11 @@ import "@styles/center.css";
         </a>
       </li>
       <li class="hover-shadow ui-sound-listener ux-click-effect">
-        <img
+        <Image
           alt="[PFP]"
           src="https://avatars.githubusercontent.com/u/45497981?s=128&v=4"
+          width={128}
+          height={128}
         />
         <p>- introducing me to astro</p>
         <p>- really cute</p>

@@ -1,5 +1,6 @@
 ---
 import DefaultLayout from "@layouts/DefaultLayout.astro";
+import { Image } from "@astrojs/image/components";
 import "@styles/center.css";
 ---
 
@@ -14,9 +15,6 @@ import "@styles/center.css";
     text-align: center;
     width: 80%;
   }
-  img {
-    width: 300px;
-  }
   #app-wrapper {
     display: flex;
     flex-direction: column;
@@ -30,7 +28,12 @@ import "@styles/center.css";
 </style>
 
 <DefaultLayout description="Oops! This page doesn't seem to exist!" current="">
-  <img src="/assets/undraw-page-not-found.svg" />
+  <Image
+    src="/assets/undraw-page-not-found.svg"
+    alt="[Illustration]"
+    width={300}
+    height={300}
+  />
   <section id="app-wrapper">
     <h1>404</h1>
     <p>

@@ -1,10 +1,11 @@
 ---
 import DefaultLayout from "@layouts/DefaultLayout.astro";
 import type { default as Post, PageResult } from "@entities/Post";
+import { Image } from "@astrojs/image/components";
 
 export async function findAllPages(): Promise<PageResult[]> {
   const content = await Astro.glob<Post>("../../../content/blog/*.md");
-  return content.map((page) => ({
+  return content.map(page => ({
     params: {
       slug: page.frontmatter.slug,
     },
@@ -15,7 +16,7 @@ export async function findAllPages(): Promise<PageResult[]> {
 }
 
 const page = (await findAllPages()).find(
-  (path) => path.params.slug === Astro.params.slug
+  path => path.params.slug === Astro.params.slug
 );
 if (!page) {
   return Astro.redirect("/404");
@@ -32,11 +33,6 @@ const date = new Date(frontmatter.date).toLocaleDateString();
   :global([data-theme="light"]) {
     --lighter-color: rgba(0, 0, 0, 0.05);
   }
-  :global(main) {
-    padding: 25px;
-    padding-top: 0;
-    gap: 5em;
-  }
   .blog-post-metadata {
     display: flex;
     flex-direction: row;
@@ -51,8 +47,6 @@ const date = new Date(frontmatter.date).toLocaleDateString();
     background-color: var(--lighter-color);
     border-radius: 10%;
     text-align: center;
-    width: 12rem;
-    height: 12rem;
   }
   .blog-post-metadata .blog-post-header {
     font-size: 2.4rem;
@@ -137,7 +131,7 @@ const date = new Date(frontmatter.date).toLocaleDateString();
       <p class="blog-post-desc">{description}</p>
       <ul class="blog-post-tags">
         {
-          tags.map((tag) => (
+          tags.map(tag => (
             <li>
               <a href={`/blog/tags/${tag}`}>{tag}</a>
             </li>
@@ -145,7 +139,13 @@ const date = new Date(frontmatter.date).toLocaleDateString();
         }
       </ul>
     </div>
-    <img class="blog-post-image" src={image} alt="[Image]" />
+    <Image
+      class="blog-post-image"
+      src={image}
+      alt="[Image]"
+      width={192}
+      height={192}
+    />
   </section>
   <div class="blog-post-content">
     <Content />

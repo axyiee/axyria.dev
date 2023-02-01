@@ -79,10 +79,11 @@
 
   export let data: Post[];
   let term = "";
+  $: term_ = term.toLowerCase();
   $: results = term ? data.filter((element) =>
-        element.title.toLowerCase().includes(term.toLowerCase()) ||
-        element.slug.toLowerCase().includes(term.toLowerCase()) ||
-        element.description.toLowerCase().includes(term.toLowerCase())) : [];
+        element.title.toLowerCase().includes(term_) ||
+        element.slug.toLowerCase().includes(term_) ||
+        element.description.toLowerCase().includes(term_)) : [];
 </script>
 
 <div id="search-area">
@@ -105,10 +106,10 @@
   {#if results.length > 0}
     <div id="search-results-container" in:fade="{{ duration: 200 }}" out:fade="{{ duration: 200 }}">
       <ol id="search-results-list">
-        {#each results as { title, slug, description, date, image }}
+        {#each results as { title, slug, description, date, tags, image }}
         <a href={`/blog/posts/${slug}`}>
           <li class="search-result-entry">
-              <img alt="[...]" class="search-result-entry-image" src={image} />
+              <img class="search-result-entry-image" alt="" src={image} />
               <section class="search-result-entry-metadata">
                 <span class="search-result-entry-title">{title} • {new Date(date).toLocaleDateString()}</span>
                 <p class="search-result-entry-description">{description}</p>
