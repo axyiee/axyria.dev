@@ -1,7 +1,7 @@
 ---
 import Item, { ItemData } from "./Item.astro";
 import ItemsWrapper from "./ItemsWrapper.astro";
-import Settings from "./Settings.astro";
+import Settings from "./Settings.svelte";
 
 export interface Props {
   selected?: string;
@@ -71,9 +71,9 @@ const { selected }: Props = Astro.props;
 
 <nav aria-hidden="true">
   <ItemsWrapper>
-    <Settings />
+    <Settings client:only="svelte" />
     {
-      items.map((item) => (
+      items.map(item => (
         <Item data={{ ...item, selected: selected === item.id }} />
       ))
     }

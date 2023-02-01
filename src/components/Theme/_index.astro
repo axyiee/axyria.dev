@@ -50,7 +50,7 @@
   .text-accent {
     color: var(--accent-color);
   }
-  :global(body):not(:global(.preload)) {
+  body:not(.preload) {
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   }
   .theme-selector {
@@ -61,17 +61,15 @@
   }
 </style>
 
-<head>
-  <script>
-    const local = localStorage.getItem("theme");
-    const theme =
-      local ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light");
-    if (!local) {
-      localStorage.setItem("theme", theme);
-    }
-    document.documentElement.setAttribute("data-theme", theme);
-  </script>
-</head>
+<script>
+  const local = localStorage.getItem("theme");
+  const theme =
+    local ||
+    (window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+  if (!local) {
+    localStorage.setItem("theme", theme);
+  }
+  document.documentElement.setAttribute("data-theme", theme);
+</script>

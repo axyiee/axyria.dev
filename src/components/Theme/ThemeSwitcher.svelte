@@ -1,7 +1,7 @@
----
-import DarkThemeIcon from "./DarkThemeIcon.astro";
-import LightThemeIcon from "./LightThemeIcon.astro";
----
+<script>
+  import DarkThemeIcon from "./DarkThemeIcon.svelte";
+  import LightThemeIcon from "./LightThemeIcon.svelte";
+</script>
 
 <style>
   #theme-switcher-wrapper {

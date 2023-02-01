@@ -34,7 +34,8 @@ const { overlayIndex, size, count }: Props = Astro.props;
     left: 0;
   }
   @media only screen and (min-width: 701px) {
-    :global(a), :global(input) {
+    :global(a),
+    :global(input) {
       cursor: none;
     }
   }
@@ -60,7 +61,7 @@ const { overlayIndex, size, count }: Props = Astro.props;
     const elements = Array.from(
       document.getElementsByClassName("c-cursor-circle")
     );
-    const circles: CirclePosition[] = elements.map((html) => ({
+    const circles: CirclePosition[] = elements.map(html => ({
       html: html as HTMLDivElement,
       pos: {
         x: 0,
@@ -99,7 +100,7 @@ const { overlayIndex, size, count }: Props = Astro.props;
     };
     const cursor: HTMLPosition = { x: 0, y: 0 };
     let first = true;
-    window.addEventListener("mousemove", (e) => {
+    window.addEventListener("mousemove", e => {
       cursor.x = e.clientX;
       cursor.y = e.clientY;
       if (first) {
@@ -107,7 +108,7 @@ const { overlayIndex, size, count }: Props = Astro.props;
         first = false;
       }
     });
-    window.addEventListener("mouseout", (e) => {
+    window.addEventListener("mouseout", e => {
       if (e.relatedTarget === null) {
         const element = document.getElementById("c-cursor");
         if (element) {
@@ -139,7 +140,7 @@ const { overlayIndex, size, count }: Props = Astro.props;
 <>
   <div id="c-cursor">
     {
-      Array.from({ length: count }, (_, i) => i).map((_) => (
+      Array.from({ length: count }, (_, i) => i).map(_ => (
         <div class="c-cursor-circle" />
       ))
     }

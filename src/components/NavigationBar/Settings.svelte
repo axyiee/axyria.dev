@@ -1,7 +1,3 @@
----
-import ThemeSwitcher from "@components/Theme/ThemeSwitcher.astro";
----
-
 <style>
   li.navigation-top {
     display: flex;
@@ -21,9 +17,8 @@ import ThemeSwitcher from "@components/Theme/ThemeSwitcher.astro";
   }
   li.navigation-top section#app-settings-controller {
     display: flex;
-    opacity: 0;
-    z-index: 2;
     pointer-events: none;
+    z-index: 2;
   }
   li.navigation-top section#app-settings-controller {
     position: absolute;
@@ -62,10 +57,6 @@ import ThemeSwitcher from "@components/Theme/ThemeSwitcher.astro";
     flex-direction: column;
     gap: 16px;
   }
-  li.navigation-top section#app-settings-controller.show-it {
-    opacity: 1;
-    pointer-events: unset;
-  }
   @media only screen and (max-width: 700px) {
     li.navigation-top section#app-settings-controller {
       left: 0;
@@ -75,30 +66,28 @@ import ThemeSwitcher from "@components/Theme/ThemeSwitcher.astro";
   }
 </style>
 
-<script>
-  const controllerIcon = document.querySelector("svg#settings-controller-icon");
-  const controllerMenu = document.querySelector("#app-settings-controller");
-  document.addEventListener("click", (event) => {
-    if (
-      event.target &&
-      !controllerMenu?.contains(event.target as Node) === true
-    ) {
-      controllerMenu!!.classList.remove("show-it");
-    }
-  });
-  controllerIcon!!.addEventListener("click", () => {
-    const has = controllerMenu!!.classList.contains("show-it");
-    setTimeout(
-      () => (!has ? controllerMenu!!.classList.add("show-it") : true),
-      150
-    );
-  });
+<script lang="ts">
+  import { isClickOutside } from "@dom/ClickOutsideListener";
+  import ThemeSwitcher from "@components/Theme/ThemeSwitcher.svelte";
+
+  let shown: boolean = false;
+  function handleIconClick() {
+    !shown && setTimeout(() => shown = true, 50);
+  }
+  function handleIconWithKeyboard(event: KeyboardEvent) {
+    event.shiftKey && event.key == 's' && (shown = !shown);
+  }
+  function handleOutsideClick(event) {
+    shown && (shown = false);
+  }
 </script>
 
 <li class="navigation-top">
   <svg
     id="settings-controller-icon"
     class="ui-sound-listener ux-click-effect"
+    on:click={handleIconClick}
+    on:keydown={handleIconWithKeyboard}
     xmlns="http://www.w3.org/2000/svg"
     width="24"
     height="24"
@@ -115,7 +104,8 @@ import ThemeSwitcher from "@components/Theme/ThemeSwitcher.astro";
     ></path>
     <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
   </svg>
-  <section id="app-settings-controller">
+  {#if shown}
+  <section id="app-settings-controller" use:isClickOutside on:click_outside={handleOutsideClick}>
     <section class="app-settings-controller-section">
       <header>
         <h1>Theme</h1>
@@ -124,4 +114,5 @@ import ThemeSwitcher from "@components/Theme/ThemeSwitcher.astro";
       <ThemeSwitcher />
     </section>
   </section>
+  {/if}
 </li>
