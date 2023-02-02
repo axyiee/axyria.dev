@@ -1,8 +1,7 @@
 ---
 import BlogEntry from "@components/Blog/BlogEntry.astro";
-import DefaultLayout from "@layouts/DefaultLayout.astro";
 import type Post from "@entities/Post";
-import "@styles/center.css";
+import CenteredLayout from "@layouts/CenteredLayout.astro";
 
 async function getBlogPosts(): Promise<Post[]> {
   const content = await Astro.glob<Post>("../../content/blog/*.md");
@@ -14,7 +13,7 @@ async function getBlogPosts(): Promise<Post[]> {
   if (sorted.length === 1 && process.env.NODE_ENV === "development") {
     return Array(16).fill(sorted[0].frontmatter);
   }
-  return sorted.map((post) => post.frontmatter);
+  return sorted.map(post => post.frontmatter);
 }
 
 const posts: Post[] = await getBlogPosts();
@@ -27,17 +26,17 @@ const posts: Post[] = await getBlogPosts();
   :global([data-theme="light"]) {
     --lighter-color: rgba(0, 0, 0, 0.02);
   }
-  ol.content-list :global(li:hover) {
+  :global(ol.content-list li:hover) {
     padding: unset;
   }
 </style>
 
-<DefaultLayout
+<CenteredLayout
   current="blog"
   description="All posts describing my journey as a software engineer and my point of view about this world."
+  title="Posts"
+  after=":"
+  grid={true}
 >
-  <h1>Blog Posts<span class="text-accent">:</span></h1>
-  <ol class="content-list grid-wrap">
-    {posts.map((post) => <BlogEntry data={post} />)}
-  </ol>
-</DefaultLayout>
+  {posts.map(post => <BlogEntry data={post} />)}
+</CenteredLayout>

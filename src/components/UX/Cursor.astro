@@ -8,48 +8,11 @@ export interface Props {
 const { overlayIndex, size, count }: Props = Astro.props;
 ---
 
-<style define:vars={{ overlayIndex, cursorSize: size }}>
-  :root {
-    --cursor-color: var(--accent-color);
-  }
-  #c-cursor {
-    display: none;
-    position: absolute;
-    opacity: 0;
-    animation: opacity-fade 1s ease-in-out;
-    transition: opacity 1s ease-in-out;
-    mix-blend-mode: difference;
-    pointer-events: none;
-    z-index: var(--overlayIndex);
-  }
-  #c-cursor div {
-    height: var(--cursorSize);
-    width: var(--cursorSize);
-    border-radius: var(--cursorSize);
-    background-color: var(--cursor-color);
-    transition: background-color 0.5s ease-in-out;
-    pointer-events: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-  }
-  @media only screen and (min-width: 701px) {
-    :global(a),
-    :global(input) {
-      cursor: none;
-    }
-  }
-</style>
-
 <script>
+  import addCustomCursorSupport from "@dom/CursorSupport";
+
   type HTMLPosition = { x: number; y: number };
   type CirclePosition = { html: HTMLDivElement; pos: HTMLPosition };
-  function removeBuiltInCursor() {
-    document.head.insertAdjacentHTML(
-      "beforeend",
-      '<style type="text/css">html { cursor: none }</style>'
-    );
-  }
   function display() {
     const element = document.getElementById("c-cursor");
     if (element) {
@@ -80,11 +43,18 @@ const { overlayIndex, size, count }: Props = Astro.props;
       circle.pos.x = pos.x;
       circle.pos.y = pos.y;
     };
+    const settings = {
+      reshow: true,
+      visible: true,
+    };
     const animate = (
       circles: CirclePosition[],
       offset: number,
       cursor: () => HTMLPosition
     ) => {
+      if (!settings.visible) {
+        return;
+      }
       let x = cursor().x,
         y = cursor().y;
       for (let i = 0; i < circles.length; i++) {
@@ -99,50 +69,89 @@ const { overlayIndex, size, count }: Props = Astro.props;
       requestAnimationFrame(() => animate(circles, offset, cursor));
     };
     const cursor: HTMLPosition = { x: 0, y: 0 };
-    let first = true;
-    window.addEventListener("mousemove", e => {
+    const hide = () => {
+      const element = document.getElementById("c-cursor");
+      if (element) {
+        element.style.opacity = "0";
+      }
+      settings.reshow = true;
+    };
+    const onMove = e => {
       cursor.x = e.clientX;
       cursor.y = e.clientY;
-      if (first) {
+      if (settings.reshow) {
         setTimeout(display, 80);
-        first = false;
+        settings.reshow = false;
       }
-    });
-    window.addEventListener("mouseout", e => {
+    };
+    const onOut = e => {
       if (e.relatedTarget === null) {
-        const element = document.getElementById("c-cursor");
-        if (element) {
-          element.style.opacity = "0";
-        }
-        first = true;
+        hide();
       }
-    });
-    const links = document.querySelectorAll("a, input, .theme-switcher");
-    for (let i = 0; i < links.length; i++) {
-      links[i].addEventListener("mouseover", () => {
-        document.documentElement.style.setProperty("--cursor-color", "white");
-      });
-      links[i].addEventListener("mouseout", () => {
-        document.documentElement.style.setProperty(
-          "--cursor-color",
-          "var(--accent-color)"
-        );
-      });
+    };
+    const enable = () => {
+      window.addEventListener("mousemove", onMove);
+      window.addEventListener("mouseout", onOut);
+      document.documentElement.style.setProperty("--cursor-mode", "none");
+      settings.visible = true;
+      animate(circles, 12, () => cursor);
+    };
+    const disable = () => {
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseout", onOut);
+      document.documentElement.style.setProperty("--cursor-mode", "auto");
+      settings.reshow = true;
+      settings.visible = false;
+      hide();
+    };
+    window.addEventListener("custom_cursor_disable", () => disable());
+    window.addEventListener("custom_cursor_enable", () => enable());
+    const enabled = localStorage.getItem("custom_cursor_enable");
+    if (enabled == null || enabled === "true") {
+      enable();
     }
-    animate(circles, 12, () => cursor);
   }
+  addCustomCursorSupport("a, input, button, .theme-switcher");
   if (window.innerWidth > 700) {
-    removeBuiltInCursor();
     listen();
   }
 </script>
 
-<>
-  <div id="c-cursor">
-    {
-      Array.from({ length: count }, (_, i) => i).map(_ => (
-        <div class="c-cursor-circle" />
-      ))
-    }
-  </div>
-</>
+<div id="c-cursor">
+  {
+    Array.from({ length: count }, (_, i) => i).map(_ => (
+      <div class="c-cursor-circle" />
+    ))
+  }
+</div>
+
+<style define:vars={{ overlayIndex, cursorSize: size }}>
+  :global(:root) {
+    --cursor-color: var(--accent-color);
+    --cursor-mode: auto;
+  }
+  #c-cursor {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    animation: opacity-fade 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+    mix-blend-mode: difference;
+    pointer-events: none;
+    z-index: var(--overlayIndex);
+  }
+  #c-cursor div {
+    height: var(--cursorSize);
+    width: var(--cursorSize);
+    border-radius: var(--cursorSize);
+    background-color: var(--cursor-color);
+    transition: background-color 0.5s ease-in-out;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  :global(html, a, input, button, .theme-switcher) {
+    cursor: var(--cursor-mode);
+  }
+</style>

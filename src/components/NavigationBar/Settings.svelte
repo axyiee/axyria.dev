@@ -3,6 +3,7 @@
   import ThemeSwitcher from "@components/Theme/ThemeSwitcher.svelte";
   import { fade } from "svelte/transition";
   import GearIcon from "@components/Icons/GearIcon.svelte";
+  import SliderSwitch from "./SliderSwitch.svelte";
 
   let shown: boolean = false;
   function handleIconClick() {
@@ -11,7 +12,7 @@
   function handleIconWithKeyboard(event: KeyboardEvent) {
     event.shiftKey && event.key.toLowerCase() == "s" && (shown = !shown);
   }
-  function handleOutsideClick(event) {
+  function handleOutsideClick(_event) {
     shown && (shown = false);
   }
 </script>
@@ -27,8 +28,7 @@
       id="app-settings-controller"
       use:isClickOutside={["svg.settings-controller-icon"]}
       on:click_outside={handleOutsideClick}
-      in:fade={{ duration: 200 }}
-      out:fade={{ duration: 200 }}
+      transition:fade={{ duration: 200 }}
     >
       <section class="app-settings-controller-section">
         <header>
@@ -36,6 +36,26 @@
           <p>You can choose between two themes available in this website.</p>
         </header>
         <ThemeSwitcher />
+      </section>
+      <section class="app-settings-controller-section">
+        <header>
+          <h1>Custom Cursor</h1>
+          <p>
+            Whether or not the custom cursor should be enabled while visiting
+            this website.
+          </p>
+        </header>
+        <SliderSwitch
+          value={localStorage.getItem("custom_cursor_enable") === "true"}
+          on:enable={() => {
+            localStorage.setItem("custom_cursor_enable", "true");
+            window.dispatchEvent(new CustomEvent("custom_cursor_enable"));
+          }}
+          on:disable={() => {
+            localStorage.setItem("custom_cursor_enable", "false");
+            window.dispatchEvent(new CustomEvent("custom_cursor_disable"));
+          }}
+        />
       </section>
     </div>
   {/if}
@@ -59,10 +79,6 @@
     transform: scale(1.5);
   }
   li.navigation-top div#app-settings-controller {
-    display: flex;
-    z-index: 1;
-  }
-  li.navigation-top div#app-settings-controller {
     position: absolute;
     filter: invert(1);
     float: left;
@@ -76,9 +92,10 @@
     border-radius: 10px;
   }
   li.navigation-top div#app-settings-controller {
+    display: flex;
     flex-direction: column;
     font-family: var(--font-heading);
-    gap: 16px;
+    gap: 32px;
   }
   li.navigation-top div#app-settings-controller p {
     color: var(--text-secondary-color);
@@ -98,6 +115,10 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+  }
+  :global(button),
+  :global(.theme-switcher) {
+    cursor: var(--cursor-mode);
   }
   @media only screen and (max-width: 700px) {
     li.navigation-top div#app-settings-controller {

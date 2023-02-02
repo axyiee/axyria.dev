@@ -1,55 +1,53 @@
 ---
-import UXEffects from "@components/UX/UXEffects.astro";
-import DefaultLayout from "@layouts/DefaultLayout.astro";
 import { Image } from "@astrojs/image/components";
-import "@styles/center.css";
+import CenteredLayout from "@layouts/CenteredLayout.astro";
 ---
 
 <style>
-  ul.content-list li img {
+  :global(ol.content-list) li img {
     border-radius: 50%;
   }
-  ul.content-list.grid-wrap {
+  :global(ol.content-list).grid-wrap {
     gap: calc(var(--margin) * 4);
   }
-  ul.content-list li {
+  :global(ol.content-list) li {
     padding: 10px;
     border-radius: 25px !important;
   }
 </style>
 
-<DefaultLayout current="thanks" description="Amazing people I'd like to thank!">
-  <main>
-    <h1>Thank you so much<span class="text-accent">!</span></h1>
-    <ul class="content-list grid-wrap">
-      <li class="hover-shadow ui-sound-listener ux-click-effect">
-        <Image
-          alt="[PFP]"
-          src="https://avatars.githubusercontent.com/u/54632522?s=128"
-          width={128}
-          height={128}
-        />
-        <p>- domain <span class="text-accent">&lt;3</span></p>
-        <p>- homepage work section inspiration</p>
-        <p>- really cute</p>
-        <a href="https://dzshn.xyz">
-          <a href="https://dzshn.xyz">dzshn.xyz</a>
-        </a>
-      </li>
-      <li class="hover-shadow ui-sound-listener ux-click-effect">
-        <Image
-          alt="[PFP]"
-          src="https://avatars.githubusercontent.com/u/45497981?s=128"
-          width={128}
-          height={128}
-        />
-        <p>- introducing me to astro</p>
-        <p>- really cute</p>
-        <a href="https://vendicated.dev">
-          <a href="https://vendicated.dev">vendicated.dev</a>
-        </a>
-      </li>
-    </ul>
-  </main>
-  <UXEffects query="ul.content-list li" />
-</DefaultLayout>
+<CenteredLayout
+  current="thanks"
+  description="Amazing people I'd like to thank!"
+  title="Thank you so much"
+  after="!"
+  grid={true}
+>
+  <li class="hover-shadow ui-sound-listener ux-click-effect">
+    <Image
+      alt="[PFP]"
+      src="https://avatars.githubusercontent.com/u/54632522?s=128"
+      width={128}
+      height={128}
+    />
+    <p>- domain <span class="text-accent">&lt;3</span></p>
+    <p>- homepage work section inspiration</p>
+    <p>- really cute</p>
+    <a href="https://dzshn.xyz">
+      <a href="https://dzshn.xyz">dzshn.xyz</a>
+    </a>
+  </li>
+  <li class="hover-shadow ui-sound-listener ux-click-effect">
+    <Image
+      alt="[PFP]"
+      src="https://avatars.githubusercontent.com/u/45497981?s=128"
+      width={128}
+      height={128}
+    />
+    <p>- introducing me to astro</p>
+    <p>- really cute</p>
+    <a href="https://vendicated.dev">
+      <a href="https://vendicated.dev">vendicated.dev</a>
+    </a>
+  </li>
+</CenteredLayout>

@@ -45,9 +45,6 @@ const { selected }: Props = Astro.props;
 
 <style>
   nav {
-    animation: slide-from-left 0.75s ease-in-out;
-  }
-  nav {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -56,15 +53,30 @@ const { selected }: Props = Astro.props;
   nav {
     gap: 16px;
   }
+  nav {
+    animation: slide-from-left 0.75s ease-in-out;
+    z-index: 2;
+  }
   @media only screen and (max-width: 700px) {
     nav {
       align-items: center;
+      justify-content: center;
       gap: 5px;
-      margin-bottom: 16px;
     }
     main {
       margin-left: 0;
       margin-top: 0;
+    }
+  }
+  @media only screen and (min-width: 701px) {
+    nav {
+      border-right: 1px solid var(--separator-color);
+      transition: border-right 0.2s ease-in-out;
+      height: calc(100vh - var(--margin) * 2);
+      left: var(--margin);
+      top: var(--margin);
+      padding-right: 24px;
+      position: sticky;
     }
   }
 </style>

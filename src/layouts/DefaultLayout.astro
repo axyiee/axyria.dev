@@ -4,7 +4,7 @@ import NavigationBar from "@components/NavigationBar/_index.astro";
 import ThemedLayout from "./ThemedLayout.astro";
 import "@components/Theme/_index.astro";
 import "@styles/fonts.css";
-import "@styles/page-layout.css";
+import "@styles/transitions.css";
 import UXEffects from "@components/UX/UXEffects.astro";
 import SearchBar from "@components/Search/SearchBar.astro";
 import TopLeftBlob from "@components/UX/TopLeftBlob.astro";
@@ -31,3 +31,42 @@ const { description, current }: Props = Astro.props;
     query="li.navigation-entry, .ui-sound-listener, .ux-click-effect, a.id-link"
   />
 </ThemedLayout>
+
+<style is:global>
+  :root {
+    --margin: 32px;
+    --nav-header-size: 1.75rem;
+  }
+
+  body {
+    padding: 0;
+    margin: var(--margin);
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  main,
+  .app-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--margin);
+  }
+
+  .hover-shadow:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 11px var(--box-shadow-color);
+    border-radius: 10px;
+  }
+
+  @media only screen and (max-width: 700px) {
+    .navigation-top {
+      align-items: center;
+      justify-content: center;
+    }
+    body {
+      gap: 16px;
+      flex-direction: column;
+    }
+  }
+</style>

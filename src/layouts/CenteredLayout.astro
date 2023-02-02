@@ -1,0 +1,76 @@
+---
+import UXEffects from "@components/UX/UXEffects.astro";
+import DefaultLayout from "./DefaultLayout.astro";
+
+export interface Props {
+  description: string;
+  current: string;
+  title: string;
+  after: string;
+  grid?: boolean;
+}
+
+const { description, current, title, after, grid }: Props = Astro.props;
+---
+
+<DefaultLayout description={description} current={current}>
+  <h1>{title}<span class="text-accent">{after}</span></h1>
+  <ol class:list={[{ "content-list": true, "grid-wrap": grid === true }]}>
+    <slot />
+  </ol>
+  <UXEffects query="ol.content-list li" />
+</DefaultLayout>
+
+<style is:global>
+  :root {
+    --grid-gap: 64px;
+  }
+
+  .content-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: calc(var(--margin) * 4);
+  }
+
+  .content-list li {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-grow: 1;
+    width: 200px;
+    gap: 8px;
+    transition: transform 0.2s ease-in-out, padding 0.2s ease-in-out;
+  }
+
+  div.link-list-item-modal {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .content-list.grid-wrap {
+    justify-content: center;
+    column-gap: normal;
+    row-gap: calc(var(--margin) * 2);
+  }
+
+  .content-list.grid-wrap li {
+    flex-basis: calc(100% / 3);
+  }
+
+  main {
+    gap: calc(var(--margin) * 2);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  h1 {
+    text-align: center;
+  }
+</style>

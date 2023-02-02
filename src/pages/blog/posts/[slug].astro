@@ -27,12 +27,6 @@ const date = new Date(frontmatter.date).toLocaleDateString();
 ---
 
 <style>
-  :root {
-    --lighter-color: rgba(255, 255, 255, 0.015);
-  }
-  :global([data-theme="light"]) {
-    --lighter-color: rgba(0, 0, 0, 0.05);
-  }
   .blog-post-metadata {
     display: flex;
     flex-direction: row;
@@ -44,7 +38,7 @@ const date = new Date(frontmatter.date).toLocaleDateString();
   }
   .blog-post-metadata .blog-post-image {
     padding: 1rem;
-    background-color: var(--lighter-color);
+    background-color: var(--tag-lighter-color);
     border-radius: 10%;
     text-align: center;
   }
@@ -79,7 +73,7 @@ const date = new Date(frontmatter.date).toLocaleDateString();
     list-style: none;
     padding: 5px;
     border-radius: 5px;
-    background-color: var(--lighter-color);
+    background-color: var(--tag-lighter-color);
   }
   .blog-post-content {
     display: flex;
