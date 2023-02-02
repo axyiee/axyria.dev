@@ -48,7 +48,7 @@
         </header>
         <span class="switch-wrapper ux-click-effect">
           <Switch
-            checked={localStorage.getItem("custom_cursor_enable") === "true"}
+            checked={localStorage.getItem("custom_cursor_enable") !== "false"}
             on:change={event => {
               const state = event.detail.checked ? "enable" : "disable";
               localStorage.setItem(
