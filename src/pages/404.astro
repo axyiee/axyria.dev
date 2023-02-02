@@ -1,8 +1,8 @@
 ---
 import DefaultLayout from "@layouts/DefaultLayout.astro";
-import { Image } from "@astrojs/image/components";
-import "@styles/center.css";
 import FaceIdErrorIcon from "@components/Icons/FaceIdErrorIcon.svelte";
+import { Image } from "@astrojs/image/components";
+import CenteredLayout from "@layouts/CenteredLayout.astro";
 ---
 
 <style>
@@ -31,7 +31,7 @@ import FaceIdErrorIcon from "@components/Icons/FaceIdErrorIcon.svelte";
   }
 </style>
 
-<DefaultLayout description="Oops! This page doesn't seem to exist!" current="">
+<CenteredLayout description="Oops! This page doesn't seem to exist!" current="">
   <section id="error-wrapper">
     <FaceIdErrorIcon />
     <h1>404</h1>
@@ -41,4 +41,4 @@ import FaceIdErrorIcon from "@components/Icons/FaceIdErrorIcon.svelte";
       > or <a href="/contact">contact me</a> if you think this is a mistake.
     </p>
   </section>
-</DefaultLayout>
+</CenteredLayout>

@@ -5,8 +5,8 @@ import DefaultLayout from "./DefaultLayout.astro";
 export interface Props {
   description: string;
   current: string;
-  title: string;
-  after: string;
+  title?: string;
+  after?: string;
   grid?: boolean;
 }
 
@@ -14,7 +14,14 @@ const { description, current, title, after, grid }: Props = Astro.props;
 ---
 
 <DefaultLayout description={description} current={current}>
-  <h1>{title}<span class="text-accent">{after}</span></h1>
+  {
+    title && (
+      <h1>
+        {title}
+        {after && <span class="text-accent">{after}</span>}
+      </h1>
+    )
+  }
   <ol class:list={[{ "content-list": true, "grid-wrap": grid === true }]}>
     <slot />
   </ol>
