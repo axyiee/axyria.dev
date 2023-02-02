@@ -69,6 +69,7 @@
     </div>
   {/if}
 </li>
+<UxEffects query=".settings-controller-icon" />
 
 <style>
   li.navigation-top {

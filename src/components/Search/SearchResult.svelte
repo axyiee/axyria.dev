@@ -40,7 +40,8 @@
   .search-result-entry {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    align-items: center;
+    width: 60vw;
     gap: 16px;
   }
   .search-result-entry .search-result-entry-image {
@@ -61,9 +62,9 @@
   }
   .search-result-entry-metadata .search-result-entry-description {
     font-size: 0.9em;
-    width: 650px;
     color: var(--text-secondary-color);
     text-align: justify;
+    width: 100%;
     justify-content: space-between;
   }
   .search-result-entry-metadata .search-result-entry-extra {
@@ -91,7 +92,11 @@
   }
   @media only screen and (max-width: 700px) {
     .search-result-entry-metadata .search-result-entry-description {
-      width: 100%;
+      width: auto;
+    }
+    .search-result-entry {
+      display: inline-block;
+      width: auto;
     }
   }
 </style>

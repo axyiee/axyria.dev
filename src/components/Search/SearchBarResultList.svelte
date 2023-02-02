@@ -36,9 +36,4 @@
     top: calc(3em + var(--margin));
     left: calc(var(--margin) * -2);
   }
-  @media only screen and (max-width: 700px) {
-    #search-results-container {
-      width: 90%;
-    }
-  }
 </style>
