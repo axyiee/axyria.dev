@@ -1,4 +1,5 @@
 <script lang="ts">
+  import UxEffects from "@components/UX/UXEffects.svelte";
   import type Post from "@entities/Post";
   import { fade, fly } from "svelte/transition";
   import SearchResult from "./SearchResult.svelte";
@@ -16,6 +17,7 @@
       </li>
     {/each}
   </ol>
+  <UxEffects query=".search-result-entry" />
 </div>
 
 <style>

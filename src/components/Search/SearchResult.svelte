@@ -9,7 +9,10 @@
   export let tags: string[];
 </script>
 
-<a class="search-result-entry" href={`/blog/posts/${slug}`}>
+<a
+  class="search-result-entry ui-sound-listener ux-click-effect"
+  href={`/blog/posts/${slug}`}
+>
   <img class="search-result-entry-image" alt="" src={image} />
   <section class="search-result-entry-metadata">
     <span class="search-result-entry-title">{title}</span>
