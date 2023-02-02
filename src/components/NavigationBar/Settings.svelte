@@ -3,7 +3,8 @@
   import ThemeSwitcher from "@components/Theme/ThemeSwitcher.svelte";
   import { fade } from "svelte/transition";
   import GearIcon from "@components/Icons/GearIcon.svelte";
-  import SliderSwitch from "./SliderSwitch.svelte";
+  import Switch from "svelte-switch";
+  import UxEffects from "@components/UX/UXEffects.svelte";
 
   let shown: boolean = false;
   function handleIconClick() {
@@ -45,17 +46,25 @@
             this website.
           </p>
         </header>
-        <SliderSwitch
-          value={localStorage.getItem("custom_cursor_enable") === "true"}
-          on:enable={() => {
-            localStorage.setItem("custom_cursor_enable", "true");
-            window.dispatchEvent(new CustomEvent("custom_cursor_enable"));
-          }}
-          on:disable={() => {
-            localStorage.setItem("custom_cursor_enable", "false");
-            window.dispatchEvent(new CustomEvent("custom_cursor_disable"));
-          }}
-        />
+        <span class="switch-wrapper ux-click-effect">
+          <Switch
+            checked={localStorage.getItem("custom_cursor_enable") === "true"}
+            on:change={event => {
+              const state = event.detail.checked ? "enable" : "disable";
+              localStorage.setItem(
+                "custom_cursor_enable",
+                event.detail.checked.toString()
+              );
+              window.dispatchEvent(new CustomEvent("custom_cursor_" + state));
+            }}
+            offColor="#3c3c3c"
+            onColor="#002C84"
+          >
+            <span slot="checkedIcon" />
+            <span slot="unCheckedIcon" />
+          </Switch>
+          <UxEffects query=".switch-wrapper" />
+        </span>
       </section>
     </div>
   {/if}
@@ -119,6 +128,9 @@
   :global(button),
   :global(.theme-switcher) {
     cursor: var(--cursor-mode);
+  }
+  :global(div.react-switch-bg, div.react-switch-handle) {
+    filter: invert(1);
   }
   @media only screen and (max-width: 700px) {
     li.navigation-top div#app-settings-controller {

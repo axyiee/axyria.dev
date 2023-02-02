@@ -1,3 +1,22 @@
+<script lang="ts">
+  $: root = document.documentElement;
+  function apply() {
+    localStorage.setItem("theme", "dark");
+    root.setAttribute("data-theme", "dark");
+  }
+  function withKeyboard(event: KeyboardEvent) {
+    if (event.shiftKey && event.key.toLowerCase() == "d") {
+      apply();
+    }
+  }
+</script>
+
+<div
+  class="theme-dark theme-switcher ux-click-effect"
+  on:click={apply}
+  on:keydown={withKeyboard}
+/>
+
 <style>
   :root {
     --icon-size: 24px;
@@ -14,22 +33,3 @@
     border-color: var(--theme-outline-color);
   }
 </style>
-
-<script lang="ts">
-  $: root = document.documentElement;
-  function apply() {
-    localStorage.setItem("theme", "dark");
-    root.setAttribute("data-theme", "dark");
-  }
-  function withKeyboard(event: KeyboardEvent) {
-    if (event.shiftKey && event.key.toLowerCase() == 'd') {
-      apply();
-    }
-  }
-</script>
-
-<div 
-  class="theme-dark theme-switcher ui-sound-listener ux-click-effect" 
-  on:click={apply} 
-  on:keydown={withKeyboard}
-></div>

@@ -1,3 +1,22 @@
+<script lang="ts">
+  $: root = document.documentElement;
+  function apply() {
+    localStorage.setItem("theme", "light");
+    root.setAttribute("data-theme", "light");
+  }
+  function withKeyboard(event: KeyboardEvent) {
+    if (event.shiftKey && event.key.toLowerCase() == "l") {
+      apply();
+    }
+  }
+</script>
+
+<div
+  class="theme-light theme-switcher ux-click-effect"
+  on:click={apply}
+  on:keydown={event => withKeyboard(event)}
+/>
+
 <style>
   :root {
     --icon-size: 24px;
@@ -14,23 +33,3 @@
     border-color: var(--theme-outline-color);
   }
 </style>
-
-<script lang="ts">
-  $: root = document.documentElement;
-  function apply() {
-    localStorage.setItem("theme", "light");
-    root.setAttribute("data-theme", "light");
-  }
-  function withKeyboard(event: KeyboardEvent) {
-    if (event.shiftKey && event.key.toLowerCase() == 'l') {
-      apply();
-    }
-  }
-</script>
-
-<div 
-  class="theme-light theme-switcher ui-sound-listener ux-click-effect" 
-  on:click={apply} 
-  on:keydown={event => withKeyboard(event)}
-></div>
-

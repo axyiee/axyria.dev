@@ -21,6 +21,7 @@ specifiers:
   prettier-plugin-astro: ^0.7.2
   sharp: ^0.31.3
   svelte: ^3.55.1
+  svelte-switch: ^0.0.5
   typescript: ^4.9.5
   vite: ^4.0.4
 
@@ -33,6 +34,7 @@ dependencies:
   astro-spa: 1.3.9
   sharp: 0.31.3
   svelte: 3.55.1
+  svelte-switch: 0.0.5
   vite: 4.0.4_@types+node@18.11.18
 
 devDependencies:
@@ -3934,6 +3936,10 @@ packages:
       svelte: '>=3.19.0'
     dependencies:
       svelte: 3.55.1
+    dev: false
+
+  /svelte-switch/0.0.5:
+    resolution: {integrity: sha512-nVKSoOlJe1DNiiOyK/oMkZQwEuDgEq1fNmAYd+724Se8eyN/2HRbYiyOvDpNRpw0jJ+lE5vjLHfCruFrhJQFbA==}
     dev: false
 
   /svelte/3.55.1:

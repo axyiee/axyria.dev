@@ -5,7 +5,7 @@ import ThemedLayout from "./ThemedLayout.astro";
 import "@components/Theme/_index.astro";
 import "@styles/fonts.css";
 import "@styles/transitions.css";
-import UXEffects from "@components/UX/UXEffects.astro";
+import UXEffects from "@components/UX/UXEffects.svelte";
 import SearchBar from "@components/Search/SearchBar.astro";
 import TopLeftBlob from "@components/UX/TopLeftBlob.astro";
 
@@ -28,6 +28,7 @@ const { description, current }: Props = Astro.props;
   </main>
   <Cursor overlayIndex={5} size="20px" count={50} />
   <UXEffects
+    client:load="svelte"
     query="li.navigation-entry, .ui-sound-listener, .ux-click-effect, a.id-link"
   />
 </ThemedLayout>

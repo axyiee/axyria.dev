@@ -1,0 +1,69 @@
+<script>
+  import { onMount } from "svelte";
+
+  export let query;
+  let left = true;
+  let isSoundEnabled = true;
+
+  async function logic(line, sound) {
+    if (!isSoundEnabled) {
+      return;
+    }
+    const styles = getComputedStyle(line.offsetParent);
+    if (styles.opacity === "0" || styles.display === "none") {
+      return;
+    }
+    left = !left;
+    sound.cloneNode().play();
+  }
+
+  function register() {
+    isSoundEnabled = window.innerWidth > 700;
+    const elements = document.querySelectorAll(query);
+    const over = new Audio("/sound/navigation_forward.ogg");
+    const out = new Audio("/sound/navigation_backward.ogg");
+    const click = new Audio("/sound/ui_unlock.ogg");
+    elements.forEach(ux => {
+      if (ux.classList.contains("ui-sound-listener")) {
+        ux.addEventListener("mouseover", () => (left ? logic(ux, over) : true));
+        ux.addEventListener("mouseleave", () =>
+          !left ? logic(ux, out) : true
+        );
+      }
+      ux.classList.contains("ux-click-effect") &&
+        ux.addEventListener("click", async event => {
+          event.preventDefault();
+          if (isSoundEnabled) {
+            click.cloneNode().play();
+          }
+          let href = ux.href;
+          if (!href) {
+            const children = ux.children;
+            for (let index = 0; index < children.length; index++) {
+              const child = children[index];
+              if (child.href) {
+                href = child.href;
+                break;
+              }
+            }
+          }
+          ux.classList.add("click-animation");
+          setTimeout(() => ux.classList.remove("click-animation"), 500);
+          if (href) {
+            setTimeout(() => (window.location = href), 450);
+          }
+        });
+    });
+  }
+  onMount(register);
+</script>
+
+<style>
+  :global(.click-animation) {
+    transform: scale(0.8) !important;
+  }
+  :global(.ui-sound-listener),
+  :global(.ux-click-effect) {
+    transition: transform 0.2s ease-in-out;
+  }
+</style>

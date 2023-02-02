@@ -22,6 +22,7 @@
     "astro-spa": "^1.3.9",
     "sharp": "^0.31.3",
     "svelte": "^3.55.1",
+    "svelte-switch": "^0.0.5",
     "vite": "^4.0.4"
   },
   "devDependencies": {
