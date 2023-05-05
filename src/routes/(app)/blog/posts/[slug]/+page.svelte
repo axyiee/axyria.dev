@@ -26,8 +26,6 @@
           <ul class="post-tags">
             {#each data.meta.tags as tag}
               <li>{tag}</li>
-              <li>{tag}</li>
-              <li>{tag}</li>
             {/each}
           </ul>
         </div>

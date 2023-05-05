@@ -19,11 +19,6 @@
   export let data;
 </script>
 
-<svelte:head>
-  <title>{data.language.meta.root.title}</title>
-  <meta name="description" content={data.language.meta.home.pageDescription} />
-</svelte:head>
-
 <Animate>
   <div class="page-wrapper" transition:fly={{ y: 100, delay: 500 }}>
     <div class="top-side">

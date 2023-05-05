@@ -7,6 +7,13 @@
   export let data;
 </script>
 
+<svelte:head>
+  <title>{data.language.meta.root.title}</title>
+  <meta name="description" content={data.language.meta.home.pageDescription} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:image" content="/meme/blink.gif" />
+</svelte:head>
+
 <div class="app-root">
   <Header
     locale={data.language.meta}

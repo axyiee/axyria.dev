@@ -5,7 +5,7 @@ date: 2023-01-23
 description: "Let's talk about what is going on here. This is what you should expect from me in the future."
 tags:
   - first-post
-image: /meme/blink.gif
+image: /meme/get_real.gif
 ---
 
 # Hello World
