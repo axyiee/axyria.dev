@@ -1,0 +1,102 @@
+@use "sass:map";
+@use "sass:list";
+@use "sass:color";
+
+$color-schemes: (
+  default-dark: (
+    background-color: #1c1b1f,
+    text-color: #e6e1e5,
+    bg-contrast-color: #633b48,
+    bg-contrast-text-color: #ffd8e4,
+    bg-contrast-low: #2e2229,
+    accent-color: #6750a4,
+  ),
+  default-light: (
+    background-color: #fffbfe,
+    text-color: #2e1e28,
+    bg-contrast-color: #ffd8e4,
+    bg-contrast-text-color: #31111d,
+    bg-contrast-low: #fff2f8,
+    accent-color: #6750a4,
+  ),
+);
+
+@function next-shades($collection, $index) {
+  $prev-color: list.nth($collection, $index);
+  $lighter: color.scale($prev-color, $lightness: 16%, $saturation: 16%);
+  $darker: color.scale($prev-color, $lightness: -16%, $saturation: -16%);
+  @return list.join($collection, ($lighter, $darker));
+}
+
+@mixin apply-color-scheme($name) {
+  $keys: (
+    "background-color",
+    "text-color",
+    "accent-color",
+    "bg-contrast-color",
+    "bg-contrast-text-color",
+    "bg-contrast-low"
+  );
+  $buffer: ();
+  @each $key in $keys {
+    $base-color: map.get(map.get($color-schemes, $name), $key);
+    $buffer: map.set($buffer, $key, $base-color);
+    --#{$key}: #{$base-color};
+    @for $index from 1 through 5 {
+      $buffer: map.set(
+        $buffer,
+        $key,
+        next-shades(map.get($buffer, $key), $index)
+      );
+      $list-factor: calc($index * 2);
+      --#{$key}-l-#{$index}: #{list.nth(map.get($buffer, $key), $list-factor)};
+      --#{$key}-d-#{$index}: #{list.nth(
+          map.get($buffer, $key),
+          calc($list-factor - 1)
+        )};
+    }
+  }
+}
+
+[data-theme="default-dark"] {
+  @include apply-color-scheme("default-dark");
+}
+
+[data-theme="default-light"] {
+  @include apply-color-scheme("default-light");
+}
+
+[data-theme="default-system"] {
+  @media (prefers-color-scheme: dark) {
+    @include apply-color-scheme("default-dark");
+  }
+  @media (prefers-color-scheme: light) {
+    @include apply-color-scheme("default-light");
+  }
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  accent-color: var(--accent-color);
+  transition: all 0.25s var(--bezier-curve);
+}
+
+::selection {
+  color: var(--text-color);
+  background: var(--accent-color);
+  transition: all 1s;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: var(--bg-contrast-low);
+}

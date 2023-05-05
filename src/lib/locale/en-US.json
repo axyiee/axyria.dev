@@ -1,0 +1,61 @@
+{
+  "root": {
+    "title": "Axyria's place"
+  },
+  "header": {
+    "home": "Home",
+    "blog": "Blog",
+    "settings": {
+      "colorScheme": {
+        "title": "Color Scheme",
+        "description": "You can choose between two schemes available in this website.",
+        "darkScheme": "Dark Scheme",
+        "lightScheme": "Light Scheme",
+        "systemScheme": "System Scheme"
+      },
+      "language": {
+        "title": "Language",
+        "description": "You can choose between four languages available in this website.",
+        "enUS": "American English",
+        "ptBR": "Brazilian Portuguese",
+        "esES": "Spanish",
+        "deDE": "German"
+      }
+    }
+  },
+  "discord": {
+    "warning": "I'm an active member of a few Discord communities, and I am always open for new conversations and meeting new people!",
+    "activity": [
+      "Playing",
+      "Streaming",
+      "Listening to",
+      "Watching",
+      "[?]",
+      "Competing"
+    ]
+  },
+  "github": {
+    "star": ["Stargazer", "Stargazers"],
+    "issue": ["Issue", "Issues"],
+    "fork": ["Fork", "Forks"],
+    "watcher": ["Watcher", "Watcher"],
+    "noDescription": "No description provided."
+  },
+  "home": {
+    "pageDescription": "Your average autistic compeer discovering solace in the intricate workings of philosophy and the binary labyrinth of computer science.",
+    "introduction": {
+      "description": "Software developer on the autism spectrum passionate about {areas}",
+      "areas": [
+        "computers.",
+        "philosophy.",
+        "linguistics.",
+        "physics.",
+        "mathematics."
+      ]
+    },
+    "biography": {
+      "title": "Biography",
+      "text": "Hi there! I'm a Brazilian high-schooler with a passion for exploring the intricacies of various fields, including computer science, philosophy, physics, mathematics, and linguistics. I was fascinated by technology from a young age and started my journey with my first computer at the age of three. As I've grown, I've also developed a deep interest in self-development and understanding the complexities of the human existence and the universe we live."
+    }
+  }
+}

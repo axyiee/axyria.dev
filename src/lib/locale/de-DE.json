@@ -1,0 +1,54 @@
+{
+  "root": {
+    "title": "Axyria's place"
+  },
+  "header": {
+    "home": "Startseite",
+    "blog": "Blog",
+    "settings": {
+      "colorScheme": {
+        "title": "Farbschema",
+        "description": "Sie können zwischen zwei verfügbaren Farbschemata auf dieser Website wählen.",
+        "darkScheme": "Dunkles Schema",
+        "lightScheme": "Helles Schema",
+        "systemScheme": "Systemschema"
+      },
+      "language": {
+        "title": "Sprache",
+        "description": "Sie können zwischen vier verfügbaren Sprachen auf dieser Website wählen.",
+        "enUS": "Amerikanisches Englisch",
+        "ptBR": "Brasilianisches Portugiesisch",
+        "esES": "Spanisch",
+        "deDE": "Deutsch"
+      }
+    }
+  },
+  "discord": {
+    "warning": "Ich bin ein aktives Mitglied einiger Discord-Communities und stehe immer für neue Gespräche und das Kennenlernen neuer Leute zur Verfügung!",
+    "activity": ["Spielt", "Streamt", "Hört zu", "Sieht", "[?]", "Wettbewerb"]
+  },
+  "github": {
+    "star": ["Sterngucker", "Sterngucker"],
+    "issue": ["Problem", "Probleme"],
+    "fork": ["Fork", "Forks"],
+    "watcher": ["Beobachter", "Beobachter"],
+    "noDescription": "Keine Beschreibung vorhanden."
+  },
+  "home": {
+    "pageDescription": "Ein durchschnittlicher autistischer Compeer, der Trost in den komplexen Werken der Philosophie und dem binären Labyrinth der Informatik findet.",
+    "introduction": {
+      "description": "Software-Entwickler im autistischen Spektrum, leidenschaftlich für {areas}",
+      "areas": [
+        "Computer.",
+        "Philosophie.",
+        "Linguistik.",
+        "Physik.",
+        "Mathematik."
+      ]
+    },
+    "biography": {
+      "title": "Biografie",
+      "text": "Hallo! Ich bin ein brasilianischer Schüler mit einer Leidenschaft für die Erforschung der Komplexitäten verschiedener Gebiete, einschließlich Informatik, Philosophie, Physik, Mathematik und Linguistik. Ich war schon in jungen Jahren von Technologie fasziniert und begann meine Reise mit meinem ersten Computer im Alter von drei Jahren. Im Laufe der Zeit habe ich auch ein tiefes Interesse an Selbstentwicklung und dem Verständnis der Komplexitäten der menschlichen Existenz und des Universums, in dem wir leben, entwickelt."
+    }
+  }
+}

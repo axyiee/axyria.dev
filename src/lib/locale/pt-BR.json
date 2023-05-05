@@ -1,0 +1,61 @@
+{
+  "root": {
+    "title": "Axyria's place"
+  },
+  "header": {
+    "home": "Início",
+    "blog": "Blog",
+    "settings": {
+      "colorScheme": {
+        "title": "Esquema de cores",
+        "description": "Você pode escolher entre dois esquemas disponíveis neste site.",
+        "darkScheme": "Esquema escuro",
+        "lightScheme": "Esquema claro",
+        "systemScheme": "Esquema do sistema"
+      },
+      "language": {
+        "title": "Idioma",
+        "description": "Você pode escolher entre quatro idiomas disponíveis neste site.",
+        "enUS": "Inglês americano",
+        "ptBR": "Português brasileiro",
+        "esES": "Espanhol",
+        "deDE": "Alemão"
+      }
+    }
+  },
+  "discord": {
+    "warning": "Sou um membro ativo de algumas comunidades do Discord e estou sempre aberto a novas conversas e a conhecer novas pessoas!",
+    "activity": [
+      "Jogando",
+      "Transmitindo",
+      "Ouvindo",
+      "Assistindo",
+      "[?]",
+      "Competindo"
+    ]
+  },
+  "github": {
+    "star": ["Favorito", "Favoritos"],
+    "issue": ["Problema", "Problemas"],
+    "fork": ["Fork", "Forks"],
+    "watcher": ["Observador", "Observadores"],
+    "noDescription": "Nenhuma descrição fornecida."
+  },
+  "home": {
+    "pageDescription": "Apenas um garoto no espectro autista descobrindo conforto nas intricadas obras da filosofia e no labirinto binário da ciência da computação.",
+    "introduction": {
+      "description": "Desenvolvedor de software no espectro autista apaixonado por {areas}",
+      "areas": [
+        "computadores.",
+        "filosofia.",
+        "linguística.",
+        "física.",
+        "matemática."
+      ]
+    },
+    "biography": {
+      "title": "Biografia",
+      "text": "Olá! Eu sou um estudante brasileiro do ensino médio com paixão por explorar as complexidades de vários campos, incluindo ciência da computação, filosofia, física, matemática e linguística. Fui fascinado pela tecnologia desde muito jovem e comecei minha jornada com meu primeiro computador aos três anos de idade. Conforme fui crescendo, também desenvolvi um profundo interesse no autodesenvolvimento e na compreensão das complexidades da existência humana e do universo em que vivemos."
+    }
+  }
+}
