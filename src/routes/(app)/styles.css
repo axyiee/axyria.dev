@@ -36,11 +36,12 @@ html {
 
 @media only screen and (max-width: 720px) {
   html {
-      font-size: 18px;
+    font-size: 18px;
   }
 }
 
-html, body {
+html,
+body {
   margin: 0;
 }
 
@@ -51,13 +52,13 @@ html, body {
 }
 
 :focus:not(:focus-visible) {
-    outline: none;
+  outline: none;
 }
 
 h1 {
   font-weight: 600;
   font-size: 4rem;
-  letter-spacing: -.075em;
+  letter-spacing: -0.075em;
   line-height: 101.6%;
 }
 
@@ -81,11 +82,17 @@ h5 {
   font-size: 1.2rem;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 0;
   padding: 0;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: var(--heading-font-family), var(--fallback-font-stack);
 }

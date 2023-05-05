@@ -61,8 +61,14 @@
     <div class="bottom-side">
       <section id="repositories">
         <GitHubRepository locale={data.language.meta} path="aaxyria/voxu" />
-        <GitHubRepository locale={data.language.meta} path="aaxyria/basalt-engine" />
-        <GitHubRepository locale={data.language.meta} path="aaxyria/axyria.dev" />
+        <GitHubRepository
+          locale={data.language.meta}
+          path="aaxyria/basalt-engine"
+        />
+        <GitHubRepository
+          locale={data.language.meta}
+          path="aaxyria/axyria.dev"
+        />
       </section>
       <section id="biography">
         <Link
