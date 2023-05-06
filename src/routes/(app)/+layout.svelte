@@ -9,6 +9,7 @@
 
 <svelte:head>
   <title>{data.language.meta.root.title}</title>
+  <link rel="icon" type="image/svg" href="/favicon.svg" />
   <meta name="description" content={data.language.meta.home.pageDescription} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="og:image" content="/meme/blink.gif" />

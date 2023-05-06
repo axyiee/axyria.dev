@@ -1,18 +1,18 @@
-<script lang="ts">
-  export let width: string = "85";
-  export let height: string = "85";
-  export let color: string = "white";
-</script>
-
 <svg
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 85 85"
   fill="none"
-  {width}
-  {height}
-  style:color
-  {...$$restProps}
 >
+  <style>
+    svg {
+        color: black;
+    }
+    @media (prefers-color-scheme: dark) {
+        svg {
+            color: white;
+        }
+    }
+  </style>
   <g clip-path="url(#clip0_4_18)">
     <circle cx="20" cy="20" r="20" fill="currentColor" />
     <rect x="45" width="40" height="40" fill="currentColor" />
