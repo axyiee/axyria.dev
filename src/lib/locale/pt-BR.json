@@ -44,7 +44,7 @@
   "home": {
     "pageDescription": "Apenas um garoto no espectro autista descobrindo conforto nas intricadas obras da filosofia e no labirinto binário da ciência da computação.",
     "introduction": {
-      "description": "Desenvolvedor de software no espectro autista apaixonado por {areas}",
+      "description": "Desenvolvedor de software no espectro autista entusiasmado por {areas}",
       "areas": [
         "computadores.",
         "filosofia.",
@@ -55,7 +55,7 @@
     },
     "biography": {
       "title": "Biografia",
-      "text": "Olá! Eu sou um estudante brasileiro do ensino médio com paixão por explorar as complexidades de vários campos, incluindo ciência da computação, filosofia, física, matemática e linguística. Fui fascinado pela tecnologia desde muito jovem e comecei minha jornada com meu primeiro computador aos três anos de idade. Conforme fui crescendo, também desenvolvi um profundo interesse no autodesenvolvimento e na compreensão das complexidades da existência humana e do universo em que vivemos."
+      "text": "Olá! Eu sou um estudante brasileiro do ensino médio com paixão por explorar as complexidades de vários campos, incluindo ciência da computação, filosofia, física, matemática e linguística. Sou fascinado pela tecnologia desde muito jovem e comecei minha jornada com meu primeiro computador aos três anos de idade. Conforme fui crescendo, também desenvolvi um profundo interesse em autodesenvolvimento e na compreensão das complexidades da existência humana e do universo em que vivemos."
     }
   }
 }

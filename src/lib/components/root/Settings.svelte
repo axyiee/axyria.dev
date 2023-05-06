@@ -3,11 +3,11 @@
   import { enhance, type SubmitFunction } from "$app/forms";
   import { page } from "$app/stores";
   import { isColorScheme } from "$lib/types/colorScheme";
-  import MaterialIcon from "../icon/MaterialIcon.svelte";
-  import Tooltip from "./Tooltip.svelte";
   import type { LocaleDefinition } from "$lib/locale";
-  import Twemoji from "../icon/Twemoji.svelte";
   import { fly } from "svelte/transition";
+  import MaterialIcon from "../icon/MaterialIcon.svelte";
+  import Twemoji from "../icon/Twemoji.svelte";
+  import Tooltip from "./Tooltip.svelte";
 
   export let locale: LocaleDefinition;
 
@@ -70,7 +70,7 @@
       <section>
         <h1>{locale.header.settings.language.title}</h1>
         <p>{locale.header.settings.language.description}</p>
-        <form method="POST" class="row">
+        <form method="POST" class="row" use:enhance>
           {#each languages as lang}
             <button
               class="language-select"
