@@ -32,7 +32,7 @@
 
 <style>
   @media (pointer: fine) {
-    .web-pointer {
+    :global([data-disable-pointer="false"]) .web-pointer {
       position: fixed;
       left: 0;
       top: 0;

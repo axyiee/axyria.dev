@@ -20,6 +20,10 @@
         "ptBR": "Brasilianisches Portugiesisch",
         "esES": "Spanisch",
         "deDE": "Deutsch"
+      },
+      "pointer": {
+        "title": "Benutzerdefinierter Zeiger",
+        "description": "Ob in dieser Sitzung ein benutzerdefinierter Zeiger verwendet werden soll."
       }
     }
   },

@@ -8,6 +8,7 @@
   import MaterialIcon from "../icon/MaterialIcon.svelte";
   import Twemoji from "../icon/Twemoji.svelte";
   import Tooltip from "./Tooltip.svelte";
+  import { onMount } from "svelte";
 
   export let locale: LocaleDefinition;
 
@@ -26,12 +27,29 @@
     }
   };
 
+  const submitDisablePointer: SubmitFunction = ({ action }) => {
+    const res = action.searchParams.get("disable-pointer");
+    if (res) {
+      document.documentElement.setAttribute(
+        "data-disable-pointer",
+        res === "true" ? "true" : "false",
+      );
+    }
+  };
+
   const languages = [
     { name: "en-US", icon: "usa" },
     { name: "pt-BR", icon: "brazil" },
     { name: "de-DE", icon: "germany" },
     { name: "es-ES", icon: "spain" },
   ];
+
+  let isEnablePointer: boolean = true;
+  onMount(
+    () =>
+      (isEnablePointer =
+        document.documentElement.dataset.disablePointer !== "true"),
+  );
 </script>
 
 <div class="settings-wrapper">
@@ -81,6 +99,27 @@
           {/each}
         </form>
       </section>
+      <section>
+        <h1>{locale.header.settings.pointer.title}</h1>
+        <p>{locale.header.settings.pointer.description}</p>
+        <form
+          method="POST"
+          class="row checkform"
+          use:enhance={submitDisablePointer}
+        >
+          <!-- checkbox -->
+          <input
+            type="checkbox"
+            name="enable-pointer"
+            bind:checked={isEnablePointer}
+          />
+          <button
+            class="language-select"
+            formaction="/?/setDisablePointer&disable-pointer={!isEnablePointer}&redirect-to={$page
+              .url.pathname}">Submit</button
+          >
+        </form>
+      </section>
     </div>
   {/if}
 </div>
@@ -120,6 +159,15 @@
       display: flex;
       flex-direction: row;
       gap: 1rem;
+    }
+    .checkform {
+      button {
+        padding: 8px;
+        border-radius: 8px;
+        background-color: var(--accent-color);
+        font-family: var(--primary-font-family), var(--fallback-font-stack);
+        color: var(--text-color);
+      }
     }
     display: flex;
     flex-direction: column;

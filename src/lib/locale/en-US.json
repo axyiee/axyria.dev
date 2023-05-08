@@ -20,6 +20,10 @@
         "ptBR": "Brazilian Portuguese",
         "esES": "Spanish",
         "deDE": "German"
+      },
+      "pointer": {
+        "title": "Custom Pointer",
+        "description": "Whether or not to use a custom pointer on this session."
       }
     }
   },

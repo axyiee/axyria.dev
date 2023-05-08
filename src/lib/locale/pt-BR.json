@@ -20,6 +20,10 @@
         "ptBR": "Português brasileiro",
         "esES": "Espanhol",
         "deDE": "Alemão"
+      },
+      "pointer": {
+        "title": "Cursor personalizado",
+        "description": "Se deve ou não usar um cursor personalizado nesta sessão."
       }
     }
   },

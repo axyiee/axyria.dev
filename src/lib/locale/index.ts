@@ -23,6 +23,10 @@ export const LocaleDefinition = z.object({
         deDE: z.string(),
         esES: z.string(),
       }),
+      pointer: z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
     }),
   }),
   discord: z.object({

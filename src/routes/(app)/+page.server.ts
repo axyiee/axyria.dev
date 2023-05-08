@@ -23,4 +23,14 @@ export const actions = {
     });
     throw redirect(303, redirectTo ?? "/");
   },
+  async setDisablePointer({ cookies, url }) {
+    const disablePointer = url.searchParams.get("disable-pointer");
+    const redirectTo = url.searchParams.get("redirect-to");
+    cookies.set(
+      "disable-pointer",
+      disablePointer === "true" ? "true" : "false",
+      { path: "/", maxAge: 365 * 24 * 60 * 60 },
+    );
+    throw redirect(303, redirectTo ?? "/");
+  },
 };

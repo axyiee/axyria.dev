@@ -1,4 +1,5 @@
 <script>
+  import { browser } from "$app/environment";
   import Header from "$lib/components/root/Header.svelte";
   import Pointer from "$lib/components/root/Pointer.svelte";
   import "./colorSchemes.scss";

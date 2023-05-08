@@ -20,6 +20,10 @@
         "ptBR": "Portugués brasileño",
         "esES": "Español",
         "deDE": "Alemán"
+      },
+      "pointer": {
+        "title": "Puntero personalizado",
+        "description": "Si se debe o no utilizar un puntero personalizado en esta sesión."
       }
     }
   },
