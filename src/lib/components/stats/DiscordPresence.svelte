@@ -136,6 +136,9 @@
   .discord-presence-wrapper:before {
     border-radius: 10px;
   }
+  .discord-presence-wrapper:hover {
+    transform: scale(1.05);
+  }
   .discord-presence-wrapper {
     position: relative;
     display: flex;

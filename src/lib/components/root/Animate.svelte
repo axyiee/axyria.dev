@@ -1,12 +1,12 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  let animate: boolean = false;
+  let ready: boolean = false;
 
   type AnimationHook = (setAnimate: (result: boolean) => void) => void;
 
   function buildHook(hook: AnimationHook) {
-    const set = (result: boolean) => (animate = result);
+    const set = (result: boolean) => (ready = result);
     return hook(set);
   }
 
@@ -15,9 +15,9 @@
 
   export let hooks: AnimationHook[] = [onpageload];
 
-  $: hooks.forEach(buildHook);
+  hooks.forEach(buildHook);
 </script>
 
-{#if animate}
+{#if ready}
   <slot />
 {/if}

@@ -128,6 +128,9 @@
     width: 40rem;
     gap: 1rem;
   }
+  .repository-wrapper:hover {
+    transform: scale(1.05);
+  }
   .repository-overview {
     display: flex;
     flex-direction: column;

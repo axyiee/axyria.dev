@@ -1,4 +1,7 @@
 <script>
+  import Animate from "$lib/components/root/Animate.svelte";
+  import { fly } from "svelte/transition";
+
   /** @type {import('./$types').PageData} */
   export let data;
 </script>
@@ -9,36 +12,44 @@
   <meta name="description" content={data.meta.description} />
 </svelte:head>
 
-<div class="blog-post">
-  <div class="post-metadata">
-    <div class="row justified-between">
-      <div>
-        <h1 class="post-title">{data.meta.title}</h1>
-        <h2 class="post-description">{data.meta.description}</h2>
-        <div class="row align">
-          <span class="post-date"
-            >{new Date(data.meta.date).toLocaleString("en-US", {
-              day: "2-digit",
-              month: "2-digit",
-              year: "numeric",
-            })}</span
-          >
-          <ul class="post-tags">
-            {#each data.meta.tags as tag}
-              <li>{tag}</li>
-            {/each}
-          </ul>
+<Animate>
+  <div
+    class="blog-post"
+    in:fly={{ y: 100, delay: 1000 }}
+    out:fly={{ y: 100, delay: 500 }}
+  >
+    <div class="post-metadata">
+      <div class="row justified-between">
+        <div>
+          <h1 class="post-title">{data.meta.title}</h1>
+          <h2 class="post-description">{data.meta.description}</h2>
+          <div class="row align">
+            <span class="post-date"
+              >{new Date(data.meta.date).toLocaleString("en-US", {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+              })}</span
+            >
+            <ul class="post-tags">
+              {#each data.meta.tags as tag}
+                <li><a href="/blog/tags/{tag}">{tag}</a></li>
+              {/each}
+            </ul>
+          </div>
         </div>
+        {#if data.meta.image}
+          <img class="post-image" src={data.meta.image} alt="" />
+        {/if}
       </div>
-      {#if data.meta.image}
-        <img class="post-image" src={data.meta.image} alt="" />
-      {/if}
     </div>
+    <article class="post-content">
+      <div class="post-content-wrapper">
+        <svelte:component this={data.content} />
+      </div>
+    </article>
   </div>
-  <div class="post-content">
-    <svelte:component this={data.content} />
-  </div>
-</div>
+</Animate>
 
 <style lang="scss">
   .blog-post {
@@ -47,22 +58,21 @@
         margin: 0;
         padding: 0;
       }
-      :global(a),
-      :global(a:visited),
-      :global(a:link),
-      :global(a:hover),
-      :global(a:active) {
-        color: var(--text-color);
-        text-decoration: none;
+      &,
+      .post-content-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
       }
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      gap: 1rem;
+      text-align: justify;
+      text-align-last: left;
+      justify-content: space-between;
+      max-width: 75%;
     }
     display: flex;
     flex-direction: column;
-    text-align: left;
+    justify-content: center;
+    align-items: center;
     gap: 3rem;
   }
   .post-metadata,
@@ -126,5 +136,25 @@
   }
   :global(h4) {
     font-size: 1.5rem;
+  }
+  :global(article ol),
+  :global(article ul) {
+    list-style: inside;
+    padding-left: 1.75rem;
+  }
+  :global(table) {
+    :global(tr),
+    :global(th),
+    :global(td) {
+      border: 1px solid var(--bg-contrast-low);
+      padding: 0.75em;
+    }
+    :global(th) {
+      color: var(--bg-contrast-text-color);
+      font-size: 0.75em;
+      text-transform: uppercase;
+    }
+    width: 100%;
+    border-collapse: collapse;
   }
 </style>

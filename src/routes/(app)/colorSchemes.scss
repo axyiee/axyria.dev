@@ -100,3 +100,12 @@ body {
   border-radius: 10px;
   background-color: var(--bg-contrast-low);
 }
+
+a,
+a:visited,
+a:hover,
+a:link,
+a:active {
+  color: var(--bg-contrast-text-color);
+  text-decoration: none;
+}
