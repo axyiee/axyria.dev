@@ -44,9 +44,9 @@
       </div>
     </div>
     <article class="post-content">
-      <div class="post-content-wrapper">
+      <section class="post-content-wrapper">
         <svelte:component this={data.content} />
-      </div>
+      </section>
     </article>
   </div>
 </Animate>
@@ -62,12 +62,17 @@
       .post-content-wrapper {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 75%;
         gap: 1rem;
+        @media only screen and (max-width: 720px) {
+          max-width: 100%;
+        }
       }
       text-align: justify;
       text-align-last: left;
       justify-content: space-between;
-      max-width: 75%;
     }
     display: flex;
     flex-direction: column;
