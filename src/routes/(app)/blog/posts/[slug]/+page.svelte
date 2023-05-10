@@ -62,17 +62,16 @@
       .post-content-wrapper {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
         max-width: 75%;
         gap: 1rem;
         @media only screen and (max-width: 720px) {
           max-width: 100%;
         }
       }
+      align-items: center;
+      justify-content: space-between;
       text-align: justify;
       text-align-last: left;
-      justify-content: space-between;
     }
     display: flex;
     flex-direction: column;
