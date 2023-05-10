@@ -126,6 +126,7 @@
     padding: 2rem;
     border-radius: 16px;
     width: 40rem;
+    height: fit-content;
     gap: 1rem;
   }
   .repository-wrapper:hover {

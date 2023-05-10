@@ -53,6 +53,24 @@
     "biography": {
       "title": "Biografie",
       "text": "Hallo! Ich bin ein brasilianischer Schüler mit einer Leidenschaft für die Erforschung der Komplexitäten verschiedener Gebiete, einschließlich Informatik, Philosophie, Physik, Mathematik und Linguistik. Ich war schon in jungen Jahren von Technologie fasziniert und begann meine Reise mit meinem ersten Computer im Alter von drei Jahren. Im Laufe der Zeit habe ich auch ein tiefes Interesse an Selbstentwicklung und dem Verständnis der Komplexitäten der menschlichen Existenz und des Universums, in dem wir leben, entwickelt."
+    },
+    "artists": {
+      "title": "Künstler",
+      "text": "Künstler und Bands, die meinem Geschmack und Qualitätsstandards entsprechen.",
+      "psychoangel": "Britischer Rave-Künstler.",
+      "glassBeach": "Eine amerikanische Indie-Rock-Band aus Los Angeles.",
+      "yuce": "Solosänger, DJ, Songtexter, Komponist und Arrangeur.",
+      "iyowa": "Japanischer Musikproduzent und Illustrator.",
+      "kikuo": "Ein Produzent mit stetiger Beliebtheit. Seine Songs zeichnen sich durch dunkle Themen in Verbindung mit fröhlicher Musik aus.",
+      "tom": "Eine Hauptkraft bei der Entstehung des Bossa-Nova-Stils. Seine Lieder werden seit den frühen 1960er Jahren international von vielen Sängern und Instrumentalisten aufgeführt.",
+      "chico": "Brasilianischer Singer-Songwriter, Gitarrist, Komponist, Dramatiker, Schriftsteller und Dichter. Er ist am besten für seine Musik bekannt, die häufig soziale, wirtschaftliche und kulturelle Reflexionen über Brasilien beinhaltet."
+    },
+    "books": {
+      "title": "Bücher",
+      "text": "Gute Bücher über Informatik, fortgeschrittene Mathematik, Compiler, Lexer, philosophische Konzepte und mehr.",
+      "sf": "Eine umfassende Einführung in die mathematischen Grundlagen von zuverlässiger Software.",
+      "ci": "Alles, was Sie benötigen, um eine voll funktionsfähige, effiziente Skriptsprache zu implementieren.",
+      "linguagensFormais": "[Portugiesisch] Dieses Buch zielt darauf ab, die grundlegenden Konzepte der formalen Sprachtheorie vorzustellen. Es basiert auf Lehrerfahrungen im Bachelor-Studiengang Informatik an der UFRGS."
     }
   }
 }

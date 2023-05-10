@@ -60,6 +60,24 @@
     "biography": {
       "title": "Biografia",
       "text": "Olá! Eu sou um estudante brasileiro do ensino médio com paixão por explorar as complexidades de vários campos, incluindo ciência da computação, filosofia, física, matemática e linguística. Sou fascinado pela tecnologia desde muito jovem e comecei minha jornada com meu primeiro computador aos três anos de idade. Conforme fui crescendo, também desenvolvi um profundo interesse em autodesenvolvimento e na compreensão das complexidades da existência humana e do universo em que vivemos."
+    },
+    "artists": {
+      "title": "Artistas",
+      "text": "Artistas e bandas que se encaixam no meu gosto e padrões de qualidade.",
+      "psychoangel": "Artista britânico de rave.",
+      "glassBeach": "Uma banda americana de indie rock de Los Angeles.",
+      "yuce": "Cantor solo, DJ, letrista, compositor e arranjador.",
+      "iyowa": "Produtor musical e ilustrador japonês.",
+      "kikuo": "Um produtor com popularidade crescente. Suas músicas são conhecidas por abordar temas sombrios com músicas animadas.",
+      "tom": "Uma das principais forças por trás da criação do estilo bossa nova, suas músicas têm sido interpretadas por muitos cantores e instrumentistas internacionalmente desde o início dos anos 1960.",
+      "chico": "Cantor, compositor, guitarrista, dramaturgo, escritor e poeta brasileiro. Ele é conhecido por sua música, que frequentemente traz reflexões sociais, econômicas e culturais sobre o Brasil."
+    },
+    "books": {
+      "title": "Livros",
+      "text": "Bons livros sobre ciência da computação, matemática avançada, compiladores, léxicos, conceitos de filosofia e muito mais.",
+      "sf": "Uma introdução abrangente aos fundamentos matemáticos de software confiável.",
+      "ci": "Tudo que você precisa para implementar uma linguagem de script completa e eficiente.",
+      "linguagensFormais": "Este livro visa apresentar os conceitos básicos da Teoria das Linguagens Formais. É baseado em experiências de ensino no Curso de Bacharelado em Ciência da Computação da UFRGS."
     }
   }
 }

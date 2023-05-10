@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { string, z } from "zod";
 
 export const LocaleDefinition = z.object({
   root: z.object({
@@ -49,6 +49,24 @@ export const LocaleDefinition = z.object({
     biography: z.object({
       title: z.string(),
       text: z.string(),
+    }),
+    artists: z.object({
+      title: z.string(),
+      text: z.string(),
+      psychoangel: z.string(),
+      glassBeach: z.string(),
+      yuce: z.string(),
+      iyowa: z.string(),
+      kikuo: z.string(),
+      tom: z.string(),
+      chico: z.string(),
+    }),
+    books: z.object({
+      title: z.string(),
+      text: z.string(),
+      sf: z.string(),
+      ci: z.string(),
+      linguagensFormais: z.string(),
     }),
   }),
 });

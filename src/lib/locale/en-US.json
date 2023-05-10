@@ -60,6 +60,24 @@
     "biography": {
       "title": "Biography",
       "text": "Hi there! I'm a Brazilian high-schooler with a passion for exploring the intricacies of various fields, including computer science, philosophy, physics, mathematics, and linguistics. I was fascinated by technology from a young age and started my journey with my first computer at the age of three. As I've grown, I've also developed a deep interest in self-development and understanding the complexities of the human existence and the universe we live."
+    },
+    "artists": {
+      "title": "Artists",
+      "text": "Artists and bands that fit my taste and quality standards.",
+      "psychoangel": "British rave artist.",
+      "glassBeach": "An American indie rock band from Los Angeles.",
+      "yuce": "Soloist singer, DJ, lyricist, composer and arranger.",
+      "iyowa": "Japanese music producer and illustrator.",
+      "kikuo": "A producer with steady popularity. His songs are known for having dark subjects paired with upbeat music.",
+      "tom": "A primary force behind the creation of the bossa nova style, and his songs have been performed by many singers and instrumentalists internationally since the early 1960s.",
+      "chico": "Brazilian singer-songwriter, guitarist, composer, playwright, writer, and poet. He is best known for his music, which often includes social, economic, and cultural reflections on Brazil."
+    },
+    "books": {
+      "title": "Books",
+      "text": "Good reads about computer science, advanced mathematics, compilers, lexers, concepts of philosophy, and more.",
+      "sf": "A broad introduction to the mathematical underpinnings of reliable software.",
+      "ci": "Everything you need to implement a full-featured, efficient scripting language.",
+      "linguagensFormais": "[Portuguese] This book aims to present the basic concepts of the Theory of Formal Languages. It is based on teaching experiences in the Computer Science Bachelor Course at UFRGS."
     }
   }
 }

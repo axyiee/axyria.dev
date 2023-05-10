@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Animate from "$lib/components/root/Animate.svelte";
   import DiscordPresence from "$lib/components/stats/DiscordPresence.svelte";
   import GitHubRepository from "$lib/components/stats/GitHubRepository.svelte";
@@ -15,6 +15,66 @@
     { href: "https://twitter.com/aaaxyria", icon: "twitter" },
     { href: "https://code.axyria.dev", icon: "github" },
   ];
+
+  const artists = [
+    {
+      href: "https://psychoangel.bandcamp.com",
+      name: "psychoangel",
+      key: "psychoangel",
+    },
+    {
+      href: "https://yuce0903.bandcamp.com/",
+      name: "YUC'e",
+      key: "yuce",
+    },
+    {
+      href: "https://www.youtube.com/@igusuri_please",
+      name: "iyowa",
+      key: "iyowa",
+    },
+    {
+      href: "https://www.youtube.com/@kikuo_sound/",
+      name: "Kikuo",
+      key: "kikuo",
+    },
+    {
+      href: "https://glassbeach.bandcamp.com/",
+      name: "glass beach",
+      key: "glassBeach",
+    },
+    {
+      href: "https://en.wikipedia.org/wiki/Ant%C3%B4nio_Carlos_Jobim",
+      name: "Tom Jobim (✞1927-1994)",
+      key: "tom",
+    },
+    {
+      href: "https://en.wikipedia.org/wiki/Chico_Buarque",
+      name: "Chico Buarque (✞1944-)",
+      key: "chico",
+    },
+  ];
+
+  const books = [
+    {
+      href: "https://softwarefoundations.cis.upenn.edu/",
+      name: "Software Foundations, Benjamin C. Pierce",
+      key: "sf",
+    },
+    {
+      href: "https://craftinginterpreters.com/",
+      name: "Crafting Interpreters, Robert Nystrom",
+      key: "ci",
+    },
+    {
+      href: "https://www.muriloleal.com.br/visao/repositorio/unijua/lfa//Livro%20-%20Linguagens%20Formais%20e%20Aut%C3%B4matos.pdf",
+      name: "Linguagens Formais e Autômatos, P. Blauth Menezes",
+      key: "linguagensFormais",
+    },
+  ];
+
+  function getEntryDescription(meta: unknown, obj: { key: string }): string {
+    return (meta as Record<string, string>)[obj.key] ?? "";
+  }
 
   export let data;
 </script>
@@ -65,14 +125,52 @@
           path="aaxyria/axyria.dev"
         />
       </section>
-      <section id="biography">
-        <Link
-          href="#biography"
-          tag="h2"
-          text={data.language.meta.home.biography.title}
-        />
-        <p>{data.language.meta.home.biography.text}</p>
-      </section>
+      <div class="vertical">
+        <section id="biography">
+          <Link
+            href="#biography"
+            tag="h2"
+            text={data.language.meta.home.biography.title}
+          />
+          <p>{data.language.meta.home.biography.text}</p>
+        </section>
+        <section id="artists">
+          <Link
+            href="#artists"
+            tag="h2"
+            text={data.language.meta.home.artists.title}
+          />
+          <p>{data.language.meta.home.artists.text}</p>
+          <ul>
+            {#each artists as artist}
+              <li>
+                <a href={artist.href}>{artist.name}</a> - {getEntryDescription(
+                  data.language.meta.home.artists,
+                  artist,
+                )}
+              </li>
+            {/each}
+          </ul>
+        </section>
+        <section id="books">
+          <Link
+            href="#books"
+            tag="h2"
+            text={data.language.meta.home.books.title}
+          />
+          <p>{data.language.meta.home.books.text}</p>
+          <ul>
+            {#each books as book}
+              <li>
+                <a href={book.href}>{book.name}</a> - {getEntryDescription(
+                  data.language.meta.home.books,
+                  book,
+                )}
+              </li>
+            {/each}
+          </ul>
+        </section>
+      </div>
     </div>
   </div>
 </Animate>
@@ -83,7 +181,26 @@
   .top-side,
   .bottom-side {
     display: flex;
+    align-items: flex-start;
     gap: 1rem;
+  }
+  .bottom-side .vertical,
+  .bottom-side .vertical section,
+  .bottom-side .vertical ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+  }
+  .bottom-side .vertical {
+    gap: 1em;
+  }
+  .bottom-side .vertical ul {
+    max-width: 75%;
+    text-align: justify;
+    text-align-last: right;
+    gap: 0.25rem;
+    font-size: 0.7em;
   }
   #repositories {
     display: flex;
@@ -105,11 +222,6 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-  }
-  #biography {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
   }
   section p {
     text-align: justify;
@@ -153,9 +265,6 @@
       flex-direction: column;
       gap: 2rem;
     }
-    section p {
-      text-align-last: left;
-    }
     .top-side,
     .bottom-side {
       flex-direction: column;
@@ -165,12 +274,14 @@
     .top-side :global(.discord-presence-wrapper) {
       max-width: 37.5%;
     }
-    .top-side #introduction,
-    .bottom-side section {
+    .top-side #introduction {
       max-width: 42.5%;
     }
     .bottom-side section {
       width: 42.5%;
+    }
+    .bottom-side .vertical section {
+      width: 80%;
     }
   }
 </style>
