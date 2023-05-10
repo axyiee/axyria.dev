@@ -159,7 +159,8 @@
       font-size: 0.75em;
       text-transform: uppercase;
     }
-    width: 100%;
-    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    max-width: 90%;
   }
 </style>
