@@ -221,7 +221,6 @@
   .bottom-side {
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
   }
   section p {
     text-align: justify;
@@ -277,11 +276,9 @@
     .top-side #introduction {
       max-width: 42.5%;
     }
-    .bottom-side section {
+    .bottom-side > section,
+    .bottom-side > div {
       width: 42.5%;
-    }
-    .bottom-side .vertical section {
-      width: 80%;
     }
   }
 </style>

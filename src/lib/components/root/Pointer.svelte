@@ -32,7 +32,7 @@
 
 <style>
   @media (pointer: fine) {
-    :global([data-disable-pointer="false"]) .web-pointer {
+    .web-pointer {
       position: fixed;
       left: 0;
       top: 0;
@@ -52,6 +52,9 @@
       height: 15px;
       border: 1px solid var(--bg-contrast-text-color-d-2);
       border-radius: 100%;
+    }
+    :global([data-disable-pointer="true"]) .web-pointer {
+      display: none;
     }
   }
 </style>

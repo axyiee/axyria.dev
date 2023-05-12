@@ -125,7 +125,7 @@
     line-height: 1;
     padding: 2rem;
     border-radius: 16px;
-    width: 40rem;
+    width: 100%;
     height: fit-content;
     gap: 1rem;
   }
