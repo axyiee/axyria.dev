@@ -3,11 +3,9 @@
   import DiscordPresence from "$lib/components/stats/DiscordPresence.svelte";
   import GitHubRepository from "$lib/components/stats/GitHubRepository.svelte";
   import Link from "$lib/components/root/Link.svelte";
-  import Scroller from "$lib/components/root/Scroller.svelte";
   import TablerIcon from "$lib/components/icon/TablerIcon.svelte";
   import scheme from "$lib/types/colorScheme";
   import { fly, scale } from "svelte/transition";
-  import { substringBefore, substringAfter } from "$lib/locale";
   import Artists from "$lib/components/root/collection/Artists.svelte";
   import Books from "$lib/components/root/collection/Books.svelte";
 
@@ -91,7 +89,6 @@
   .top-side,
   .bottom-side {
     display: flex;
-    align-self: flex-start;
     gap: 1rem;
   }
   .bottom-side .vertical,
@@ -123,6 +120,7 @@
   .bottom-side {
     flex-direction: row;
     justify-content: space-between;
+    width: 100%;
   }
   section p {
     text-align: justify;

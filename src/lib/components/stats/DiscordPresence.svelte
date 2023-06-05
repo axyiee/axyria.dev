@@ -97,8 +97,10 @@
       text-align: right;
       align-items: flex-end;
       justify-content: flex-end;
-      max-width: 50%;
       gap: 0.75em;
+      @media only screen and (min-width: 721px) {
+        max-width: 50%;
+      }
     }
     progress {
       -webkit-appearance: none;
@@ -128,10 +130,7 @@
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
-    @media only screen and (max-width: 720px) {
-      margin: 2rem 0;
-      justify-content: center;
-    }
+    justify-content: center;
     gap: 2em;
   }
   .discord-presence-wrapper {
@@ -182,6 +181,15 @@
     .discord-user-info {
       flex-direction: column;
       text-align: center;
+    }
+    .info-vertical-section {
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+    }
+    .spotify-card,
+    .discord-presence-wrapper {
+      margin: 5em 0;
     }
   }
 </style>

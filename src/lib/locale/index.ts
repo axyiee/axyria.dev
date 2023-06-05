@@ -98,11 +98,3 @@ export const languages = await (async () => [
 export function isAcceptedLanguage(maybe: unknown): maybe is Language {
   return typeof maybe === "string" && accepted.includes(maybe as Language);
 }
-
-export function substringBefore(text: string, pattern: string): string {
-  return text.slice(0, text.indexOf(pattern));
-}
-
-export function substringAfter(text: string, pattern: string): string {
-  return text.slice(text.indexOf(pattern) + pattern.length);
-}
