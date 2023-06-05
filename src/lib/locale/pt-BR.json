@@ -9,9 +9,10 @@
       "colorScheme": {
         "title": "Esquema de cores",
         "description": "Você pode escolher entre dois esquemas disponíveis neste site.",
-        "darkScheme": "Esquema escuro",
-        "lightScheme": "Esquema claro",
-        "systemScheme": "Esquema do sistema"
+        "default-dark": "Esquema escuro",
+        "default-light": "Esquema claro",
+        "default-system": "Esquema do sistema",
+        "pink-dash": "Esquema Pink Dash"
       },
       "language": {
         "title": "Idioma",
@@ -47,30 +48,23 @@
   },
   "home": {
     "pageDescription": "Apenas um garoto no espectro autista descobrindo conforto nas intricadas obras da filosofia e no labirinto binário da ciência da computação.",
-    "introduction": {
-      "description": "Desenvolvedor de software no espectro autista entusiasmado por {areas}",
-      "areas": [
-        "computadores.",
-        "filosofia.",
-        "linguística.",
-        "física.",
-        "matemática."
-      ]
-    },
-    "biography": {
-      "title": "Biografia",
+    "introduction": "Um geek no espectro autista explorando as profundas intricidades da física, software e linguística.",
+    "aboutMe": {
+      "title": "Sobre mim",
       "text": "Olá! Eu sou um estudante brasileiro do ensino médio com paixão por explorar as complexidades de vários campos, incluindo ciência da computação, filosofia, física, matemática e linguística. Sou fascinado pela tecnologia desde muito jovem e comecei minha jornada com meu primeiro computador aos três anos de idade. Conforme fui crescendo, também desenvolvi um profundo interesse em autodesenvolvimento e na compreensão das complexidades da existência humana e do universo em que vivemos."
     },
     "artists": {
       "title": "Artistas",
-      "text": "Artistas e bandas que se encaixam no meu gosto e padrões de qualidade.",
+      "text": "Descubra artistas e bandas que se encaixam perfeitamente no meu gosto pessoal e nos meus padrões de qualidade.",
       "psychoangel": "Artista britânico de rave.",
       "glassBeach": "Uma banda americana de indie rock de Los Angeles.",
-      "yuce": "Cantor solo, DJ, letrista, compositor e arranjador.",
+      "yuce": "Cantora solo, DJ, letrista, compositor e arranjador.",
       "iyowa": "Produtor musical e ilustrador japonês.",
       "kikuo": "Um produtor com popularidade crescente. Suas músicas são conhecidas por abordar temas sombrios com músicas animadas.",
       "tom": "Uma das principais forças por trás da criação do estilo bossa nova, suas músicas têm sido interpretadas por muitos cantores e instrumentistas internacionalmente desde o início dos anos 1960.",
-      "chico": "Cantor, compositor, guitarrista, dramaturgo, escritor e poeta brasileiro. Ele é conhecido por sua música, que frequentemente traz reflexões sociais, econômicas e culturais sobre o Brasil."
+      "chico": "Cantor, compositor, guitarrista, dramaturgo, escritor e poeta brasileiro. Ele é conhecido por sua música, que frequentemente traz reflexões sociais, econômicas e culturais sobre o Brasil.",
+      "on": "no álbum",
+      "by": "por"
     },
     "books": {
       "title": "Livros",

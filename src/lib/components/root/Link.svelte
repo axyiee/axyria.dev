@@ -6,7 +6,7 @@
   export let text: string;
 </script>
 
-<svelte:element this={tag} class="link-text"
+<svelte:element this={tag} class="link-text" aria-hidden="true"
   ><a {href}><MaterialIcon value="link" /></a>{text}</svelte:element
 >
 

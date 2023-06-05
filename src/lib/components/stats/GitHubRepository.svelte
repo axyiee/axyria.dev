@@ -30,13 +30,13 @@
           <span>{data.owner.login}/</span>
           <strong>{data.name}</strong>
         </div>
-        <img src={data.owner.avatar_url} alt="" aria-hidden />
+        <img src={data.owner.avatar_url} alt="" />
       </div>
       <p class="repository-description">
         {data.description || locale.github.noDescription}
       </p>
     </div>
-    <div class="repository-stats">
+    <div class="repository-stats" aria-hidden="true">
       <div>
         <span
           ><MaterialIcon

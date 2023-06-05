@@ -41,7 +41,6 @@
             aria-current={$page.url.pathname === link.path ? "page" : undefined}
             href={link.path}
           >
-            <!-- <MaterialIcon outlined={link.outlined} value={link.icon} /> -->
             <TablerIcon name={link.icon} />
             {link.text}</a
           >
@@ -77,7 +76,7 @@
     text-decoration: none;
     text-transform: lowercase;
     letter-spacing: 0.1em;
-    background-color: var(--bg-contrast-color);
+    background-color: var(--bg-contrast-low);
     padding: 0.25rem 0.75rem;
     border-radius: 50px;
     display: flex;

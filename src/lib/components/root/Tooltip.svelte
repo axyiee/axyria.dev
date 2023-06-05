@@ -1,33 +1,51 @@
 <script lang="ts">
-  import { fly } from "svelte/transition";
+  let x: number, y: number, show: boolean;
 
-  export let title = "";
-  let isHovered: boolean = false;
+  function onMouseMove(kind: "over" | "move", event: MouseEvent) {
+    if (kind == "over") {
+      show = true;
+    }
+    x =
+      event.clientX > window.innerWidth - 200
+        ? event.clientX - 200
+        : event.clientX + 5;
+    y =
+      event.clientY > window.innerHeight - 200
+        ? event.clientY - 200
+        : event.clientY + 5;
+  }
+  function onMouseLeave() {
+    show = false;
+  }
 </script>
 
 <div
-  on:mouseover={() => (isHovered = true)}
-  on:mouseleave={() => (isHovered = false)}
+  on:mouseover={(event) => onMouseMove("over", event)}
+  on:mousemove={(event) => onMouseMove("move", event)}
+  on:mouseleave={onMouseLeave}
   on:focus
+  style="--tooltip-left: {x}px; --tooltip-top: {y}px; --tooltip-opacity: {show
+    ? 1
+    : 0};"
 >
-  <slot />
+  <slot name="tooltip" />
+  <slot name="content" />
 </div>
 
-{#if isHovered}
-  <span class="tooltip" transition:fly>{title}</span>
-{/if}
-
 <style>
-  .tooltip {
-    border: 1px solid #ddd;
-    box-shadow: 1px 1px 1px #ddd;
+  :global([slot="tooltip"]) {
+    border: 1px solid var(--bg-contrast-text-color);
+    box-shadow: 1px 1px 1px var(--bg-contrast-text-color);
     background: var(--bg-contrast-color);
     color: var(--bg-contrast-text-color);
+    position: fixed;
     border-radius: 4px;
     padding: 4px;
-    position: absolute;
-    left: 10rem;
     pointer-events: none;
     z-index: 2;
+    left: var(--tooltip-left);
+    top: var(--tooltip-top);
+    opacity: var(--tooltip-opacity);
+    transition: all 0.25s var(--bezier-curve);
   }
 </style>

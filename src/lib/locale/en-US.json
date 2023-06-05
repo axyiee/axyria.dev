@@ -9,9 +9,10 @@
       "colorScheme": {
         "title": "Color Scheme",
         "description": "You can choose between two schemes available in this website.",
-        "darkScheme": "Dark Scheme",
-        "lightScheme": "Light Scheme",
-        "systemScheme": "System Scheme"
+        "default-dark": "Dark Scheme",
+        "default-light": "Light Scheme",
+        "default-system": "System Scheme",
+        "pink-dash": "Pink Dash Scheme"
       },
       "language": {
         "title": "Language",
@@ -47,30 +48,23 @@
   },
   "home": {
     "pageDescription": "Your average autistic compeer discovering solace in the intricate workings of philosophy and the binary labyrinth of computer science.",
-    "introduction": {
-      "description": "Software developer on the autism spectrum passionate about {areas}",
-      "areas": [
-        "computers.",
-        "philosophy.",
-        "linguistics.",
-        "physics.",
-        "mathematics."
-      ]
-    },
-    "biography": {
-      "title": "Biography",
+    "introduction": "15・A geek on the autism spectrum exploring the profound intricacies of physics, software, and linguistics.",
+    "aboutMe": {
+      "title": "About me",
       "text": "Hi there! I'm a Brazilian high-schooler with a passion for exploring the intricacies of various fields, including computer science, philosophy, physics, mathematics, and linguistics. I was fascinated by technology from a young age and started my journey with my first computer at the age of three. As I've grown, I've also developed a deep interest in self-development and understanding the complexities of the human existence and the universe we live."
     },
     "artists": {
       "title": "Artists",
-      "text": "Artists and bands that fit my taste and quality standards.",
+      "text": "Discover artists and bands that perfectly align with my personal taste and high-quality standards.",
       "psychoangel": "British rave artist.",
       "glassBeach": "An American indie rock band from Los Angeles.",
       "yuce": "Soloist singer, DJ, lyricist, composer and arranger.",
       "iyowa": "Japanese music producer and illustrator.",
       "kikuo": "A producer with steady popularity. His songs are known for having dark subjects paired with upbeat music.",
       "tom": "A primary force behind the creation of the bossa nova style, and his songs have been performed by many singers and instrumentalists internationally since the early 1960s.",
-      "chico": "Brazilian singer-songwriter, guitarist, composer, playwright, writer, and poet. He is best known for his music, which often includes social, economic, and cultural reflections on Brazil."
+      "chico": "Brazilian singer-songwriter, guitarist, composer, playwright, writer, and poet. He is best known for his music, which often includes social, economic, and cultural reflections on Brazil.",
+      "on": "on",
+      "by": "by"
     },
     "books": {
       "title": "Books",

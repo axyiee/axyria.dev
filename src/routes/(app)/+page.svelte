@@ -8,73 +8,14 @@
   import scheme from "$lib/types/colorScheme";
   import { fly, scale } from "svelte/transition";
   import { substringBefore, substringAfter } from "$lib/locale";
+  import Artists from "$lib/components/root/collection/Artists.svelte";
+  import Books from "$lib/components/root/collection/Books.svelte";
 
-  const links = [
+  const tablerLinks = [
     { href: "mailto:you@axyria.dev", icon: "email" },
-    { href: "https://yt.axyria.dev", icon: "youtube" },
     { href: "https://twitter.com/aaaxyria", icon: "twitter" },
     { href: "https://code.axyria.dev", icon: "github" },
   ];
-
-  const artists = [
-    {
-      href: "https://psychoangel.bandcamp.com",
-      name: "psychoangel",
-      key: "psychoangel",
-    },
-    {
-      href: "https://yuce0903.bandcamp.com/",
-      name: "YUC'e",
-      key: "yuce",
-    },
-    {
-      href: "https://www.youtube.com/@igusuri_please",
-      name: "iyowa",
-      key: "iyowa",
-    },
-    {
-      href: "https://www.youtube.com/@kikuo_sound/",
-      name: "Kikuo",
-      key: "kikuo",
-    },
-    {
-      href: "https://glassbeach.bandcamp.com/",
-      name: "glass beach",
-      key: "glassBeach",
-    },
-    {
-      href: "https://en.wikipedia.org/wiki/Ant%C3%B4nio_Carlos_Jobim",
-      name: "Tom Jobim (✞1927-1994)",
-      key: "tom",
-    },
-    {
-      href: "https://en.wikipedia.org/wiki/Chico_Buarque",
-      name: "Chico Buarque (✞1944-)",
-      key: "chico",
-    },
-  ];
-
-  const books = [
-    {
-      href: "https://softwarefoundations.cis.upenn.edu/",
-      name: "Software Foundations, Benjamin C. Pierce",
-      key: "sf",
-    },
-    {
-      href: "https://craftinginterpreters.com/",
-      name: "Crafting Interpreters, Robert Nystrom",
-      key: "ci",
-    },
-    {
-      href: "https://www.muriloleal.com.br/visao/repositorio/unijua/lfa//Livro%20-%20Linguagens%20Formais%20e%20Aut%C3%B4matos.pdf",
-      name: "Linguagens Formais e Autômatos, P. Blauth Menezes",
-      key: "linguagensFormais",
-    },
-  ];
-
-  function getEntryDescription(meta: unknown, obj: { key: string }): string {
-    return (meta as Record<string, string>)[obj.key] ?? "";
-  }
 
   export let data;
 </script>
@@ -84,28 +25,15 @@
     <div class="top-side">
       <div id="introduction">
         <h1 transition:scale={{ delay: 500 }}>axyria</h1>
-        <h5 id="description">
-          {substringBefore(
-            data.language.meta.home.introduction.description,
-            "{areas}",
-          )}
-          <Scroller
-            style="font-weight: bold; color: var(--bg-contrast-text-color);"
-            slots={data.language.meta.home.introduction.areas}
-          />
-          {substringAfter(
-            data.language.meta.home.introduction.description,
-            "{areas}",
-          )}
-        </h5>
+        <h5 id="description">{data.language.meta.home.introduction}</h5>
         <div class="links">
-          {#each links as link}
+          {#each tablerLinks as link}
             <a href={link.href}
               ><TablerIcon
                 name={link.icon}
                 width="26"
                 height="26"
-                color={scheme.textColor.zero}
+                color={scheme.bgContrastTextColor.zero}
               /></a
             >
           {/each}
@@ -126,13 +54,13 @@
         />
       </section>
       <div class="vertical">
-        <section id="biography">
+        <section id="about-me">
           <Link
-            href="#biography"
+            href="#about-me"
             tag="h2"
-            text={data.language.meta.home.biography.title}
+            text={data.language.meta.home.aboutMe.title}
           />
-          <p>{data.language.meta.home.biography.text}</p>
+          <p>{data.language.meta.home.aboutMe.text}</p>
         </section>
         <section id="artists">
           <Link
@@ -141,16 +69,7 @@
             text={data.language.meta.home.artists.title}
           />
           <p>{data.language.meta.home.artists.text}</p>
-          <ul>
-            {#each artists as artist}
-              <li>
-                <a href={artist.href}>{artist.name}</a> - {getEntryDescription(
-                  data.language.meta.home.artists,
-                  artist,
-                )}
-              </li>
-            {/each}
-          </ul>
+          <Artists locale={data.language.meta} />
         </section>
         <section id="books">
           <Link
@@ -159,16 +78,7 @@
             text={data.language.meta.home.books.title}
           />
           <p>{data.language.meta.home.books.text}</p>
-          <ul>
-            {#each books as book}
-              <li>
-                <a href={book.href}>{book.name}</a> - {getEntryDescription(
-                  data.language.meta.home.books,
-                  book,
-                )}
-              </li>
-            {/each}
-          </ul>
+          <Books locale={data.language.meta} />
         </section>
       </div>
     </div>
@@ -181,12 +91,11 @@
   .top-side,
   .bottom-side {
     display: flex;
-    align-items: flex-start;
+    align-self: flex-start;
     gap: 1rem;
   }
   .bottom-side .vertical,
-  .bottom-side .vertical section,
-  .bottom-side .vertical ul {
+  .bottom-side .vertical section {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -194,13 +103,6 @@
   }
   .bottom-side .vertical {
     gap: 1em;
-  }
-  .bottom-side .vertical ul {
-    max-width: 75%;
-    text-align: justify;
-    text-align-last: right;
-    gap: 0.25rem;
-    font-size: 0.7em;
   }
   #repositories {
     display: flex;
@@ -230,7 +132,9 @@
     display: flex;
     flex-direction: row;
     width: fit-content;
-    border-radius: 50px;
+    border-radius: 2em;
+    background: var(--bg-contrast-low);
+    padding: 0.5em 1.25em;
     gap: 1.75rem;
   }
   .links a {
@@ -246,18 +150,7 @@
     gap: 5pt;
   }
   .top-side h1 {
-    background: linear-gradient(
-      90deg,
-      var(--bg-contrast-text-color),
-      var(--accent-color)
-    );
-    background-size: 100%;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent;
-    background-clip: text;
-    height: 4.75rem;
+    color: var(--accent-color);
   }
   @media only screen and (max-width: 720px) {
     .page-wrapper {
@@ -270,12 +163,7 @@
     }
   }
   @media only screen and (min-width: 721px) {
-    .top-side :global(.discord-presence-wrapper) {
-      max-width: 37.5%;
-    }
-    .top-side #introduction {
-      max-width: 42.5%;
-    }
+    .top-side > *,
     .bottom-side > section,
     .bottom-side > div {
       width: 42.5%;

@@ -1,4 +1,4 @@
-import { string, z } from "zod";
+import { z } from "zod";
 
 export const LocaleDefinition = z.object({
   root: z.object({
@@ -11,9 +11,10 @@ export const LocaleDefinition = z.object({
       colorScheme: z.object({
         title: z.string(),
         description: z.string(),
-        darkScheme: z.string(),
-        lightScheme: z.string(),
-        systemScheme: z.string(),
+        "default-dark": z.string(),
+        "default-light": z.string(),
+        "default-system": z.string(),
+        "pink-dash": z.string(),
       }),
       language: z.object({
         title: z.string(),
@@ -42,11 +43,8 @@ export const LocaleDefinition = z.object({
   }),
   home: z.object({
     pageDescription: z.string(),
-    introduction: z.object({
-      description: z.string(),
-      areas: z.array(z.string()),
-    }),
-    biography: z.object({
+    introduction: z.string(),
+    aboutMe: z.object({
       title: z.string(),
       text: z.string(),
     }),
@@ -60,6 +58,8 @@ export const LocaleDefinition = z.object({
       kikuo: z.string(),
       tom: z.string(),
       chico: z.string(),
+      on: z.string(),
+      by: z.string(),
     }),
     books: z.object({
       title: z.string(),
@@ -76,26 +76,24 @@ export type LocaleDefinition = z.infer<typeof LocaleDefinition>;
 const accepted = ["en-US", "de-DE", "es-ES", "pt-BR"] as const;
 export type Language = (typeof accepted)[number];
 
-export const languages = await (async () => {
-  return [
-    {
-      name: "en-US",
-      meta: LocaleDefinition.parse(await import("./en-US.json")),
-    },
-    {
-      name: "pt-BR",
-      meta: LocaleDefinition.parse(await import("./pt-BR.json")),
-    },
-    {
-      name: "de-DE",
-      meta: LocaleDefinition.parse(await import("./de-DE.json")),
-    },
-    {
-      name: "es-ES",
-      meta: LocaleDefinition.parse(await import("./es-ES.json")),
-    },
-  ];
-})();
+export const languages = await (async () => [
+  {
+    name: "en-US",
+    meta: LocaleDefinition.parse(await import("./en-US.json")),
+  },
+  {
+    name: "de-DE",
+    meta: LocaleDefinition.parse(await import("./de-DE.json")),
+  },
+  {
+    name: "es-ES",
+    meta: LocaleDefinition.parse(await import("./es-ES.json")),
+  },
+  {
+    name: "pt-BR",
+    meta: LocaleDefinition.parse(await import("./pt-BR.json")),
+  },
+])();
 
 export function isAcceptedLanguage(maybe: unknown): maybe is Language {
   return typeof maybe === "string" && accepted.includes(maybe as Language);

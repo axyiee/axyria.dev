@@ -9,7 +9,8 @@ $color-schemes: (
     bg-contrast-color: #633b48,
     bg-contrast-text-color: #ffd8e4,
     bg-contrast-low: #2e2229,
-    accent-color: #6750a4,
+    accent-color: #ffd8e4,
+    bg-card-color: #19181b,
   ),
   default-light: (
     background-color: #fffbfe,
@@ -17,7 +18,17 @@ $color-schemes: (
     bg-contrast-color: #ffd8e4,
     bg-contrast-text-color: #31111d,
     bg-contrast-low: #fff2f8,
-    accent-color: #6750a4,
+    accent-color: #31111d,
+    bg-card-color: #f1e8ef,
+  ),
+  pink-dash: (
+    background-color: black,
+    text-color: #f8ccef,
+    bg-contrast-color: #2f1c25,
+    bg-contrast-text-color: #ffbcdf,
+    bg-contrast-low: #0c0709,
+    accent-color: #fb99cc,
+    bg-card-color: #050505,
   ),
 );
 
@@ -35,7 +46,8 @@ $color-schemes: (
     "accent-color",
     "bg-contrast-color",
     "bg-contrast-text-color",
-    "bg-contrast-low"
+    "bg-contrast-low",
+    "bg-card-color"
   );
   $buffer: ();
   @each $key in $keys {
@@ -64,6 +76,10 @@ $color-schemes: (
 
 [data-theme="default-light"] {
   @include apply-color-scheme("default-light");
+}
+
+[data-theme="pink-dash"] {
+  @include apply-color-scheme("pink-dash");
 }
 
 [data-theme="default-system"] {

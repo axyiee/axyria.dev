@@ -45,7 +45,7 @@
     align-items: center;
     gap: 0.25rem;
     padding: 2rem;
-    background-color: var(--background-color-d-2);
+    background-color: var(--bg-card-color);
     width: 16rem;
     border-radius: 12px;
     transition: all 0.25s var(--bezier-curve);

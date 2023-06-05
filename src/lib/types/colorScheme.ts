@@ -1,7 +1,8 @@
-const colorSchemeKinds = [
+export const colorSchemeKinds = [
   "default-dark",
   "default-light",
   "default-system",
+  "pink-dash",
 ] as const;
 
 export type ColorSchemeKind = (typeof colorSchemeKinds)[number];
@@ -26,6 +27,7 @@ export interface ColorScheme {
   accentColor: ColorShades;
   bgContrastColor: ColorShades;
   bgContrastTextColor: ColorShades;
+  bgCardColor: ColorShades;
 }
 
 export function isColorScheme(maybe: unknown): maybe is ColorSchemeKind {
@@ -100,6 +102,19 @@ const scheme: ColorScheme = {
     dark3: "var(--bg-contrast-text-color-d-3)",
     dark4: "var(--bg-contrast-text-color-d-4)",
     dark5: "var(--bg-contrast-text-color-d-5)",
+  },
+  bgCardColor: {
+    zero: "var(--bg-card-color)",
+    light1: "var(--bg-card-color-l-1)",
+    light2: "var(--bg-card-color-l-2)",
+    light3: "var(--bg-card-color-l-3)",
+    light4: "var(--bg-card-color-l-4)",
+    light5: "var(--bg-card-color-l-5)",
+    dark1: "var(--bg-card-color-d-1)",
+    dark2: "var(--bg-card-color-d-2)",
+    dark3: "var(--bg-card-color-d-3)",
+    dark4: "var(--bg-card-color-d-4)",
+    dark5: "var(--bg-card-color-d-5)",
   },
 };
 

@@ -9,9 +9,10 @@
       "colorScheme": {
         "title": "Farbschema",
         "description": "Sie können zwischen zwei verfügbaren Farbschemata auf dieser Website wählen.",
-        "darkScheme": "Dunkles Schema",
-        "lightScheme": "Helles Schema",
-        "systemScheme": "Systemschema"
+        "default-dark": "Dunkles Schema",
+        "default-light": "Helles Schema",
+        "default-system": "Systemschema",
+        "pink-dash": "Pink Dash Schema"
       },
       "language": {
         "title": "Sprache",
@@ -40,30 +41,23 @@
   },
   "home": {
     "pageDescription": "Ein durchschnittlicher autistischer Compeer, der Trost in den komplexen Werken der Philosophie und dem binären Labyrinth der Informatik findet.",
-    "introduction": {
-      "description": "Software-Entwickler im autistischen Spektrum, leidenschaftlich für {areas}",
-      "areas": [
-        "Computer.",
-        "Philosophie.",
-        "Linguistik.",
-        "Physik.",
-        "Mathematik."
-      ]
-    },
-    "biography": {
-      "title": "Biografie",
+    "introduction": "Ein Geek im Autismus-Spektrum, der die tiefgreifenden Feinheiten der Physik, Software und Linguistik erforscht.",
+    "aboutMe": {
+      "title": "Über mich",
       "text": "Hallo! Ich bin ein brasilianischer Schüler mit einer Leidenschaft für die Erforschung der Komplexitäten verschiedener Gebiete, einschließlich Informatik, Philosophie, Physik, Mathematik und Linguistik. Ich war schon in jungen Jahren von Technologie fasziniert und begann meine Reise mit meinem ersten Computer im Alter von drei Jahren. Im Laufe der Zeit habe ich auch ein tiefes Interesse an Selbstentwicklung und dem Verständnis der Komplexitäten der menschlichen Existenz und des Universums, in dem wir leben, entwickelt."
     },
     "artists": {
       "title": "Künstler",
-      "text": "Künstler und Bands, die meinem Geschmack und Qualitätsstandards entsprechen.",
+      "text": "Entdecke Künstler und Bands, die perfekt zu meinem persönlichen Geschmack und hohen Qualitätsstandards passen.",
       "psychoangel": "Britischer Rave-Künstler.",
       "glassBeach": "Eine amerikanische Indie-Rock-Band aus Los Angeles.",
       "yuce": "Solosänger, DJ, Songtexter, Komponist und Arrangeur.",
       "iyowa": "Japanischer Musikproduzent und Illustrator.",
       "kikuo": "Ein Produzent mit stetiger Beliebtheit. Seine Songs zeichnen sich durch dunkle Themen in Verbindung mit fröhlicher Musik aus.",
       "tom": "Eine Hauptkraft bei der Entstehung des Bossa-Nova-Stils. Seine Lieder werden seit den frühen 1960er Jahren international von vielen Sängern und Instrumentalisten aufgeführt.",
-      "chico": "Brasilianischer Singer-Songwriter, Gitarrist, Komponist, Dramatiker, Schriftsteller und Dichter. Er ist am besten für seine Musik bekannt, die häufig soziale, wirtschaftliche und kulturelle Reflexionen über Brasilien beinhaltet."
+      "chico": "Brasilianischer Singer-Songwriter, Gitarrist, Komponist, Dramatiker, Schriftsteller und Dichter. Er ist am besten für seine Musik bekannt, die häufig soziale, wirtschaftliche und kulturelle Reflexionen über Brasilien beinhaltet.",
+      "on": "auf",
+      "by": "von"
     },
     "books": {
       "title": "Bücher",

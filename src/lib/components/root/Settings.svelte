@@ -2,9 +2,9 @@
   import { browser } from "$app/environment";
   import { enhance, type SubmitFunction } from "$app/forms";
   import { page } from "$app/stores";
-  import { isColorScheme } from "$lib/types/colorScheme";
+  import { colorSchemeKinds, isColorScheme } from "$lib/types/colorScheme";
   import type { LocaleDefinition } from "$lib/locale";
-  import { fly } from "svelte/transition";
+  import { fade, fly } from "svelte/transition";
   import MaterialIcon from "../icon/MaterialIcon.svelte";
   import Twemoji from "../icon/Twemoji.svelte";
   import Tooltip from "./Tooltip.svelte";
@@ -62,27 +62,19 @@
         <h1>{locale.header.settings.colorScheme.title}</h1>
         <p>{locale.header.settings.colorScheme.description}</p>
         <form method="POST" class="row" use:enhance={submitColorScheme}>
-          <Tooltip title={locale.header.settings.colorScheme.darkScheme}>
-            <button
-              class="theme-select default-dark"
-              formaction="/?/setColorScheme&color-scheme=default-dark&redirect-to={$page
-                .url.pathname}"
-            />
-          </Tooltip>
-          <Tooltip title={locale.header.settings.colorScheme.lightScheme}>
-            <button
-              class="theme-select default-light"
-              formaction="/?/setColorScheme&color-scheme=default-light&redirect-to={$page
-                .url.pathname}"
-            />
-          </Tooltip>
-          <Tooltip title={locale.header.settings.colorScheme.systemScheme}>
-            <button
-              class="theme-select default-system"
-              formaction="/?/setColorScheme&color-scheme=default-system&redirect-to={$page
-                .url.pathname}"
-            />
-          </Tooltip>
+          {#each colorSchemeKinds as kind}
+            <Tooltip>
+              <button
+                slot="content"
+                class="theme-select {kind}"
+                formaction="/?/setColorScheme&color-scheme={kind}&redirect-to={$page
+                  .url.pathname}"
+              />
+              <span slot="tooltip" transition:fade
+                >{locale.header.settings.colorScheme[kind]}</span
+              >
+            </Tooltip>
+          {/each}
         </form>
       </section>
       <section>
@@ -116,7 +108,7 @@
           <button
             class="language-select"
             formaction="/?/setDisablePointer&disable-pointer={!isEnablePointer}&redirect-to={$page
-              .url.pathname}">Submit</button
+              .url.pathname}">👉</button
           >
         </form>
       </section>
@@ -164,7 +156,7 @@
       button {
         padding: 8px;
         border-radius: 8px;
-        background-color: var(--accent-color);
+        background-color: var(--bg-contrast-color);
         font-family: var(--primary-font-family), var(--fallback-font-stack);
         color: var(--text-color);
       }
@@ -179,7 +171,7 @@
   :global([data-theme="default-dark"]) .theme-select.default-dark,
   :global([data-theme="default-light"]) .theme-select.default-light,
   :global([data-theme="default-system"]) .theme-select.default-system {
-    border: 3px solid var(--accent-color);
+    border: 3px solid var(--bg-contrast-color);
   }
   .theme-select {
     width: 24px;
@@ -193,7 +185,24 @@
       background-color: #fffbfe;
     }
     &.default-system {
-      background-color: var(--background-color);
+      background: rgb(28, 27, 31);
+      background: linear-gradient(
+        150deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 49%,
+        rgba(255, 255, 255, 1) 51%,
+        rgba(255, 255, 255, 1) 100%
+      );
+    }
+    &.pink-dash {
+      background: rgba(253, 135, 173, 1);
+      background: linear-gradient(
+        150deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 49%,
+        rgba(253, 135, 173, 1) 51%,
+        rgba(253, 135, 173, 1) 100%
+      );
     }
   }
 </style>
