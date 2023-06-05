@@ -83,6 +83,10 @@
       width: 8em;
       height: 8em;
       border-radius: 1em;
+      @media only screen and (max-width: 720px) {
+        width: 5em;
+        height: 5em;
+      }
     }
     h5 {
       font-size: 1.05rem;
@@ -106,7 +110,7 @@
       background-color: var(--bg-contrast-low);
       border-radius: 10em;
       margin-top: 0.75em;
-      width: 16em;
+      width: 10em;
       &::-webkit-progress-bar {
         background-color: var(--bg-contrast-low);
         border-radius: 10em;
@@ -124,6 +128,10 @@
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    @media only screen and (max-width: 720px) {
+      margin: 2rem 0;
+      justify-content: center;
+    }
     gap: 2em;
   }
   .discord-presence-wrapper {
