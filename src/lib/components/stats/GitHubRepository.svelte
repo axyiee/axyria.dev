@@ -125,8 +125,7 @@
     line-height: 1;
     padding: 2rem;
     border-radius: 16px;
-    height: fit-content;
-    width: 90%;
+    width: max(90%, fit-content);
     gap: 2em;
   }
   .repository-wrapper:hover {
@@ -163,6 +162,7 @@
     display: flex;
     align-items: center;
     flex-flow: row wrap;
+    gap: 1em;
     justify-content: space-between;
   }
   .repository-stats div {

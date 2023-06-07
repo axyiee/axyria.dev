@@ -8,12 +8,18 @@
   import { fly, scale } from "svelte/transition";
   import Artists from "$lib/components/root/collection/Artists.svelte";
   import Books from "$lib/components/root/collection/Books.svelte";
-    import BlogPosts from "$lib/components/root/collection/BlogPosts.svelte";
+  import BlogPosts from "$lib/components/root/collection/BlogPosts.svelte";
 
   const tablerLinks = [
     { href: "mailto:you@axyria.dev", icon: "email" },
     { href: "https://twitter.com/aaaxyria", icon: "twitter" },
     { href: "https://code.axyria.dev", icon: "github" },
+  ];
+
+  const repositories = [
+    "aaxyria/basalt-engine",
+    "aaxyria/voxu",
+    "aaxyria/axyria.dev",
   ];
 
   export let data;
@@ -42,21 +48,15 @@
     </div>
     <div class="bottom-side">
       <div class="vertical">
-      <section id="blog-posts">
-        <BlogPosts posts={data.posts} locale={data.language.meta} />
-      </section>
-      <section id="repositories">
-        <GitHubRepository locale={data.language.meta} path="aaxyria/voxu" />
-        <GitHubRepository
-          locale={data.language.meta}
-          path="aaxyria/basalt-engine"
-        />
-        <GitHubRepository
-          locale={data.language.meta}
-          path="aaxyria/axyria.dev"
-        />
-      </section>
-    </div>
+        <section id="blog-posts">
+          <BlogPosts posts={data.posts} locale={data.language.meta} />
+        </section>
+        <section id="repositories">
+          {#each repositories as repository}
+            <GitHubRepository locale={data.language.meta} path={repository} />
+          {/each}
+        </section>
+      </div>
       <div class="vertical vertical-end">
         <section id="about-me">
           <Link
@@ -114,9 +114,6 @@
   #repositories {
     display: flex;
     flex-direction: column;
-    @media only screen and (max-width: 720px) {
-      flex-direction: row;
-    }
     gap: 1em;
   }
   .page-wrapper {
