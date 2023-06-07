@@ -8,6 +8,7 @@
   import { fly, scale } from "svelte/transition";
   import Artists from "$lib/components/root/collection/Artists.svelte";
   import Books from "$lib/components/root/collection/Books.svelte";
+    import BlogPosts from "$lib/components/root/collection/BlogPosts.svelte";
 
   const tablerLinks = [
     { href: "mailto:you@axyria.dev", icon: "email" },
@@ -40,6 +41,10 @@
       <DiscordPresence locale={data.language.meta} />
     </div>
     <div class="bottom-side">
+      <div class="vertical">
+      <section id="blog-posts">
+        <BlogPosts posts={data.posts} locale={data.language.meta} />
+      </section>
       <section id="repositories">
         <GitHubRepository locale={data.language.meta} path="aaxyria/voxu" />
         <GitHubRepository
@@ -51,7 +56,8 @@
           path="aaxyria/axyria.dev"
         />
       </section>
-      <div class="vertical">
+    </div>
+      <div class="vertical vertical-end">
         <section id="about-me">
           <Link
             href="#about-me"
@@ -95,8 +101,12 @@
   .bottom-side .vertical section {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    text-align: right;
+    align-items: flex-start;
+    text-align: left;
+    .vertical-end {
+      align-items: flex-end;
+      text-align: right;
+    }
   }
   .bottom-side .vertical {
     gap: 2em;

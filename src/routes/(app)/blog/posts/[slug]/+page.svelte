@@ -31,6 +31,7 @@
                 year: "numeric",
               })}</span
             >
+            ·
             <ul class="post-tags">
               {#each data.meta.tags as tag}
                 <li><a href="/blog/tags/{tag}">{tag}</a></li>
@@ -129,16 +130,16 @@
   .post-date {
     color: var(--bg-contrast-text-color);
   }
-  :global(h1) {
+  :global(article h1) {
     font-size: 2.6rem;
   }
-  :global(h2) {
+  :global(article h2) {
     font-size: 2.4rem;
   }
-  :global(h3) {
+  :global(article h3) {
     font-size: 2.05rem;
   }
-  :global(h4) {
+  :global(article h4) {
     font-size: 1.5rem;
   }
   :global(article ol),

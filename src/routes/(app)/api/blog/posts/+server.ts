@@ -1,8 +1,10 @@
 import type Post from "$lib/types/post.js";
-import { error, json } from "@sveltejs/kit";
+import { json } from "@sveltejs/kit";
 
 function getPosts(): Post[] {
-  const files = import.meta.glob("/src/lib/blog/posts/*.md", { eager: true });
+  const files = import.meta.glob("../../../../../../src/lib/blog/posts/*.md", {
+    eager: true,
+  });
   const posts: Post[] = [];
   Object.keys(files).forEach((name) => {
     const post = files[name];

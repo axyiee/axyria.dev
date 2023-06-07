@@ -2,6 +2,9 @@
   "root": {
     "title": "Axyria's place"
   },
+  "blog": {
+    "min": "min"
+  },
   "header": {
     "home": "Início",
     "blog": "Blog",

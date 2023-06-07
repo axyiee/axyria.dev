@@ -4,6 +4,7 @@ export const LocaleDefinition = z.object({
   root: z.object({
     title: z.string(),
   }),
+  blog: z.object({ min: z.string() }),
   header: z.object({
     home: z.string(),
     blog: z.string(),
