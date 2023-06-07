@@ -28,6 +28,7 @@ export interface ColorScheme {
   bgContrastColor: ColorShades;
   bgContrastTextColor: ColorShades;
   bgCardColor: ColorShades;
+  textContrastColor: ColorShades;
 }
 
 export function isColorScheme(maybe: unknown): maybe is ColorSchemeKind {
@@ -115,6 +116,19 @@ const scheme: ColorScheme = {
     dark3: "var(--bg-card-color-d-3)",
     dark4: "var(--bg-card-color-d-4)",
     dark5: "var(--bg-card-color-d-5)",
+  },
+  textContrastColor: {
+    zero: "var(--text-contrast-color)",
+    light1: "var(--text-contrast-color-l-1)",
+    light2: "var(--text-contrast-color-l-2)",
+    light3: "var(--text-contrast-color-l-3)",
+    light4: "var(--text-contrast-color-l-4)",
+    light5: "var(--text-contrast-color-l-5)",
+    dark1: "var(--text-contrast-color-d-1)",
+    dark2: "var(--text-contrast-color-d-2)",
+    dark3: "var(--text-contrast-color-d-3)",
+    dark4: "var(--text-contrast-color-d-4)",
+    dark5: "var(--text-contrast-color-d-5)",
   },
 };
 

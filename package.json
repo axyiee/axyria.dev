@@ -12,15 +12,14 @@
     "format": "prettier --plugin-search-dir . --write ."
   },
   "devDependencies": {
-    "@fontsource/inter": "^5.0.2",
     "@fontsource/material-icons": "^4.5.4",
     "@fontsource/material-icons-outlined": "^4.5.4",
     "@fontsource/space-grotesk": "^4.5.13",
     "@sveltejs/adapter-auto": "^2.1.0",
     "@sveltejs/kit": "^1.20.1",
     "@types/cookie": "^0.5.1",
-    "@typescript-eslint/eslint-plugin": "^5.59.8",
-    "@typescript-eslint/parser": "^5.59.8",
+    "@typescript-eslint/eslint-plugin": "^5.59.9",
+    "@typescript-eslint/parser": "^5.59.9",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-svelte3": "^4.0.0",

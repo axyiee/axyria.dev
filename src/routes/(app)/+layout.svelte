@@ -16,27 +16,29 @@
   <meta property="og:image" content="/meme/blink.gif" />
 </svelte:head>
 
-{#key data.language.meta}
-  <div class="app-root">
-    <Header
-      locale={data.language.meta}
-      transitionDelay={300}
-      transitionHeight={100}
-    />
+<div class="app-limit-wrapper">
+  {#key data.language.meta}
+    <div class="app-root">
+      <Header
+        locale={data.language.meta}
+        transitionDelay={300}
+        transitionHeight={100}
+      />
 
-    <main>
-      <slot />
-    </main>
+      <main>
+        <slot />
+      </main>
 
-    <!-- <footer>
+      <!-- <footer>
     <p>
       visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit
     </p>
   </footer> -->
 
-    <Pointer />
-  </div>
-{/key}
+      <Pointer />
+    </div>
+  {/key}
+</div>
 
 <style>
   .app-root {
@@ -44,5 +46,9 @@
     flex-direction: column;
     padding: 2.4rem;
     gap: 5rem;
+  }
+  .app-limit-wrapper {
+    width: min(97.5%, 80em);
+    margin-inline: auto;
   }
 </style>

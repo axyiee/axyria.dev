@@ -23,7 +23,7 @@
     <div class="top-side">
       <div id="introduction">
         <h1 transition:scale={{ delay: 500 }}>axyria</h1>
-        <h5 id="description">{data.language.meta.home.introduction}</h5>
+        <h3 id="description">{data.language.meta.home.introduction}</h3>
         <div class="links">
           {#each tablerLinks as link}
             <a href={link.href}
@@ -83,7 +83,7 @@
   </div>
 </Animate>
 
-<style>
+<style lang="scss">
   .page-wrapper,
   #introduction,
   .top-side,
@@ -99,13 +99,15 @@
     text-align: right;
   }
   .bottom-side .vertical {
-    gap: 1em;
+    gap: 2em;
   }
   #repositories {
     display: flex;
     flex-direction: column;
-    flex-flow: wrap;
-    gap: 1rem;
+    @media only screen and (max-width: 720px) {
+      flex-direction: row;
+    }
+    gap: 1em;
   }
   .page-wrapper {
     flex-direction: column;
@@ -147,8 +149,10 @@
     justify-content: space-between;
     gap: 5pt;
   }
-  .top-side h1 {
-    color: var(--accent-color);
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
   }
   @media only screen and (max-width: 720px) {
     .page-wrapper {

@@ -4,17 +4,19 @@
 
 $color-schemes: (
   default-dark: (
-    background-color: #1c1b1f,
-    text-color: #e6e1e5,
-    bg-contrast-color: #633b48,
-    bg-contrast-text-color: #ffd8e4,
-    bg-contrast-low: #2e2229,
-    accent-color: #ffd8e4,
-    bg-card-color: #19181b,
+    background-color: #080005,
+    text-color: #c2739d,
+    text-contrast-color: #d8a5bf,
+    bg-contrast-color: #2f1c25,
+    bg-contrast-text-color: #ffbcdf,
+    bg-contrast-low: #13010b,
+    accent-color: #fb99cc,
+    bg-card-color: #0c0007,
   ),
   default-light: (
     background-color: #fffbfe,
     text-color: #2e1e28,
+    text-contrast-color: #0c0a0b,
     bg-contrast-color: #ffd8e4,
     bg-contrast-text-color: #31111d,
     bg-contrast-low: #fff2f8,
@@ -22,13 +24,14 @@ $color-schemes: (
     bg-card-color: #f1e8ef,
   ),
   pink-dash: (
-    background-color: black,
-    text-color: #f8ccef,
-    bg-contrast-color: #2f1c25,
-    bg-contrast-text-color: #ffbcdf,
-    bg-contrast-low: #0c0709,
-    accent-color: #fb99cc,
-    bg-card-color: #050505,
+    background-color: #1c1b1f,
+    text-color: #e6e1e5,
+    text-contrast-color: #ffffff,
+    bg-contrast-color: #633b48,
+    bg-contrast-text-color: #ffd8e4,
+    bg-contrast-low: #2e2229,
+    accent-color: #ffd8e4,
+    bg-card-color: #19181b,
   ),
 );
 
@@ -43,6 +46,7 @@ $color-schemes: (
   $keys: (
     "background-color",
     "text-color",
+    "text-contrast-color",
     "accent-color",
     "bg-contrast-color",
     "bg-contrast-text-color",
@@ -91,30 +95,33 @@ $color-schemes: (
   }
 }
 
+html,
 body {
   background-color: var(--background-color);
+}
+
+body {
   color: var(--text-color);
   accent-color: var(--accent-color);
   transition: all 0.25s var(--bezier-curve);
 }
 
 ::selection {
-  color: var(--text-color);
-  background: var(--accent-color);
+  color: var(--background-color);
+  background-color: var(--accent-color);
   transition: all 1s;
 }
 
 ::-webkit-scrollbar {
+  &,
+  &-track {
+    background-color: transparent;
+  }
+  &-thumb {
+    border-radius: 10px;
+    background-color: var(--bg-contrast-low);
+  }
   width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: var(--bg-contrast-low);
 }
 
 a,
@@ -124,4 +131,18 @@ a:link,
 a:active {
   color: var(--bg-contrast-text-color);
   text-decoration: none;
+}
+
+h1,
+h2.link-text,
+article h1,
+article h2,
+article h3,
+article h4,
+article h5 {
+  color: var(--text-contrast-color);
+}
+
+p {
+  color: var(--text-color);
 }

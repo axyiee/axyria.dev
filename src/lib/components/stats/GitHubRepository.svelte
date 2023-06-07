@@ -125,9 +125,8 @@
     line-height: 1;
     padding: 2rem;
     border-radius: 16px;
-    width: 100%;
     height: fit-content;
-    gap: 1rem;
+    gap: 2em;
   }
   .repository-wrapper:hover {
     transform: scale(1.05);
@@ -135,6 +134,7 @@
   .repository-overview {
     display: flex;
     flex-direction: column;
+    gap: 1em;
   }
   .repository-main-info {
     display: flex;
@@ -163,20 +163,19 @@
     align-items: center;
     flex-flow: row wrap;
     justify-content: space-between;
-    gap: 16px;
   }
   .repository-stats div {
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 5px;
+    gap: 0.25em;
   }
   .repository-stats div span:first-of-type {
     display: flex;
     flex-direction: row;
     align-items: center;
     font-size: 1.25rem;
-    gap: 5px;
+    gap: 0.25em;
   }
   .repository-stats div span:last-of-type {
     color: var(--text-color-d-1);

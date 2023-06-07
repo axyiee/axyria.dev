@@ -127,6 +127,10 @@
     color: var(--text-color);
   }
   .settings-popup {
+    h1,
+    p {
+      color: var(--background-color);
+    }
     transition: all 0.25s var(--bezier-curve);
     position: absolute;
     display: flex;

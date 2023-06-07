@@ -20,10 +20,31 @@
     timeZone: "America/Sao_Paulo",
     hour12: true,
   });
+
+  function tilt3D(event: MouseEvent) {
+    const { clientX, clientY } = event;
+    const center = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    const offset = {
+      x: ((clientX - center.x) / center.x) * 45,
+      y: ((clientY - center.y) / center.y) * 45,
+    };
+    const target = event.currentTarget as HTMLDivElement | null;
+    target?.style?.setProperty("--tilt-x", offset.x + "deg");
+    target?.style?.setProperty("--tilt-y", offset.y + "deg");
+  }
+  function untilt3D(event: MouseEvent) {
+    const target = event.currentTarget as HTMLDivElement | null;
+    target?.style?.setProperty("--tilt-x", "0deg");
+    target?.style?.setProperty("--tilt-y", "0deg");
+  }
 </script>
 
 {#if $discord && !$discord.listening_to_spotify}
-  <div class="discord-presence-wrapper">
+  <div
+    class="discord-presence-wrapper three-dimension-tilt"
+    on:mousemove={tilt3D}
+    on:mouseleave={untilt3D}
+  >
     <div class="discord-user-info">
       <img
         src="https://cdn.discordapp.com/avatars/{id}/{$discord.discord_user
@@ -39,7 +60,11 @@
     </div>
   </div>
 {:else if $discord && $discord.listening_to_spotify}
-  <div class="spotify-card">
+  <div
+    class="spotify-card three-dimension-tilt"
+    on:mousemove={tilt3D}
+    on:mouseleave={untilt3D}
+  >
     <img src={$discord.spotify?.album_art_url} alt="" />
     <div>
       <Tooltip>
@@ -97,7 +122,6 @@
       text-align: right;
       align-items: flex-end;
       justify-content: flex-end;
-      gap: 0.75em;
       @media only screen and (min-width: 721px) {
         max-width: 50%;
       }
@@ -126,7 +150,7 @@
         border-radius: 10em;
       }
     }
-    line-height: 1;
+    line-height: 1.4;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -139,13 +163,11 @@
     text-align: left;
     font-size: 1rem;
     gap: 16px;
-    padding: 2rem;
     border-radius: 1em;
     color: var(--bg-contrast-text-color);
     transition: all 0.25s var(--bezier-curve);
     align-items: center;
     justify-content: center;
-    height: 100%;
   }
   .discord-presence-wrapper:hover {
     transform: scale(1.05);
@@ -168,9 +190,7 @@
     flex-direction: column;
     align-items: flex-end;
     text-align: right;
-    line-height: 1;
     width: 100%;
-    gap: 1rem;
   }
   .info-vertical-section .username-status {
     display: flex;
@@ -190,6 +210,15 @@
     .spotify-card,
     .discord-presence-wrapper {
       margin: 5em 0;
+    }
+  }
+  .three-dimension-tilt {
+    --tilt: perspective(1500px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+    transform-style: preserve-3d;
+    transform: var(--tilt);
+    transition: transform 0.25s var(--bezier-curve);
+    &:hover {
+      transform: var(--tilt) scale(1.05);
     }
   }
 </style>
