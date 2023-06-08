@@ -24,14 +24,16 @@
           <h1 class="post-title">{data.meta.title}</h1>
           <h2 class="post-description">{data.meta.description}</h2>
           <div class="row align">
-            <span class="post-date"
-              >{new Date(data.meta.date).toLocaleString("en-US", {
-                day: "2-digit",
-                month: "2-digit",
-                year: "numeric",
-              })}</span
+            <span
+              >~{data.meta.readingTime}m ·
+              <span class="post-date"
+                >{new Date(data.meta.date).toLocaleString("en-US", {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "numeric",
+                })}</span
+              ></span
             >
-            ·
             <ul class="post-tags">
               {#each data.meta.tags as tag}
                 <li><a href="/blog/tags/{tag}">{tag}</a></li>

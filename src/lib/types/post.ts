@@ -7,6 +7,7 @@ export const Post = z.object({
   description: z.string(),
   tags: z.array(z.enum(["first-post"])),
   image: z.string().optional(),
+  readingTime: z.number().optional(),
 });
 
 type Post = z.infer<typeof Post>;

@@ -14,7 +14,7 @@ export async function load({ params, fetch }) {
     throw error(404, "Not found");
   }
   try {
-    const post = await import(`/src/lib/blog/posts/${slug}.md`);
+    const post = await import(`../../../../../lib/blog/posts/${slug}.md`);
     return {
       content: post.default,
       meta: post.metadata,
