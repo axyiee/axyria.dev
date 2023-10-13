@@ -1,0 +1,54 @@
+@import url("https://rsms.me/inter/inter.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+:root {
+    @apply scroll-smooth font-display antialiased;
+}
+
+html {
+  @apply motion-safe:transition-colors;
+  scrollbar-width: auto;
+}
+
+.light {
+  @apply bg-white text-slate-12;
+  scrollbar-color: #00000080 transparent;
+}
+
+.dark {
+  @apply bg-slatedark-1 text-slatedark-12;
+  scrollbar-color: #ffffffb3 transparent;
+}
+
+[data-color-scheme="light"] {
+  @apply light;
+}
+
+[data-color-scheme="dark"] {
+  @apply dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-color-scheme="system"] {
+    @apply dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  [data-color-scheme="system"] {
+    @apply light;
+  }
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+[data-color-scheme$="dark"] [type="checkbox"]:checked,
+[data-color-scheme$="dark"] [type="radio"]:checked {
+  background-color: currentColor;
+}

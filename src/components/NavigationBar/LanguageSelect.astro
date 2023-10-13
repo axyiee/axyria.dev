@@ -1,0 +1,49 @@
+---
+import CaretSort from "@components/Icon/CaretSort.astro";
+import Brazil from "@components/Icon/Twemoji/Brazil.astro";
+import Germany from "@components/Icon/Twemoji/Germany.astro";
+import Spain from "@components/Icon/Twemoji/Spain.astro";
+import UnitedKingdom from "@components/Icon/Twemoji/UnitedKingdom.astro";
+import { LanguageCode, extractLanguageFromUrl, replaceLanguageCodeOfUrl } from "@root/types/language";
+
+const size = "1.5rem";
+
+const values = [
+    { name: "English", code: "en", component: UnitedKingdom },
+    { name: "Deutsch", code: "de", component: Germany },
+    { name: "Português", code: "br", component: Brazil },
+    { name: "Español", code: "es", component: Spain },
+]
+
+const language = extractLanguageFromUrl(Astro.url);
+---
+
+<details class="text-slate-dim text-sm font-medium group">
+    <summary class="list-none">
+        {values.map(({ name, code, component: Component }) => language === code && <div 
+            data-language-select 
+            data-lang={code} 
+            class=`flex gap-2 items-center justify-center rounded-lg bg-slate-2 dark:bg-slatedark-2 border border-slate-4 
+            dark:border-slatedark-4 py-2 px-3 animate-fade-in motion-safe:transition-colors`
+        >
+            <Component class="pointer-events-none" {size} />
+            {name}
+            <CaretSort class="pointer-events-none" size="1em" />
+        </div>)}
+    </summary>
+    <div 
+        data-dropdown-parent 
+        class="absolute z-10 rounded-lg max-h-0 overflow-hidden ease-in-out origin-top-left flex flex-col gap-1
+        bg-slate-2 justify-center dark:bg-slatedark-2 mt-1 border-slate-4 dark:border-slatedark-4 divide-y divide-slate-4
+        dark:divide-slatedark-4 motion-safe:transition-colored-max-h group-open:max-h-36 group-open:border duration-1000"
+    >
+        {values.map(({ name, code, component: Component }) => language !== code && <a 
+            data-lang={code}
+            class="flex gap-2 justify-start bg-slate-2 dark:bg-slatedark-2 py-2 px-3"
+            href={replaceLanguageCodeOfUrl(code as LanguageCode, Astro.url)}
+        >
+            <Component {size} />
+            {name}
+        </button>)}
+    </div>
+</div>

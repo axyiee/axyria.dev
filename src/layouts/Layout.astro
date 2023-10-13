@@ -1,0 +1,47 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import { styleSheet as colorScheme } from "@styles/generateColorSchemes";
+import { type Metadata, getDefaultMetadata } from "@root/types/metadata";
+import { COLOR_SCHEME_ID_COOKIE } from "@scripts/loadColorScheme";
+import "@styles/tailwind.css";
+
+interface Props {
+	title: string;
+	metadata?: {
+		[key in Metadata]?: string;
+	};
+}
+
+const { title, metadata: bm } = Astro.props;
+const schemeType = Astro.cookies.get(COLOR_SCHEME_ID_COOKIE)?.value || "system";
+
+const metadata = Object.entries(bm ?? {}).map(
+	([key, value]) => value || getDefaultMetadata(key as Metadata),
+);
+---
+
+<!doctype html>
+<html lang="en" data-color-scheme={schemeType}>
+	<head>
+		<meta charset="UTF-8" />
+		{
+			Object.entries(metadata).map(
+				([key, value]) => value && <meta name={key} content={value} />,
+			)
+		}
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<style is:inline set:html={colorScheme}></style>
+		<title>{title}</title>
+		<ViewTransitions />
+	</head>
+	<body class="table m-auto w-full p-5">
+		<slot />
+		<style is:global>
+			body {
+				width: min(100%, 1080px);
+			}
+		</style>
+	</body>
+</html>

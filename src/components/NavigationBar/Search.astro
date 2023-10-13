@@ -1,0 +1,17 @@
+---
+import MagnifyingGlass from "@components/Icon/MagnifyingGlass.astro";
+
+interface Props {
+    placeholder: string;
+}
+
+const { placeholder } = Astro.props;
+---
+
+<div class="hidden sm:flex items-center text-slate-dim p-5 gap-2 w-96 h-8 bg-slate-2 dark:bg-slatedark-2 rounded-full transition">
+    <MagnifyingGlass size="1em" />
+    <input
+        class="text-sm placeholder-slate-dim font-medium focus:outline-none bg-transparent"
+        {placeholder}
+    ></label>
+</form>

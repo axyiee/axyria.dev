@@ -1,0 +1,34 @@
+---
+import Hamburger from "@components/Icon/Hamburger.astro";
+import Search from "@components/NavigationBar/Search.astro";
+import { type Props as IconProps } from "./Icon/Props";
+import ColorSchemeSwitcher from "./NavigationBar/ColorSchemeSwitcher.astro";
+import LanguageSelect from "./NavigationBar/LanguageSelect.astro";
+
+export type Link = "home" | "about" | "blog";
+
+interface LinkDefinition {
+  id: Link;
+  name: string;
+}
+
+interface Props {
+  searchPlaceholder: string;
+  searchEnabled: boolean;
+}
+
+const { searchPlaceholder, searchEnabled } = Astro.props;
+---
+
+<nav class="border-b border-gray-dim flex-column items-center justify-center gap-5 pb-2 max-w-screen-xl m-auto motion-safe:transition-colors">
+  <div class="flex flex-wrap items-center justify-between">
+    <a class="text-3xl font-black tracking-tighter" href="https://axyria.dev">Axyie</a>
+    {searchEnabled && <Search placeholder={searchPlaceholder} />}
+    <div class="flex items-center gap-5">
+      <LanguageSelect />
+      <ColorSchemeSwitcher />
+      <button><Hamburger class="pointer-events-none"   size="1.5em" /></button>
+    </div>
+  </div>
+  <div class="hidden">Hello</div>
+</nav>

@@ -1,0 +1,23 @@
+---
+import { type Metadata, getDefaultMetadata } from "@root/types/metadata";
+import Layout from "./Layout.astro";
+import NavigationBar, { type Link } from "@components/NavigationBar.astro";
+
+interface Props {
+  title: string;
+  link: Link;
+  metadata?: {
+    [key in Metadata]?: string;
+  };
+  searchEnabled: boolean;
+}
+
+const { title, link, metadata, searchEnabled } = Astro.props;
+---
+
+<Layout {title} {metadata}>
+  <NavigationBar searchPlaceholder="Pesquisar" {searchEnabled} />
+  <main>
+    <slot />
+  </main>
+</Layout>

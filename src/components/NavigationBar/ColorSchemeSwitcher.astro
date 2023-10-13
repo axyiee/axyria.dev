@@ -1,0 +1,65 @@
+---
+import ColorScheme from "@components/Icon/ColorScheme.astro";
+---
+
+<label data-color-scheme-switcher={Astro.url.origin} class="relative inline-flex items-center cursor-pointer">
+  <input type="checkbox" value="" class="sr-only peer" />
+  <div
+    class="w-11 h-6 bg-slate-12 dark:bg-slatedark-12 rounded-full transition
+    peer peer-focus:outline-none peer-checked:after:translate-x-full
+    after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:transition
+    after:w-5 after:h-5 after:bg-slatedark-12 dark:after:bg-slate-12 after:border after:rounded-full"
+  >
+    <ColorScheme size="1rem" class="text-slatedark-12 dark:text-slate-12 animate-fade-in transition pointer-events-none" />
+  </div>
+</label>
+
+<script>
+  import { applyInverseColorScheme } from "@scripts/loadColorScheme";
+
+  function perform(baseUrl: string) {
+    return applyInverseColorScheme(baseUrl).then((a) => console.log(a));
+  }
+
+  function setItemPeerCheck({ checked }: HTMLInputElement) {
+    const elements = document.querySelectorAll("[data-color-scheme-switcher] > div > svg");
+    elements.forEach((element) => {
+      if (checked) {
+        element.classList.add("item-peer-checked");
+        element.classList.remove("item-peer-unchecked");
+      } else {
+        element.classList.remove("item-peer-checked");
+        element.classList.add("item-peer-unchecked");
+      }
+    });
+  }
+
+  function setDefaultScheme(checkbox: HTMLInputElement) {
+    const scheme = document.documentElement.getAttribute("data-color-scheme") || "system";
+    const isDark = scheme === "dark" || (scheme == "system" && window.matchMedia("(prefers-color-scheme:dark)"));
+    if (isDark) {
+      checkbox.checked = true;
+    }
+  }
+
+  const checkboxes = document.querySelectorAll('[data-color-scheme-switcher] > input[type="checkbox"]');
+  const origins = document.querySelectorAll("[data-color-scheme-switcher]");
+
+  checkboxes.forEach((checkbox) => {
+    setDefaultScheme(checkbox as HTMLInputElement);
+    setItemPeerCheck(checkbox as HTMLInputElement);
+    checkbox.addEventListener("change", () => {
+      setItemPeerCheck(checkbox as HTMLInputElement);
+      origins.forEach((value) => perform(value.getAttribute("data-color-scheme-switcher")!!));
+    });
+  });
+</script>
+
+<style>
+  .item-peer-unchecked {
+    @apply translate-x-6 translate-y-1;
+  }
+  .item-peer-checked {
+    @apply translate-x-1 translate-y-1;
+  }
+</style>
